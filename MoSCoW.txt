@@ -1,0 +1,20 @@
+Must
+Een avatar voor de speler die kan bewegen.
+Een level met muren waar de speler niet doorheen kan.
+Een score-systeem en een manier om punten te verdienen.
+Deuren en sleutels om de deuren mee open te maken.
+
+Should
+Een uitgang waarmee het level afgerond wordt.
+Obstakels waar de speler tegen aan kan lopen en dan gebeurt er iets slechts.
+De speler heeft 3 levens, als hij tegen een obstakel aanloopt verliest hij er een, als ze op zijn eindigt het spel.
+
+Could
+Een manier om de score op te slaan zodat je een high score kunt zien.
+Geheime deuren die lijken op een gewone muur maar zich gedragen als deuren.
+Power-op die de speler een extra leven geeft.
+
+Won't
+Meerdere levels
+Wapens
+Power-ups die de acties van de speler veranderen.
