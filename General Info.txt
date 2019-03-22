@@ -18,3 +18,13 @@ Won't
 Meerdere levels
 Wapens
 Power-ups die de acties van de speler veranderen.
+
+
+Classes:
+  - Player
+  - Muur
+  - Deur
+  - Obstakel
+  - Diamant
+  - Hiscores
+  
