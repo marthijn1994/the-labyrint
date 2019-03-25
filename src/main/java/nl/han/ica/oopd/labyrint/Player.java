@@ -19,7 +19,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 	private static final int WEST = 270;
 
 	private final Labyrint world;
-	private final int spriteSize = 50;
+	private final int spriteSize = 45;
 
 	private static int DEATHS = 3;
 
