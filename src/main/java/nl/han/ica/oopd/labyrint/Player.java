@@ -41,19 +41,15 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 	@Override
 	public void update() {
 		if (getX() <= 0) {
-            setxSpeed(0);
             setX(0);
         }
         if (getY() <= 0) {
-            setySpeed(0);
             setY(0);
         }
         if (getX() >= world.width - spriteSize) {
-            setxSpeed(0);
             setX(world.width - spriteSize);
         }
         if (getY() >= world.height - spriteSize) {
-            setySpeed(0);
             setY(world.height - spriteSize);
         }
 	}
