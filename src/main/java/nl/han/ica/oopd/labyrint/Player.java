@@ -72,30 +72,11 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 			setDirectionSpeed(SOUTH, getSpeed());
 			setCurrentFrameIndex(0);
 		}
-		if (key == ' ') {
-			System.out.println("Open deur");
-			OpenDoor();
-		}
 	}
 	
 	@Override
 	public void keyReleased(int keyCode, char key) {
 		setSpeed(0);
-	}
-
-	private void OpenDoor() {
-		PVector vector;
-	}
-
-	public boolean isDeath() {
-		return DEATHS == 0;
-	}
-
-	public void neemSchade() {
-		DEATHS -= 1;
-		if (isDeath()) {
-			// GAME OVER MAN!
-		}
 	}
 
 	/*
@@ -134,17 +115,23 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 		}
 	}
 
-	// check for collision with doors
-	private boolean checkDoorCollision(CollidedTile collidedTile, CollisionSide collisionSide) {
-		return true;
-	}
-
 	// check voor collision met vijanden
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
 		for (GameObject g : collidedGameObjects) {
 			if (g instanceof ISchadelijk) {
 				((ISchadelijk) g).handelSchade(this);
 			}
+		}
+	}
+
+	public boolean isDeath() {
+		return DEATHS == 0;
+	}
+
+	public void neemSchade() {
+		DEATHS -= 1;
+		if (isDeath()) {
+			// GAME OVER MAN!
 		}
 	}
 	
