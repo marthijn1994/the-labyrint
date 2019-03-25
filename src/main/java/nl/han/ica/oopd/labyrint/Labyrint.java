@@ -1,19 +1,22 @@
 package nl.han.ica.oopd.labyrint;
 
+import nl.han.ica.oopd.labyrint.tiles.DeurTile;
 import nl.han.ica.oopd.labyrint.tiles.MuurTile;
 import nl.han.ica.oopd.labyrint.tiles.VloerTile;
 import nl.han.ica.oopg.engine.GameEngine;
 import nl.han.ica.oopg.objects.Sprite;
+import nl.han.ica.oopg.tile.Tile;
 import nl.han.ica.oopg.tile.TileMap;
 import nl.han.ica.oopg.tile.TileType;
+import nl.han.ica.oopg.view.EdgeFollowingViewport;
 import nl.han.ica.oopg.view.View;
 import processing.core.PApplet;
 
 @SuppressWarnings("serial")
 public class Labyrint extends GameEngine {
 	
-	private static final int WIDTH = 500; 				// Breedte van de window
-	private static final int HEIGHT = 500;	// 16:9 beeldverhouding
+	private static final int WIDTH = 800;
+	private static final int HEIGHT = 600;
 	
 	private Player player;
 
@@ -29,7 +32,7 @@ public class Labyrint extends GameEngine {
 		player = new Player(this);
 		addGameObject(player, 50, 50);
 		
-		createViewWithoutViewport(WIDTH, HEIGHT);
+		createWindow(WIDTH, HEIGHT);
 		initializeTileMap();
 	}
 
@@ -38,11 +41,11 @@ public class Labyrint extends GameEngine {
 		
 	}
 	
-	private void createViewWithoutViewport(int screenWidth, int screenHeight) {
-        View view = new View(screenWidth, screenHeight);
-        setView(view);
-        size(screenWidth, screenHeight);
-    }
+	private void createWindow(int width, int height) {
+		View view = new View(width, height);
+		setView(view);
+        size(width, height);
+	}
 	
 	private void initializeTileMap() {
 		
@@ -54,19 +57,25 @@ public class Labyrint extends GameEngine {
 		Sprite vloerSprite = new Sprite("src/main/java/nl/han/ica/oopd/labyrint/media/vloer.png");
         TileType<VloerTile> vloerTileType = new TileType<>(VloerTile.class, vloerSprite);
         
-        TileType[] tileTypes = { muurTileType, vloerTileType };
+        // Deur Tile
+        Sprite deurSprite = new Sprite("src/main/java/nl/han/ica/oopd/labyrint/media/deur.png");
+        TileType<DeurTile> deurTileType = new TileType<DeurTile>(DeurTile.class, deurSprite);
+        
+        TileType[] tileTypes = { muurTileType, vloerTileType, deurTileType };
         int tileSize = 50;
         int tilesMap[][] = {
-                {0, 0, 0, 0, 0, 0, 0, 1, 1, 1},
-                {0, 1, 0, 0, 0, 0, 0, 1, 0, 1},
-                {0, 1, 0, 1, 1, 1, 0, 1, 0, 1},
-                {0, 1, 1, 1, 0, 1, 0, 1, 0, 1},
-                {0, 0, 0, 0, 0, 1, 0, 1, 0, 1},
-                {1, 1, 1, 1, 1, 1, 0, 1, 1, 1},
-                {1, 0, 0, 0, 0, 0, 0, 1, 0, 1},
-                {1, 1, 1, 1, 1, 1, 1, 1, 0, 1},
-                {0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                {0, 0, 0, 0, 0, 0, 0, 0, 0, 1}
+                {0, 0, 0, 0, 0, 0, 0, 1, 2, 1, 0, 0, 0, 0, 0, 0},
+                {0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0},
+                {0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0},
+                {0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0},
+                {1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0},
+                {1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0},
+                {1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0}
         };
         tileMap = new TileMap(tileSize, tileTypes, tilesMap);
 	}

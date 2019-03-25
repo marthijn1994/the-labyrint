@@ -19,7 +19,6 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 	private static final int WEST = 270;
 	
 	private final Labyrint world;
-	private final int speed = 2;
 	private final int spriteSize = 50;
 	
 	private static int DEATHS = 3;
@@ -27,18 +26,16 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 	public Player(Labyrint world) {
 		super(new Sprite("src/main/java/nl/han/ica/oopd/labyrint/media/player.png"), 4);
 		this.world = world;
+		setSpeed(2);
 	}
 
 	@Override
 	public void tileCollisionOccurred(List<CollidedTile> collidedTiles) {
-		PVector vector;
-
         for (CollidedTile collidedTile : collidedTiles) {
             if (collidedTile.getTile() instanceof MuurTile) {
             	checkWallCollision(collidedTile, collidedTile.getCollisionSide());
             }
         }
-		
 	}
 
 	@Override
@@ -64,27 +61,38 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 	@Override
 	public void keyPressed(int keyCode, char key) {
 		if (keyCode == world.LEFT) {
-			setDirectionSpeed(WEST, speed);
+			setDirectionSpeed(WEST, getSpeed());
 			setCurrentFrameIndex(1);
 		}
 		if (keyCode == world.UP) {
-			setDirectionSpeed(NORTH, speed);
+			setDirectionSpeed(NORTH, getSpeed());
 			setCurrentFrameIndex(2);
 		}
 		if (keyCode == world.RIGHT) {
-			setDirectionSpeed(EAST, speed);
+			setDirectionSpeed(EAST, getSpeed());
 			setCurrentFrameIndex(3);
 		}
 		if (keyCode == world.DOWN) {
-			setDirectionSpeed(SOUTH, speed);
+			setDirectionSpeed(SOUTH, getSpeed());
 			setCurrentFrameIndex(0);
 		}
+		if (key == ' ') {
+			System.out.println("Open deur");
+			OpenDoor();
+		}
+	}
+	
+	private void OpenDoor() {
+		PVector vector;
 	}
 	
 	public boolean isDeath() {
 		return DEATHS == 0;
 	}
 	
+	/*
+	 * check for collision with walls
+	 */
 	private void checkWallCollision(CollidedTile collidedTile, CollisionSide collisionSide) {
 		PVector vector;
 		if (CollisionSide.BOTTOM.equals(collisionSide)) {
@@ -116,6 +124,11 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
                 e.printStackTrace();
             }
 		}
+	}
+	
+	// check for collision with doors
+	private boolean checkDoorCollision(CollidedTile collidedTile, CollisionSide collisionSide) {
+		return true;
 	}
 
 }
