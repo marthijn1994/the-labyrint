@@ -26,7 +26,6 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 	public Player(Labyrint world) {
 		super(new Sprite("src/main/java/nl/han/ica/oopd/labyrint/media/player.png"), 4);
 		this.world = world;
-		setSpeed(2);
 	}
 
 	@Override
@@ -56,6 +55,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 
 	@Override
 	public void keyPressed(int keyCode, char key) {
+		setSpeed(2);
 		if (keyCode == world.LEFT) {
 			setDirectionSpeed(WEST, getSpeed());
 			setCurrentFrameIndex(1);
@@ -76,6 +76,11 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 			System.out.println("Open deur");
 			OpenDoor();
 		}
+	}
+	
+	@Override
+	public void keyReleased(int keyCode, char key) {
+		setSpeed(0);
 	}
 
 	private void OpenDoor() {
@@ -101,28 +106,28 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 		if (CollisionSide.BOTTOM.equals(collisionSide)) {
 			try {
 				vector = world.getTileMap().getTilePixelLocation(collidedTile.getTile());
-				setY(vector.y + spriteSize);
+				setY(vector.y + getSpriteSize());
 			} catch (TileNotFoundException e) {
 				e.printStackTrace();
 			}
 		} else if (CollisionSide.TOP.equals(collisionSide)) {
 			try {
 				vector = world.getTileMap().getTilePixelLocation(collidedTile.getTile());
-				setY(vector.y - spriteSize);
+				setY(vector.y - getSpriteSize());
 			} catch (TileNotFoundException e) {
 				e.printStackTrace();
 			}
 		} else if (CollisionSide.RIGHT.equals(collisionSide)) {
 			try {
 				vector = world.getTileMap().getTilePixelLocation(collidedTile.getTile());
-				setX(vector.x + spriteSize);
+				setX(vector.x + getSpriteSize());
 			} catch (TileNotFoundException e) {
 				e.printStackTrace();
 			}
 		} else if (CollisionSide.LEFT.equals(collisionSide)) {
 			try {
 				vector = world.getTileMap().getTilePixelLocation(collidedTile.getTile());
-				setX(vector.x - spriteSize);
+				setX(vector.x - getSpriteSize());
 			} catch (TileNotFoundException e) {
 				e.printStackTrace();
 			}

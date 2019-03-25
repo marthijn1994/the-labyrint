@@ -63,7 +63,7 @@ public class Labyrint extends GameEngine {
         TileType<DeurTile> deurTileType = new TileType<DeurTile>(DeurTile.class, deurSprite);
         
         // Cactus Tile
-	 	Sprite CactusSprite = new Sprite("src/main/java/nl/han/ica/oopd/labyrint/tiles/cactus.png");
+	 	Sprite CactusSprite = new Sprite("src/main/java/nl/han/ica/oopd/labyrint/media/cactus.png");
 	 	TileType<CactusTile> cactusTileType = new TileType<CactusTile>(CactusTile.class, CactusSprite);
         
         TileType[] tileTypes = { muurTileType, vloerTileType, deurTileType, cactusTileType };
