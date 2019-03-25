@@ -1,13 +1,13 @@
 package nl.han.ica.oopd.labyrint;
 
 import java.util.List;
-
 import nl.han.ica.oopd.labyrint.tiles.MuurTile;
 import nl.han.ica.oopg.collision.CollidedTile;
 import nl.han.ica.oopg.collision.CollisionSide;
 import nl.han.ica.oopg.collision.ICollidableWithTiles;
 import nl.han.ica.oopg.exceptions.TileNotFoundException;
 import nl.han.ica.oopg.objects.AnimatedSpriteObject;
+import nl.han.ica.oopg.objects.GameObject;
 import nl.han.ica.oopg.objects.Sprite;
 import processing.core.PVector;
 
@@ -17,7 +17,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 	private static final int EAST = 90;
 	private static final int SOUTH = 180;
 	private static final int WEST = 270;
-	
+
 	private final Labyrint world;
 	private final int spriteSize = 50;
 	
@@ -32,7 +32,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 	@Override
 	public void tileCollisionOccurred(List<CollidedTile> collidedTiles) {
         for (CollidedTile collidedTile : collidedTiles) {
-            if (collidedTile.getTile() instanceof MuurTile) {
+            if (collidedTile.getTile() instanceof MuurTile	) {
             	checkWallCollision(collidedTile, collidedTile.getCollisionSide());
             }
         }
@@ -86,6 +86,13 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 		return DEATHS == 0;
 	}
 	
+	public void neemSchade() {
+		DEATHS -= 1;
+		if (isDeath()){
+			// GAME OVER MAN!
+		}
+	}
+	
 	/*
 	 * check for collision with walls
 	 */
@@ -126,5 +133,16 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 	private boolean checkDoorCollision(CollidedTile collidedTile, CollisionSide collisionSide) {
 		return true;
 	}
-
+	
+	// check voor collision met vijanden
+	public void gameObjectCollisionOccurred (List<GameObject> collidedGameObjects) {
+		 for (GameObject g : collidedGameObjects) {
+	            if (g instanceof ISchadelijk) {
+	            	((ISchadelijk) g).handelSchade(this);
+	            }
+	        }
+	    }
+	public Labyrint getWorld() {
+		return world;
+	}
 }

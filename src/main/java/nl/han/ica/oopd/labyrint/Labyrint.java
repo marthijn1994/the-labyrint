@@ -1,5 +1,6 @@
 package nl.han.ica.oopd.labyrint;
 
+import nl.han.ica.oopd.labyrint.tiles.CactusTile;
 import nl.han.ica.oopd.labyrint.tiles.DeurTile;
 import nl.han.ica.oopd.labyrint.tiles.MuurTile;
 import nl.han.ica.oopd.labyrint.tiles.VloerTile;
@@ -63,7 +64,11 @@ public class Labyrint extends GameEngine {
         Sprite deurSprite = new Sprite("src/main/java/nl/han/ica/oopd/labyrint/media/deur.png");
         TileType<DeurTile> deurTileType = new TileType<DeurTile>(DeurTile.class, deurSprite);
         
-        TileType[] tileTypes = { muurTileType, vloerTileType, deurTileType };
+        // Cactus Tile
+	 	Sprite CactusSprite = new Sprite("src/main/java/nl/han/ica/oopd/labyrint/tiles/cactus.png");
+	 	TileType<CactusTile> cactusTielType = new TileType<CactusTile>(CactusTile.class, CactusSprite);
+        
+        TileType[] tileTypes = { muurTileType, vloerTileType, deurTileType, cactusTielType };
         int tileSize = 50;
         int tilesMap[][] = {
                 {0, 0, 0, 0, 0, 0, 0, 1, 2, 1, 0, 0, 0, 0, 0, 0},
@@ -72,7 +77,7 @@ public class Labyrint extends GameEngine {
                 {0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0},
                 {1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0},
-                {1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0},
+                {1, 1, 3, 3, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0},
                 {1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0},
