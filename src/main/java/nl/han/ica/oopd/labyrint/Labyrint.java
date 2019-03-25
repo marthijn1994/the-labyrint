@@ -31,7 +31,9 @@ public class Labyrint extends GameEngine {
 	public void setupGame() {
 		player = new Player(this);
 		addGameObject(player, 50, 50);
-		
+	 	Sprite DiamandSprite = new Sprite("src/main/java/nl/han/ica/oopd/labyrint/media/platformPack_item007.png");
+    	Diamand d1 = new Diamand(DiamandSprite, 10, this);
+    	addGameObject(d1, 50, 150);
 		createWindow(WIDTH, HEIGHT);
 		initializeTileMap();
 	}
