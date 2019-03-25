@@ -142,6 +142,10 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 			}
 		}
 	}
+	
+	public int getSpriteSize() {
+		return spriteSize;
+	}
 
 	public Labyrint getWorld() {
 		return world;
