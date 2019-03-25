@@ -6,10 +6,8 @@ import nl.han.ica.oopd.labyrint.tiles.MuurTile;
 import nl.han.ica.oopd.labyrint.tiles.VloerTile;
 import nl.han.ica.oopg.engine.GameEngine;
 import nl.han.ica.oopg.objects.Sprite;
-import nl.han.ica.oopg.tile.Tile;
 import nl.han.ica.oopg.tile.TileMap;
 import nl.han.ica.oopg.tile.TileType;
-import nl.han.ica.oopg.view.EdgeFollowingViewport;
 import nl.han.ica.oopg.view.View;
 import processing.core.PApplet;
 
@@ -66,9 +64,9 @@ public class Labyrint extends GameEngine {
         
         // Cactus Tile
 	 	Sprite CactusSprite = new Sprite("src/main/java/nl/han/ica/oopd/labyrint/tiles/cactus.png");
-	 	TileType<CactusTile> cactusTielType = new TileType<CactusTile>(CactusTile.class, CactusSprite);
+	 	TileType<CactusTile> cactusTileType = new TileType<CactusTile>(CactusTile.class, CactusSprite);
         
-        TileType[] tileTypes = { muurTileType, vloerTileType, deurTileType, cactusTielType };
+        TileType[] tileTypes = { muurTileType, vloerTileType, deurTileType, cactusTileType };
         int tileSize = 50;
         int tilesMap[][] = {
                 {0, 0, 0, 0, 0, 0, 0, 1, 2, 1, 0, 0, 0, 0, 0, 0},
