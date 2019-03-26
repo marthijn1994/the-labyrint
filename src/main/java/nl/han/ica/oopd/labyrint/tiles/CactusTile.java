@@ -5,7 +5,7 @@ import nl.han.ica.oopd.labyrint.Player;
 import nl.han.ica.oopg.objects.Sprite;
 import nl.han.ica.oopg.tile.Tile;
 
-public class CactusTile extends Tile implements ISchadelijk {
+public class CactusTile extends SolideTile implements ISchadelijk {
 	protected final int lengteOnschadelijk = 500;
 	protected long laatsteKeerSchade;
 

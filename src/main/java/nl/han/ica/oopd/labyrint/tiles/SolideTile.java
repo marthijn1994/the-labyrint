@@ -3,10 +3,11 @@ package nl.han.ica.oopd.labyrint.tiles;
 import nl.han.ica.oopg.objects.Sprite;
 import nl.han.ica.oopg.tile.Tile;
 
-public class DeurTile extends SolideTile {
+public abstract class SolideTile extends Tile {
 
-	public DeurTile(Sprite sprite) {
+	public SolideTile(Sprite sprite) {
 		super(sprite);
+		// TODO Auto-generated constructor stub
 	}
 
 }

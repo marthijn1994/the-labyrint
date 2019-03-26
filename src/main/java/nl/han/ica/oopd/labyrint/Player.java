@@ -1,7 +1,10 @@
 package nl.han.ica.oopd.labyrint;
 
 import java.util.List;
+
+import nl.han.ica.oopd.labyrint.tiles.CactusTile;
 import nl.han.ica.oopd.labyrint.tiles.MuurTile;
+import nl.han.ica.oopd.labyrint.tiles.SolideTile;
 import nl.han.ica.oopg.collision.CollidedTile;
 import nl.han.ica.oopg.collision.CollisionSide;
 import nl.han.ica.oopg.collision.ICollidableWithTiles;
@@ -31,8 +34,11 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 	@Override
 	public void tileCollisionOccurred(List<CollidedTile> collidedTiles) {
 		for (CollidedTile collidedTile : collidedTiles) {
-			if (collidedTile.getTile() instanceof MuurTile) {
+			if (collidedTile.getTile() instanceof SolideTile) {
 				checkWallCollision(collidedTile, collidedTile.getCollisionSide());
+			}
+			if (collidedTile.getTile() instanceof ISchadelijk) {
+				((ISchadelijk)collidedTile.getTile()).handelSchade(this);
 			}
 		}
 	}
@@ -129,6 +135,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 	}
 
 	public void neemSchade() {
+		System.out.println("Ow!");
 		DEATHS -= 1;
 		if (isDeath()) {
 			// GAME OVER MAN!
