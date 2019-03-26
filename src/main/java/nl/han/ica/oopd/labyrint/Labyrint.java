@@ -1,5 +1,7 @@
 package nl.han.ica.oopd.labyrint;
 
+import java.util.ArrayList;
+
 import nl.han.ica.oopd.labyrint.tiles.CactusTile;
 import nl.han.ica.oopd.labyrint.tiles.DeurTile;
 import nl.han.ica.oopd.labyrint.tiles.MuurTile;
@@ -29,10 +31,11 @@ public class Labyrint extends GameEngine {
 	@Override
 	public void setupGame() {
 		player = new Player(this);
-		addGameObject(player, 50, 50);
-	 	Sprite DiamandSprite = new Sprite("src/main/java/nl/han/ica/oopd/labyrint/media/diamond.png");
-    	Diamand d1 = new Diamand(DiamandSprite, 10, this);
-    	addGameObject(d1, 50, 150);
+		addGameObject(player, 50, 0);
+
+		initializeDiamonds();
+		initializeKeys();
+		
 		createWindow(WIDTH, HEIGHT);
 		initializeTileMap();
 	}
@@ -46,6 +49,20 @@ public class Labyrint extends GameEngine {
 		View view = new View(width, height);
 		setView(view);
         size(width, height);
+	}
+	
+	private void initializeDiamonds() {
+		Sprite DiamandSprite = new Sprite("src/main/java/nl/han/ica/oopd/labyrint/media/diamond.png");
+		Diamand d1 = new Diamand(DiamandSprite, 10, this);
+		
+		addGameObject(d1, 100, 150);
+	}
+	
+	private void initializeKeys() {
+		Sprite keySprite = new Sprite("src/main/java/nl/han/ica/oopd/labyrint/media/key.png");
+		Key key = new Key(keySprite, this);
+		
+		addGameObject(key, 50, 100);
 	}
 	
 	private void initializeTileMap() {
@@ -66,13 +83,13 @@ public class Labyrint extends GameEngine {
 	 	Sprite CactusSprite = new Sprite("src/main/java/nl/han/ica/oopd/labyrint/media/cactus.png");
 	 	TileType<CactusTile> cactusTileType = new TileType<CactusTile>(CactusTile.class, CactusSprite);
         
-        TileType[] tileTypes = { muurTileType, vloerTileType, deurTileType, cactusTileType };
+		TileType[] tileTypes = { muurTileType, vloerTileType, deurTileType, cactusTileType };
         int tileSize = 50;
         int tilesMap[][] = {
-                {0, 0, 0, 0, 0, 0, 0, 1, 2, 1, 0, 0, 0, 0, 0, 0},
-                {0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0},
-                {0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0},
-                {0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0},
+                {0, 1, 0, 0, 0, 0, 0, 1, 2, 1, 0, 0, 0, 0, 0, 0},
+                {0, 1, 2, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0},
+                {0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0},
+                {0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0},
                 {1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0},
                 {1, 1, 3, 3, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0},

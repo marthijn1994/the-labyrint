@@ -1,9 +1,9 @@
 package nl.han.ica.oopd.labyrint;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import nl.han.ica.oopd.labyrint.tiles.CactusTile;
-import nl.han.ica.oopd.labyrint.tiles.MuurTile;
+import nl.han.ica.oopd.labyrint.tiles.DeurTile;
 import nl.han.ica.oopd.labyrint.tiles.SolideTile;
 import nl.han.ica.oopg.collision.CollidedTile;
 import nl.han.ica.oopg.collision.CollisionSide;
@@ -25,14 +25,20 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 	private final int spriteSize = 50;
 
 	private static int DEATHS = 3;
+	
+	private List<CollidedTile> collidedTiles;
+	
+	private List<Key> keys = new ArrayList<Key>();
 
 	public Player(Labyrint world) {
 		super(new Sprite("src/main/java/nl/han/ica/oopd/labyrint/media/player.png"), 4);
-		this.world = world;
+		this.world = world;		
+		setFriction(0.075f);
 	}
 
 	@Override
 	public void tileCollisionOccurred(List<CollidedTile> collidedTiles) {
+		this.collidedTiles = collidedTiles;
 		for (CollidedTile collidedTile : collidedTiles) {
 			if (collidedTile.getTile() instanceof SolideTile) {
 				checkWallCollision(collidedTile, collidedTile.getCollisionSide());
@@ -59,30 +65,30 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 		}
 	}
 
+	@SuppressWarnings("static-access")
 	@Override
 	public void keyPressed(int keyCode, char key) {
-		setSpeed(2);
+		final float speed = 2.0f;
 		if (keyCode == world.LEFT) {
-			setDirectionSpeed(WEST, getSpeed());
+			setDirectionSpeed(WEST, speed);
 			setCurrentFrameIndex(1);
 		}
 		if (keyCode == world.UP) {
-			setDirectionSpeed(NORTH, getSpeed());
+			setDirectionSpeed(NORTH, speed);
 			setCurrentFrameIndex(2);
 		}
 		if (keyCode == world.RIGHT) {
-			setDirectionSpeed(EAST, getSpeed());
+			setDirectionSpeed(EAST, speed);
 			setCurrentFrameIndex(3);
 		}
 		if (keyCode == world.DOWN) {
-			setDirectionSpeed(SOUTH, getSpeed());
+			setDirectionSpeed(SOUTH, speed);
 			setCurrentFrameIndex(0);
 		}
-	}
-	
-	@Override
-	public void keyReleased(int keyCode, char key) {
-		setSpeed(0);
+		
+		if (key == ' ') {
+			openDeur();
+		}
 	}
 
 	/*
@@ -120,6 +126,15 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 			}
 		}
 	}
+	
+	private void openDeur() {
+		for (CollidedTile collidedTile : collidedTiles) {
+			if (collidedTile.getTile() instanceof IOpenAble) {
+				System.out.println("deur tile");
+				((IOpenAble)collidedTile.getTile()).open(this, world, collidedTile);
+			}
+		}
+	}
 
 	// check voor collision met vijanden
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
@@ -148,5 +163,9 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 
 	public Labyrint getWorld() {
 		return world;
+	}
+	
+	public List<Key> getKeys() {
+		return this.keys;
 	}
 }

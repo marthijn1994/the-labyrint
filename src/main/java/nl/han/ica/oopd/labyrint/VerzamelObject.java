@@ -13,12 +13,13 @@ public abstract class VerzamelObject extends SpriteObject {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public abstract void verzamelen();
+	public abstract void verzamelen(Player player);
 
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
 		 for (GameObject g : collidedGameObjects) {
 	            if (g instanceof Player) {
-	            	this.verzamelen();
+	            	Player player = (Player) g;
+	            	this.verzamelen(player);
 	            }
 	        }
 	    }
