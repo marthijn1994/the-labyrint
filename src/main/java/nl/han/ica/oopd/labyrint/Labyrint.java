@@ -57,8 +57,10 @@ public class Labyrint extends GameEngine {
 	private void initializeDiamonds() {
 		Sprite DiamandSprite = new Sprite("src/main/java/nl/han/ica/oopd/labyrint/media/diamond.png");
 		Diamand d1 = new Diamand(DiamandSprite, 10, this);
+		Diamand d2 = new Diamand(DiamandSprite, 20, this);
 		
 		addGameObject(d1, 100, 150);
+		addGameObject(d2, 150, 50);
 	}
 	
 	private void initializeKeys() {
