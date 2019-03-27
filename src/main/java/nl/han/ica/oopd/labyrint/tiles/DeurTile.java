@@ -12,12 +12,21 @@ public class DeurTile extends SolideTile {
 		super(sprite);
 	}
 	
+	/**
+	 * Het openen van een deur, de speler heeft een sleutel hiervoor nodig
+	 * Sleutel wordt verwijdert uit de inventory van de speler
+	 * De deurtile wordt vervangen door een vloertile 
+	 * 
+	 * @param player
+	 * @param world
+	 * @param collidedTile
+	 */
 	public void open(Player player, Labyrint world, CollidedTile collidedTile) {
 		PVector vector;
 		
 		if (world.key == ' ') {
 			if (player.getInventory().getKeys().size() > 0) {
-				player.getInventory().getKeys().remove(0); // verwijder een sleuten van de inventory
+				player.getInventory().getKeys().remove(0);
 				vector = world.getTileMap().getTilePixelLocation(collidedTile.getTile());
 				world.getTileMap().setTile((int)vector.x / 50, (int)vector.y / 50, 1);
 			} else {

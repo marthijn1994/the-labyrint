@@ -24,7 +24,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 	private final Inventory inventory;
 	
 	private final int spriteSize = 50;
-	private static int DEATHS = 3;
+	private static int LIFES = 3;
 	
 	@SuppressWarnings("unused")
 	private List<CollidedTile> collidedTiles;
@@ -90,8 +90,12 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 		}
 	}
 
-	/*
-	 * check for collision with walls
+	
+	/**
+	 * Controleer collision met de muren
+	 * 
+	 * @param collidedTile
+	 * @param collisionSide
 	 */
 	private void checkWallCollision(CollidedTile collidedTile, CollisionSide collisionSide) {
 		PVector vector;
@@ -126,27 +130,28 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 		}
 	}
 
-	// check voor collision met vijanden
-	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
-		for (GameObject g : collidedGameObjects) {
-			if (g instanceof ISchadelijk) {
-				((ISchadelijk) g).handelSchade(this);
-			}
-		}
-	}
-
+	/**
+	 * Check om te kijken of de speler geen levens meer heeft
+	 */
 	public boolean isDeath() {
-		return DEATHS == 0;
+		return LIFES == 0;
 	}
 
+	/**
+	 * Neem een leven van de speler als hij schade oploopt door een obstakel
+	 */
 	public void neemSchade() {
 		System.out.println("Ow!");
-		DEATHS -= 1;
+		LIFES -= 1;
 		if (isDeath()) {
 			// GAME OVER MAN!
 		}
 	}
 	
+	
+	/*
+	 * GETTERS & SETTERS
+	 */
 	public Inventory getInventory() {
 		return inventory;
 	}
