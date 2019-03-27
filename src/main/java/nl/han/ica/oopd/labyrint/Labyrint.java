@@ -1,18 +1,9 @@
 package nl.han.ica.oopd.labyrint;
 
-import nl.han.ica.oopd.labyrint.items.Diamand;
-import nl.han.ica.oopd.labyrint.items.Key;
 import nl.han.ica.oopd.labyrint.level.Level;
 import nl.han.ica.oopd.labyrint.level.LevelManager;
-import nl.han.ica.oopd.labyrint.tiles.CactusTile;
-import nl.han.ica.oopd.labyrint.tiles.DeurTile;
-import nl.han.ica.oopd.labyrint.tiles.MuurTile;
-import nl.han.ica.oopd.labyrint.tiles.VloerTile;
 import nl.han.ica.oopg.engine.GameEngine;
-import nl.han.ica.oopg.objects.Sprite;
 import nl.han.ica.oopg.sound.Sound;
-import nl.han.ica.oopg.tile.TileMap;
-import nl.han.ica.oopg.tile.TileType;
 import nl.han.ica.oopg.view.View;
 import processing.core.PApplet;
 
@@ -35,7 +26,7 @@ public class Labyrint extends GameEngine {
 
 	@Override
 	public void setupGame() {
-		initializePlayer();
+		player = new Player(this);
 		
 		createWindow(WIDTH, HEIGHT);
 		initializeBackgroundMusic();
@@ -51,11 +42,6 @@ public class Labyrint extends GameEngine {
 		View view = new View(width, height);
 		setView(view);
 		size(width, height);
-	}
-
-	private void initializePlayer() {
-		player = new Player(this);
-		addGameObject(player, 55, 0);
 	}
 
 	private void initializeBackgroundMusic() {

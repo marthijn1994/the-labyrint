@@ -17,6 +17,7 @@ public class Level {
 	private static final String LEVEL_MEDIA_FOLDER = Labyrint.MEDIA_FOLDER + "levels/";
 	private static final int DIAMAND_TILE_ID = 50;
 	private static final int SLEUTEL_TILE_ID = 51;
+	private static final int PLAYER_SPWAN_POINT = 99;
 
 	private Labyrint world;
 	private Player player;
@@ -42,6 +43,7 @@ public class Level {
 
 		loadLevelTextFile();
 		loadObjectsIntoMap();
+		loadPlayerIntoMap();
 	}
 
 	private void loadLevelTextFile() {
@@ -49,15 +51,15 @@ public class Level {
 			File file = new File(LEVEL_MEDIA_FOLDER + path);
 			Scanner scanner = new Scanner(file);
 
-			String[] tileTypeIds;
+			String[] tileTypeIdsInText;
 			int[] ids;
 			int row = 0;
 			while (scanner.hasNextLine()) {
-				tileTypeIds = scanner.next().split(",");
-				ids = new int[tileTypeIds.length];
+				tileTypeIdsInText = scanner.next().split(",");
+				ids = new int[tileTypeIdsInText.length];
 
 				for (int i = 0; i < ids.length; i++) {
-					ids[i] = Integer.parseInt(tileTypeIds[i]);
+					ids[i] = Integer.parseInt(tileTypeIdsInText[i]);
 				}
 
 				tilesMap[row] = ids;
@@ -84,6 +86,17 @@ public class Level {
 					Sprite keySprite = new Sprite(Labyrint.MEDIA_FOLDER + "key.png");
 					Key key = new Key(keySprite, world);
 					world.addGameObject(key, ((float) y * TileManager.tileSize), ((float) x * TileManager.tileSize));
+				}
+			}
+		}
+	}
+	
+	private void loadPlayerIntoMap() {
+		for (int x = 0; x < aantalTilesX; x++) {
+			for (int y = 0; y < aantalTilesY; y++) {
+				if (tilesMap[x][y] == PLAYER_SPWAN_POINT) {
+					tilesMap[x][y] = 1;
+					world.addGameObject(player, ((float) y * TileManager.tileSize), ((float) x * TileManager.tileSize));
 				}
 			}
 		}
