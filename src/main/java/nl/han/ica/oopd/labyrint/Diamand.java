@@ -12,21 +12,19 @@ public class Diamand extends VerzamelObject implements ICollidableWithGameObject
 		super(sprite);
 		this.puntenWaarde = puntenWaarde;
 		this.world = world;
-		// TODO Auto-generated constructor stub
 	}
 
+	
 	@Override
 	public void verzamelen(Player player) {
-		// TODO Auto-generated method stub
-		// Geef de speler puntenWaarde en verwijdered de diamand.
 		System.out.println("Je krijgt nu zoveel punten: " + puntenWaarde);
+		
+		player.getInventory().addDiamand(this);
 		world.deleteGameObject(this);
 	}
 
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
-
 	}
 
 }

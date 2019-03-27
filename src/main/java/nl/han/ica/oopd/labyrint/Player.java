@@ -1,9 +1,7 @@
 package nl.han.ica.oopd.labyrint;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import nl.han.ica.oopd.labyrint.tiles.DeurTile;
 import nl.han.ica.oopd.labyrint.tiles.SolideTile;
 import nl.han.ica.oopg.collision.CollidedTile;
 import nl.han.ica.oopg.collision.CollisionSide;
@@ -22,17 +20,17 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 	private static final int WEST = 270;
 
 	private final Labyrint world;
+	private final Inventory inventory;
+	
 	private final int spriteSize = 50;
-
 	private static int DEATHS = 3;
 	
 	private List<CollidedTile> collidedTiles;
-	
-	private List<Key> keys = new ArrayList<Key>();
 
-	public Player(Labyrint world) {
+	public Player(Labyrint world, Inventory inventory) {
 		super(new Sprite("src/main/java/nl/han/ica/oopd/labyrint/media/player.png"), 4);
 		this.world = world;		
+		this.inventory = inventory;
 		setFriction(0.075f);
 	}
 
@@ -128,12 +126,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 	}
 	
 	private void openDeur() {
-		for (CollidedTile collidedTile : collidedTiles) {
-			if (collidedTile.getTile() instanceof IOpenAble) {
-				System.out.println("deur tile");
-				((IOpenAble)collidedTile.getTile()).open(this, world, collidedTile);
-			}
-		}
+		
 	}
 
 	// check voor collision met vijanden
@@ -157,15 +150,15 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 		}
 	}
 	
+	public Inventory getInventory() {
+		return inventory;
+	}
+	
 	public int getSpriteSize() {
 		return spriteSize;
 	}
 
 	public Labyrint getWorld() {
 		return world;
-	}
-	
-	public List<Key> getKeys() {
-		return this.keys;
 	}
 }

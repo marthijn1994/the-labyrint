@@ -14,10 +14,8 @@ public class Key  extends VerzamelObject implements ICollidableWithGameObjects {
 
 	@Override
 	public void verzamelen(Player player) {
-		player.getKeys().add(this);
+		player.getInventory().addKey(this);
 		world.deleteGameObject(this);
-		
-		System.out.println("Player has now " + player.getKeys().size() + " key(s)");
 	}
 
 	@Override

@@ -20,6 +20,7 @@ public class Labyrint extends GameEngine {
 	private static final int HEIGHT = 600;
 	
 	private Player player;
+	private Inventory inventory;
 
 	public static void main(String[] args) {
 		String[] processingArgs = {"nl.han.ica.oopd.labyrint.Labyrint"};
@@ -30,9 +31,7 @@ public class Labyrint extends GameEngine {
 
 	@Override
 	public void setupGame() {
-		player = new Player(this);
-		addGameObject(player, 50, 0);
-
+		initializePlayer();
 		initializeDiamonds();
 		initializeKeys();
 		
@@ -49,6 +48,12 @@ public class Labyrint extends GameEngine {
 		View view = new View(width, height);
 		setView(view);
         size(width, height);
+	}
+	
+	private void initializePlayer() {
+		inventory = new Inventory();
+		player = new Player(this, inventory);
+		addGameObject(player, 50, 0);
 	}
 	
 	private void initializeDiamonds() {
