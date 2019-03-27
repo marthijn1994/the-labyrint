@@ -9,7 +9,6 @@ import nl.han.ica.oopg.collision.CollisionSide;
 import nl.han.ica.oopg.collision.ICollidableWithTiles;
 import nl.han.ica.oopg.exceptions.TileNotFoundException;
 import nl.han.ica.oopg.objects.AnimatedSpriteObject;
-import nl.han.ica.oopg.objects.GameObject;
 import nl.han.ica.oopg.objects.Sprite;
 import processing.core.PVector;
 
@@ -147,7 +146,6 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 			// GAME OVER MAN!
 		}
 	}
-	
 	
 	/*
 	 * GETTERS & SETTERS
