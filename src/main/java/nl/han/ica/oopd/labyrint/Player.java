@@ -21,19 +21,19 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 
 	private final Labyrint world;
 	private final Inventory inventory;
-	
+
 	private final int spriteSize = 50;
 	private static int LIFES = 3;
-	
+
 	@SuppressWarnings("unused")
 	private List<CollidedTile> collidedTiles;
 
 	public Player(Labyrint world) {
 		super(new Sprite(Labyrint.MEDIA_FOLDER + "player.png"), 4);
-		
-		this.world = world;		
+
+		this.world = world;
 		inventory = new Inventory();
-		
+
 		setFriction(0.15f);
 	}
 
@@ -45,10 +45,10 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 				checkSolidTileCollision(collidedTile, collidedTile.getCollisionSide());
 			}
 			if (collidedTile.getTile() instanceof ISchadelijk) {
-				((ISchadelijk)collidedTile.getTile()).handelSchade(this);
+				((ISchadelijk) collidedTile.getTile()).handelSchade(this);
 			}
 			if (collidedTile.getTile() instanceof DeurTile) {
-				((DeurTile)collidedTile.getTile()).open(this, world, collidedTile);
+				((DeurTile) collidedTile.getTile()).open(this, world, collidedTile);
 			}
 		}
 	}
@@ -90,7 +90,6 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 		}
 	}
 
-	
 	/**
 	 * Controleer collision met de muren
 	 * 
@@ -100,7 +99,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 	private void checkSolidTileCollision(CollidedTile collidedTile, CollisionSide collisionSide) {
 		final PVector vector;
 		final float offset = 11.0f;
-		
+
 		if (CollisionSide.BOTTOM.equals(collisionSide)) {
 			try {
 				vector = world.getTileMap().getTilePixelLocation(collidedTile.getTile());
@@ -149,14 +148,14 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 			// GAME OVER MAN!
 		}
 	}
-	
+
 	/*
 	 * GETTERS & SETTERS
 	 */
 	public Inventory getInventory() {
 		return inventory;
 	}
-	
+
 	public int getSpriteSize() {
 		return spriteSize;
 	}

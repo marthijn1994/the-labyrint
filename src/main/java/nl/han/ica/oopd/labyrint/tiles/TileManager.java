@@ -5,7 +5,7 @@ import nl.han.ica.oopg.objects.Sprite;
 import nl.han.ica.oopg.tile.TileType;
 
 public class TileManager {
-	
+
 	// Tile size
 	public static int tileSize = 50;
 
@@ -24,7 +24,7 @@ public class TileManager {
 	// Cactus Tile
 	private static Sprite CactusSprite = new Sprite(Labyrint.MEDIA_FOLDER + "cactus.png");
 	private static TileType<CactusTile> cactusTileType = new TileType<CactusTile>(CactusTile.class, CactusSprite);
-	
+
 	@SuppressWarnings("rawtypes")
 	public static TileType[] tileTypes = { muurTileType, vloerTileType, deurTileType, cactusTileType };
 

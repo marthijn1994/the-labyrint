@@ -76,13 +76,14 @@ public class Level {
 			for (int y = 0; y < aantalTilesY; y++) {
 				if (tilesMap[x][y] == DIAMAND_TILE_ID) {
 					tilesMap[x][y] = 1;
-					
+
 					Sprite diamandSprite = new Sprite(Labyrint.MEDIA_FOLDER + "diamond.png");
 					Diamand diamand = new Diamand(diamandSprite, 10, world);
-					world.addGameObject(diamand, ((float) y * TileManager.tileSize), ((float) x * TileManager.tileSize));
+					world.addGameObject(diamand, ((float) y * TileManager.tileSize),
+							((float) x * TileManager.tileSize));
 				} else if (tilesMap[x][y] == SLEUTEL_TILE_ID) {
 					tilesMap[x][y] = 1;
-					
+
 					Sprite keySprite = new Sprite(Labyrint.MEDIA_FOLDER + "key.png");
 					Key key = new Key(keySprite, world);
 					world.addGameObject(key, ((float) y * TileManager.tileSize), ((float) x * TileManager.tileSize));
@@ -90,13 +91,17 @@ public class Level {
 			}
 		}
 	}
-	
+
 	private void loadPlayerIntoMap() {
 		for (int x = 0; x < aantalTilesX; x++) {
 			for (int y = 0; y < aantalTilesY; y++) {
 				if (tilesMap[x][y] == PLAYER_SPWAN_POINT) {
 					tilesMap[x][y] = 1;
-					world.addGameObject(player, ((float) y * TileManager.tileSize), ((float) x * TileManager.tileSize));
+
+					float spawnX = ((float) y * TileManager.tileSize);
+					float spawnY = ((float) x * TileManager.tileSize);
+					player.setX(spawnX);
+					player.setY(spawnY);
 				}
 			}
 		}
