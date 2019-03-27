@@ -4,6 +4,7 @@ import nl.han.ica.oopd.labyrint.Labyrint;
 import nl.han.ica.oopd.labyrint.Player;
 import nl.han.ica.oopg.collision.ICollidableWithGameObjects;
 import nl.han.ica.oopg.objects.Sprite;
+import nl.han.ica.oopg.sound.Sound;
 
 public class Diamand extends VerzamelObject implements ICollidableWithGameObjects {
 	
@@ -11,7 +12,7 @@ public class Diamand extends VerzamelObject implements ICollidableWithGameObject
 	private Labyrint world;
 
 	public Diamand(Sprite sprite, int puntenWaarde, Labyrint world) {
-		super(sprite);
+		super(sprite, new Sound(world, Labyrint.MEDIA_FOLDER + "sounds/collected.mp3"));
 		this.puntenWaarde = puntenWaarde;
 		this.world = world;
 	}

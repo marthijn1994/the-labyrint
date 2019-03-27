@@ -8,6 +8,7 @@ import nl.han.ica.oopd.labyrint.tiles.MuurTile;
 import nl.han.ica.oopd.labyrint.tiles.VloerTile;
 import nl.han.ica.oopg.engine.GameEngine;
 import nl.han.ica.oopg.objects.Sprite;
+import nl.han.ica.oopg.sound.Sound;
 import nl.han.ica.oopg.tile.TileMap;
 import nl.han.ica.oopg.tile.TileType;
 import nl.han.ica.oopg.view.View;
@@ -18,6 +19,7 @@ public class Labyrint extends GameEngine {
 	
 	private static final int WIDTH = 800;
 	private static final int HEIGHT = 600;
+	public static final String MEDIA_FOLDER = "src/main/java/nl/han/ica/oopd/labyrint/media/";
 	
 	private Player player;
 
@@ -35,6 +37,7 @@ public class Labyrint extends GameEngine {
 		initializeKeys();
 		
 		createWindow(WIDTH, HEIGHT);
+		initializeBackgroundMusic();
 		initializeTileMap();
 	}
 
@@ -51,11 +54,11 @@ public class Labyrint extends GameEngine {
 	
 	private void initializePlayer() {
 		player = new Player(this);
-		addGameObject(player, 50, 0);
+		addGameObject(player, 55, 0);
 	}
 	
 	private void initializeDiamonds() {
-		Sprite DiamandSprite = new Sprite("src/main/java/nl/han/ica/oopd/labyrint/media/diamond.png");
+		Sprite DiamandSprite = new Sprite(MEDIA_FOLDER + "diamond.png");
 		Diamand d1 = new Diamand(DiamandSprite, 10, this);
 		Diamand d2 = new Diamand(DiamandSprite, 20, this);
 		
@@ -64,29 +67,35 @@ public class Labyrint extends GameEngine {
 	}
 	
 	private void initializeKeys() {
-		Sprite keySprite = new Sprite("src/main/java/nl/han/ica/oopd/labyrint/media/key.png");
+		Sprite keySprite = new Sprite(MEDIA_FOLDER + "key.png");
 		Key key = new Key(keySprite, this);
 		
 		addGameObject(key, 50, 100);
+	}
+	
+	private void initializeBackgroundMusic() {
+		Sound backgroundSound = new Sound(this, MEDIA_FOLDER + "sounds/backgroundMusic.mp3");
+		backgroundSound.loop(-1);
+		backgroundSound.play();
 	}
 	
 	@SuppressWarnings("rawtypes")
 	private void initializeTileMap() {
 		
 		// Muur Tile
-		Sprite muurSprite = new Sprite("src/main/java/nl/han/ica/oopd/labyrint/media/muur.png");
+		Sprite muurSprite = new Sprite(MEDIA_FOLDER + "muur.png");
         TileType<MuurTile> muurTileType = new TileType<>(MuurTile.class, muurSprite);
         
         // Vloer Tile
-		Sprite vloerSprite = new Sprite("src/main/java/nl/han/ica/oopd/labyrint/media/vloer.png");
+		Sprite vloerSprite = new Sprite(MEDIA_FOLDER + "vloer.png");
         TileType<VloerTile> vloerTileType = new TileType<>(VloerTile.class, vloerSprite);
         
         // Deur Tile
-        Sprite deurSprite = new Sprite("src/main/java/nl/han/ica/oopd/labyrint/media/deur.png");
+        Sprite deurSprite = new Sprite(MEDIA_FOLDER + "deur.png");
         TileType<DeurTile> deurTileType = new TileType<DeurTile>(DeurTile.class, deurSprite);
         
         // Cactus Tile
-	 	Sprite CactusSprite = new Sprite("src/main/java/nl/han/ica/oopd/labyrint/media/cactus.png");
+	 	Sprite CactusSprite = new Sprite(MEDIA_FOLDER + "cactus.png");
 	 	TileType<CactusTile> cactusTileType = new TileType<CactusTile>(CactusTile.class, CactusSprite);
         
 		TileType[] tileTypes = { muurTileType, vloerTileType, deurTileType, cactusTileType };
