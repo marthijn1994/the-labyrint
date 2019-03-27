@@ -24,7 +24,7 @@ public class DeurTile extends SolideTile {
 	 */
 	public void open(Player player, Labyrint world, CollidedTile collidedTile) {
 		final PVector vector;
-
+		
 		if (world.key == ' ') {
 			if (player.getInventory().getKeys().size() > 0) {
 				player.getInventory().getKeys().remove(0);

@@ -22,7 +22,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 	private final Labyrint world;
 	private final Inventory inventory;
 	
-	private final int spriteSize = 40;
+	private final int spriteSize = 50;
 	private static int LIFES = 3;
 	
 	@SuppressWarnings("unused")
@@ -34,7 +34,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 		this.world = world;		
 		inventory = new Inventory();
 		
-		setFriction(0.1f);
+		setFriction(0.15f);
 	}
 
 	@Override
@@ -42,7 +42,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 		this.collidedTiles = collidedTiles;
 		for (CollidedTile collidedTile : collidedTiles) {
 			if (collidedTile.getTile() instanceof SolideTile) {
-				checkWallCollision(collidedTile, collidedTile.getCollisionSide());
+				checkSolidTileCollision(collidedTile, collidedTile.getCollisionSide());
 			}
 			if (collidedTile.getTile() instanceof ISchadelijk) {
 				((ISchadelijk)collidedTile.getTile()).handelSchade(this);
@@ -98,35 +98,35 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 	 * @param collidedTile
 	 * @param collisionSide
 	 */
-	private void checkWallCollision(CollidedTile collidedTile, CollisionSide collisionSide) {
+	private void checkSolidTileCollision(CollidedTile collidedTile, CollisionSide collisionSide) {
 		final PVector vector;
-		final int offset = 4;
+		final float offset = 11.0f;
 		
 		if (CollisionSide.BOTTOM.equals(collisionSide)) {
 			try {
 				vector = world.getTileMap().getTilePixelLocation(collidedTile.getTile());
-				setY(vector.y + (getSpriteSize() + offset));
+				setY((vector.y + offset) + getSpriteSize());
 			} catch (TileNotFoundException e) {
 				e.printStackTrace();
 			}
 		} else if (CollisionSide.TOP.equals(collisionSide)) {
 			try {
 				vector = world.getTileMap().getTilePixelLocation(collidedTile.getTile());
-				setY(vector.y - (getSpriteSize() + offset));
+				setY(vector.y - getSpriteSize());
 			} catch (TileNotFoundException e) {
 				e.printStackTrace();
 			}
 		} else if (CollisionSide.RIGHT.equals(collisionSide)) {
 			try {
 				vector = world.getTileMap().getTilePixelLocation(collidedTile.getTile());
-				setX(vector.x + (getSpriteSize() + offset));
+				setX(vector.x + getSpriteSize());
 			} catch (TileNotFoundException e) {
 				e.printStackTrace();
 			}
 		} else if (CollisionSide.LEFT.equals(collisionSide)) {
 			try {
 				vector = world.getTileMap().getTilePixelLocation(collidedTile.getTile());
-				setX(vector.x - (getSpriteSize() + offset));
+				setX(vector.x - (getSpriteSize() - offset));
 			} catch (TileNotFoundException e) {
 				e.printStackTrace();
 			}
