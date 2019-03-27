@@ -1,0 +1,35 @@
+
+
+//		// Muur Tile
+//		Sprite muurSprite = new Sprite(MEDIA_FOLDER + "muur.png");
+//		TileType<MuurTile> muurTileType = new TileType<>(MuurTile.class, muurSprite);
+//
+//		// Vloer Tile
+//		Sprite vloerSprite = new Sprite(MEDIA_FOLDER + "vloer.png");
+//		TileType<VloerTile> vloerTileType = new TileType<>(VloerTile.class, vloerSprite);
+//
+//		// Deur Tile
+//		Sprite deurSprite = new Sprite(MEDIA_FOLDER + "deur.png");
+//		TileType<DeurTile> deurTileType = new TileType<DeurTile>(DeurTile.class, deurSprite);
+//
+//		// Cactus Tile
+//		Sprite CactusSprite = new Sprite(MEDIA_FOLDER + "cactus.png");
+//		TileType<CactusTile> cactusTileType = new TileType<CactusTile>(CactusTile.class, CactusSprite);
+//
+//		TileType[] tileTypes = { muurTileType, vloerTileType, deurTileType, cactusTileType };
+//		int tileSize = 50;
+//		int tilesMap[][] = { 
+//			{ 0, 1, 0, 0, 0, 0, 0, 1, 2, 1, 0, 0, 0, 0, 0, 0 },
+//			{ 0, 1, 2, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0 }, 
+//			{ 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0 },
+//			{ 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0 }, 
+//			{ 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0 },
+//			{ 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0 }, 
+//			{ 1, 1, 3, 3, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0 },
+//			{ 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0 }, 
+//			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0 },
+//			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0 }, 
+//			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0 },
+//			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0 } 
+//		};
+//		tileMap = new TileMap(tileSize, tileTypes, tilesMap);

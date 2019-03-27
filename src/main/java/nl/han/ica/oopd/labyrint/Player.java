@@ -29,7 +29,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 	private List<CollidedTile> collidedTiles;
 
 	public Player(Labyrint world) {
-		super(new Sprite("src/main/java/nl/han/ica/oopd/labyrint/media/player.png"), 4);
+		super(new Sprite(Labyrint.MEDIA_FOLDER + "player.png"), 4);
 		
 		this.world = world;		
 		inventory = new Inventory();
@@ -69,23 +69,22 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 		}
 	}
 
-	@SuppressWarnings("static-access")
 	@Override
 	public void keyPressed(int keyCode, char key) {
 		final float speed = 3.5f;
-		if (keyCode == world.LEFT) {
+		if (keyCode == Labyrint.LEFT) {
 			setDirectionSpeed(WEST, speed);
 			setCurrentFrameIndex(1);
 		}
-		if (keyCode == world.UP) {
+		if (keyCode == Labyrint.UP) {
 			setDirectionSpeed(NORTH, speed);
 			setCurrentFrameIndex(2);
 		}
-		if (keyCode == world.RIGHT) {
+		if (keyCode == Labyrint.RIGHT) {
 			setDirectionSpeed(EAST, speed);
 			setCurrentFrameIndex(3);
 		}
-		if (keyCode == world.DOWN) {
+		if (keyCode == Labyrint.DOWN) {
 			setDirectionSpeed(SOUTH, speed);
 			setCurrentFrameIndex(0);
 		}
