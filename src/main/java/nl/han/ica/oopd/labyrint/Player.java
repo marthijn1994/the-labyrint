@@ -34,7 +34,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 		this.world = world;		
 		inventory = new Inventory();
 		
-		setFriction(0.075f);
+		setFriction(0.1f);
 	}
 
 	@Override
@@ -72,7 +72,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 	@SuppressWarnings("static-access")
 	@Override
 	public void keyPressed(int keyCode, char key) {
-		final float speed = 2.0f;
+		final float speed = 3.5f;
 		if (keyCode == world.LEFT) {
 			setDirectionSpeed(WEST, speed);
 			setCurrentFrameIndex(1);
@@ -99,32 +99,34 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 	 * @param collisionSide
 	 */
 	private void checkWallCollision(CollidedTile collidedTile, CollisionSide collisionSide) {
-		PVector vector;
+		final PVector vector;
+		final int offset = 4;
+		
 		if (CollisionSide.BOTTOM.equals(collisionSide)) {
 			try {
 				vector = world.getTileMap().getTilePixelLocation(collidedTile.getTile());
-				setY(vector.y + getSpriteSize());
+				setY(vector.y + (getSpriteSize() + offset));
 			} catch (TileNotFoundException e) {
 				e.printStackTrace();
 			}
 		} else if (CollisionSide.TOP.equals(collisionSide)) {
 			try {
 				vector = world.getTileMap().getTilePixelLocation(collidedTile.getTile());
-				setY(vector.y - getSpriteSize());
+				setY(vector.y - (getSpriteSize() + offset));
 			} catch (TileNotFoundException e) {
 				e.printStackTrace();
 			}
 		} else if (CollisionSide.RIGHT.equals(collisionSide)) {
 			try {
 				vector = world.getTileMap().getTilePixelLocation(collidedTile.getTile());
-				setX(vector.x + getSpriteSize());
+				setX(vector.x + (getSpriteSize() + offset));
 			} catch (TileNotFoundException e) {
 				e.printStackTrace();
 			}
 		} else if (CollisionSide.LEFT.equals(collisionSide)) {
 			try {
 				vector = world.getTileMap().getTilePixelLocation(collidedTile.getTile());
-				setX(vector.x - getSpriteSize());
+				setX(vector.x - (getSpriteSize() + offset));
 			} catch (TileNotFoundException e) {
 				e.printStackTrace();
 			}
