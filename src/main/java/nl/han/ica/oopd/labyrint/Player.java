@@ -28,10 +28,12 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 	@SuppressWarnings("unused")
 	private List<CollidedTile> collidedTiles;
 
-	public Player(Labyrint world, Inventory inventory) {
+	public Player(Labyrint world) {
 		super(new Sprite("src/main/java/nl/han/ica/oopd/labyrint/media/player.png"), 4);
+		
 		this.world = world;		
-		this.inventory = inventory;
+		inventory = new Inventory();
+		
 		setFriction(0.075f);
 	}
 
