@@ -31,7 +31,7 @@ public class Inventory {
 	public void addKey(Key key) {
 		keys.add(key);
 	}
-	
+
 	@Override
 	public String toString() {
 		return String.format("Aantal keys: %s, aantal diamands: %s", keys.size(), diamands.size());

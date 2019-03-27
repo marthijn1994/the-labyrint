@@ -7,7 +7,7 @@ import nl.han.ica.oopg.objects.Sprite;
 import nl.han.ica.oopg.sound.Sound;
 
 public class Diamand extends VerzamelObject implements ICollidableWithGameObjects {
-	
+
 	protected int puntenWaarde;
 	private Labyrint world;
 
@@ -17,11 +17,10 @@ public class Diamand extends VerzamelObject implements ICollidableWithGameObject
 		this.world = world;
 	}
 
-	
 	@Override
 	public void verzamelen(Player player) {
 		System.out.println("Je krijgt nu zoveel punten: " + puntenWaarde);
-		
+
 		player.getInventory().addDiamand(this);
 		world.deleteGameObject(this);
 	}

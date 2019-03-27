@@ -7,7 +7,6 @@ public abstract class SolideTile extends Tile {
 
 	public SolideTile(Sprite sprite) {
 		super(sprite);
-		// TODO Auto-generated constructor stub
 	}
 
 }
