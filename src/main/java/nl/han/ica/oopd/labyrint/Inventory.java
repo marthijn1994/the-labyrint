@@ -3,6 +3,9 @@ package nl.han.ica.oopd.labyrint;
 import java.util.ArrayList;
 import java.util.List;
 
+import nl.han.ica.oopd.labyrint.items.Diamand;
+import nl.han.ica.oopd.labyrint.items.Key;
+
 public class Inventory {
 
 	private List<Diamand> diamands;

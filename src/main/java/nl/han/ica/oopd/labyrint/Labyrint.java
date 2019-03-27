@@ -1,5 +1,7 @@
 package nl.han.ica.oopd.labyrint;
 
+import nl.han.ica.oopd.labyrint.items.Diamand;
+import nl.han.ica.oopd.labyrint.items.Key;
 import nl.han.ica.oopd.labyrint.tiles.CactusTile;
 import nl.han.ica.oopd.labyrint.tiles.DeurTile;
 import nl.han.ica.oopd.labyrint.tiles.MuurTile;

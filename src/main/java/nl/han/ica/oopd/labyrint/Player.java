@@ -22,7 +22,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 	private final Labyrint world;
 	private final Inventory inventory;
 	
-	private final int spriteSize = 50;
+	private final int spriteSize = 40;
 	private static int LIFES = 3;
 	
 	@SuppressWarnings("unused")
