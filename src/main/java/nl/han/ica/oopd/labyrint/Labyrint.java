@@ -1,7 +1,5 @@
 package nl.han.ica.oopd.labyrint;
 
-import java.util.ArrayList;
-
 import nl.han.ica.oopd.labyrint.tiles.CactusTile;
 import nl.han.ica.oopd.labyrint.tiles.DeurTile;
 import nl.han.ica.oopd.labyrint.tiles.MuurTile;
@@ -70,6 +68,7 @@ public class Labyrint extends GameEngine {
 		addGameObject(key, 50, 100);
 	}
 	
+	@SuppressWarnings("rawtypes")
 	private void initializeTileMap() {
 		
 		// Muur Tile

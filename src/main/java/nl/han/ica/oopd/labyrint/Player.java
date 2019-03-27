@@ -2,6 +2,7 @@ package nl.han.ica.oopd.labyrint;
 
 import java.util.List;
 
+import nl.han.ica.oopd.labyrint.tiles.DeurTile;
 import nl.han.ica.oopd.labyrint.tiles.SolideTile;
 import nl.han.ica.oopg.collision.CollidedTile;
 import nl.han.ica.oopg.collision.CollisionSide;
@@ -25,6 +26,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 	private final int spriteSize = 50;
 	private static int DEATHS = 3;
 	
+	@SuppressWarnings("unused")
 	private List<CollidedTile> collidedTiles;
 
 	public Player(Labyrint world, Inventory inventory) {
@@ -43,6 +45,9 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 			}
 			if (collidedTile.getTile() instanceof ISchadelijk) {
 				((ISchadelijk)collidedTile.getTile()).handelSchade(this);
+			}
+			if (collidedTile.getTile() instanceof DeurTile) {
+				((DeurTile)collidedTile.getTile()).open(this, world, collidedTile);
 			}
 		}
 	}
@@ -83,10 +88,6 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 			setDirectionSpeed(SOUTH, speed);
 			setCurrentFrameIndex(0);
 		}
-		
-		if (key == ' ') {
-			openDeur();
-		}
 	}
 
 	/*
@@ -123,10 +124,6 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 				e.printStackTrace();
 			}
 		}
-	}
-	
-	private void openDeur() {
-		
 	}
 
 	// check voor collision met vijanden
