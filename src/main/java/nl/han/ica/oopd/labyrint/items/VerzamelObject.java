@@ -1,7 +1,8 @@
-package nl.han.ica.oopd.labyrint;
+package nl.han.ica.oopd.labyrint.items;
 
 import java.util.List;
 
+import nl.han.ica.oopd.labyrint.Player;
 import nl.han.ica.oopg.objects.GameObject;
 import nl.han.ica.oopg.objects.Sprite;
 import nl.han.ica.oopg.objects.SpriteObject;
