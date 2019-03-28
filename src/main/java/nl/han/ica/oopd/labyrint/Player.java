@@ -21,10 +21,10 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 	private static final int SOUTH = 180;
 	private static final int WEST = 270;
 
-	private final Labyrint world;
-	private final Inventory inventory;
+	private Labyrint world;
+	private Inventory inventory;
 
-	private final int spriteSize = 50;
+	private int spriteSize = 50;
 	private static int LIFES = 3;
 
 	public Player(Labyrint world) {

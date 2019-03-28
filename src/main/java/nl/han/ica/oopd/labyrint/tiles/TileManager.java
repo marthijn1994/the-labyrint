@@ -5,10 +5,16 @@ import nl.han.ica.oopg.objects.Sprite;
 import nl.han.ica.oopg.tile.TileType;
 
 public class TileManager {
+	
+	/**
+	 * 0 - 49 gereserveerd voor tiles
+	 * 50 - 98 gereserveerd voor object id's
+	 */
 
 	// Tile size
 	public static int tileSize = 50;
 	
+	// Non-tiles, ids voor het plaatsen van objecten in de map
 	public static final int DIAMAND_TILE_ID = 50;
 	public static final int SLEUTEL_TILE_ID = 51;
 	public static final int PLAYER_SPWAN_POINT = 99;

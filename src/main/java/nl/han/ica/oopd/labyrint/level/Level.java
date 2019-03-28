@@ -31,6 +31,13 @@ public class Level {
 
 	private String path;
 
+	/**
+	 * Level Constructor
+	 * 
+	 * @param world
+	 * @param player
+	 * @param path
+	 */
 	public Level(Labyrint world, Player player, String path) {
 		this.world = world;
 		this.player = player;
@@ -45,12 +52,22 @@ public class Level {
 		tilesMap = new int[aantalTilesY][aantalTilesX];
 	}
 
-	// Extra constructor zodat je per level ook backgroundmusic kan toevoegen
+	/**
+	 * Extra constructor zodat je per level ook achtergrondmuziek kan instellen
+	 * 
+	 * @param world
+	 * @param player
+	 * @param path
+	 * @param soundClipPath
+	 */
 	public Level(Labyrint world, Player player, String path, String soundClipPath) {
 		this(world, player, path);
 		sound = new Sound(world, FolderLocationsUtils.SOUND_FOLDER + soundClipPath);
 	}
 
+	/**
+	 * Laad de level
+	 */
 	public void load() {
 		loadLevelCsvFile();
 		loadObjectsIntoMap();
@@ -59,6 +76,9 @@ public class Level {
 		world.setTileMap(generateTileMap());
 	}
 
+	/**
+	 * laad de csv file in de tilesMap array
+	 */
 	private void loadLevelCsvFile() {
 		try {
 			File file = new File(FolderLocationsUtils.LEVEL_FOLDER + path);
@@ -79,9 +99,8 @@ public class Level {
 					i++;
 				}
 				for (int id = 0; id < textIds.length; id++) {
-					if (textIds[id] == null) {
+					if (textIds[id] == null)
 						textIds[id] = "0";
-					}
 					numberIds[id] = (NumberUtils.isNumber(textIds[id])) ? Integer.parseInt(textIds[id]) : 0;
 				}
 
@@ -95,6 +114,11 @@ public class Level {
 		}
 	}
 
+	/**
+	 * laad alle objecten in de map. Loop door de twee dimensionale array tilesMap.
+	 * Als er een value gelijk aan DIAMAND_TILE_ID of SLEUTEL_TILE_ID, plaatst op de
+	 * desbetreffende plek een diamand/sleutel.
+	 */
 	private void loadObjectsIntoMap() {
 		for (int y = 0; y < aantalTilesY; y++) {
 			for (int x = 0; x < aantalTilesX; x++) {
@@ -106,6 +130,7 @@ public class Level {
 					Sprite diamandSprite = new Sprite(FolderLocationsUtils.ITEMS_FOLDER + "diamond.png");
 					Diamand diamand = new Diamand(diamandSprite, randomPuntenWaarden, world);
 
+					// Plaats een diamand op je juiste positie in de map
 					float xPos = ((float) x * TileManager.tileSize);
 					float yPos = ((float) y * TileManager.tileSize);
 					world.addGameObject(diamand, xPos, yPos);
@@ -115,6 +140,7 @@ public class Level {
 					Sprite keySprite = new Sprite(FolderLocationsUtils.ITEMS_FOLDER + "key.png");
 					Key key = new Key(keySprite, world);
 
+					// Plaats een key op je juiste positie in de map
 					float xPos = ((float) x * TileManager.tileSize);
 					float yPos = ((float) y * TileManager.tileSize);
 					world.addGameObject(key, xPos, yPos);
@@ -123,6 +149,9 @@ public class Level {
 		}
 	}
 
+	/**
+	 * Spawn de player op de spawn tile
+	 */
 	private void loadPlayerIntoMap() {
 		for (int y = 0; y < aantalTilesY; y++) {
 			for (int x = 0; x < aantalTilesX; x++) {
@@ -138,15 +167,24 @@ public class Level {
 		}
 	}
 
+	/**
+	 * Laad en speel af de achtergrond muziek van de level, heeft een level geen
+	 * achtergrond muziek? Gebruik dan een standaard achtergrond muziekje...
+	 */
 	private void loadLevelBackgroundMusic() {
-		if (sound == null)
+		if (sound == null) // Standaard achtergrond muziek
 			sound = new Sound(world, FolderLocationsUtils.SOUND_FOLDER + "defaultMusic.mp3");
 
 		sound.loop(-1);
 		sound.play();
 	}
 
-	public TileMap generateTileMap() {
+	/**
+	 * genereer op basis van de tiletypes en tilesMap een map met tiles.
+	 * 
+	 * @return TileMap
+	 */
+	private TileMap generateTileMap() {
 		return new TileMap(TileManager.tileSize, TileManager.tileTypes, tilesMap);
 	}
 

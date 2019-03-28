@@ -30,20 +30,32 @@ public class Labyrint extends GameEngine {
 
 	@Override
 	public void update() {
-		
+
 	}
-	
+
+	/**
+	 * Maak een nieuwe player instantie aan
+	 */
 	private void initializePlayer() {
 		player = new Player(this);
 		addGameObject(player, 0, 0);
 	}
 
+	/**
+	 * Maak een nieuwe window op basis van de meegegeven width & height
+	 * 
+	 * @param width
+	 * @param height
+	 */
 	private void createWindow(int width, int height) {
 		View view = new View(width, height);
 		setView(view);
 		size(width, height);
 	}
 
+	/**
+	 * Maak alle levels aan en laad de eerste level.
+	 */
 	private void initializeLevel() {
 		// Alle levels
 		LevelManager.addLevel(new Level(this, player, "level1.csv"));

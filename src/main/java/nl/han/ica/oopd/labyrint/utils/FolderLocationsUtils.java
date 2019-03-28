@@ -1,6 +1,10 @@
 package nl.han.ica.oopd.labyrint.utils;
 
 public class FolderLocationsUtils {
+	
+	/**
+	 * Alle media folder location
+	 */
 
 	// root folder voor alle media elementen
 	public static final String MEDIA_ROOT = "src/main/java/nl/han/ica/oopd/labyrint/media/";
