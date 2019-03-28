@@ -6,7 +6,7 @@ import nl.han.ica.oopg.collision.CollidedTile;
 import nl.han.ica.oopg.objects.Sprite;
 import processing.core.PVector;
 
-public class DeurTile extends SolideTile {
+public class DeurTile extends SolideTile implements IOpenAble {
 
 	public DeurTile(Sprite sprite) {
 		super(sprite);
@@ -15,12 +15,13 @@ public class DeurTile extends SolideTile {
 	/**
 	 * Het openen van een deur, de speler heeft een sleutel hiervoor nodig. Sleutel
 	 * wordt verwijdert uit de inventory van de speler. De deurtile wordt vervangen
-	 * door een vloertile.
+	 * door een non-solide vloertile.
 	 * 
 	 * @param player
 	 * @param world
 	 * @param collidedTile
 	 */
+	@Override
 	public void open(Player player, Labyrint world, CollidedTile collidedTile) {
 		final PVector vector;
 

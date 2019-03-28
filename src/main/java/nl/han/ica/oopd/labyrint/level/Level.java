@@ -9,12 +9,12 @@ import nl.han.ica.oopd.labyrint.Player;
 import nl.han.ica.oopd.labyrint.items.Diamand;
 import nl.han.ica.oopd.labyrint.items.Key;
 import nl.han.ica.oopd.labyrint.tiles.TileManager;
+import nl.han.ica.oopd.labyrint.utils.FolderLocationsUtils;
 import nl.han.ica.oopg.objects.Sprite;
 import nl.han.ica.oopg.tile.TileMap;
 
 public class Level {
 
-	private static final String LEVEL_MEDIA_FOLDER = Labyrint.MEDIA_FOLDER + "levels/";
 	private static final int DIAMAND_TILE_ID = 50;
 	private static final int SLEUTEL_TILE_ID = 51;
 	private static final int PLAYER_SPWAN_POINT = 99;
@@ -41,14 +41,14 @@ public class Level {
 		aantalTilesY = height / TileManager.tileSize;
 		tilesMap = new int[aantalTilesX][aantalTilesY];
 
-		loadLevelTextFile();
+		loadLevelCsvFile();
 		loadObjectsIntoMap();
 		loadPlayerIntoMap();
 	}
 
-	private void loadLevelTextFile() {
+	private void loadLevelCsvFile() {
 		try {
-			File file = new File(LEVEL_MEDIA_FOLDER + path);
+			File file = new File(FolderLocationsUtils.LEVEL_FOLDER + path);
 			Scanner scanner = new Scanner(file);
 
 			String[] tileTypeIdsInText;
@@ -64,6 +64,8 @@ public class Level {
 
 				tilesMap[row] = ids;
 				row++;
+				if (row == aantalTilesY)
+					break;
 			}
 			scanner.close();
 		} catch (FileNotFoundException e) {
@@ -77,16 +79,21 @@ public class Level {
 				if (tilesMap[x][y] == DIAMAND_TILE_ID) {
 					tilesMap[x][y] = 1;
 
-					Sprite diamandSprite = new Sprite(Labyrint.MEDIA_FOLDER + "diamond.png");
+					Sprite diamandSprite = new Sprite(FolderLocationsUtils.ITEMS_FOLDER + "diamond.png");
 					Diamand diamand = new Diamand(diamandSprite, 10, world);
-					world.addGameObject(diamand, ((float) y * TileManager.tileSize),
-							((float) x * TileManager.tileSize));
+
+					float xPos = ((float) y * TileManager.tileSize);
+					float yPos = ((float) x * TileManager.tileSize);
+					world.addGameObject(diamand, xPos, yPos);
 				} else if (tilesMap[x][y] == SLEUTEL_TILE_ID) {
 					tilesMap[x][y] = 1;
 
-					Sprite keySprite = new Sprite(Labyrint.MEDIA_FOLDER + "key.png");
+					Sprite keySprite = new Sprite(FolderLocationsUtils.ITEMS_FOLDER + "key.png");
 					Key key = new Key(keySprite, world);
-					world.addGameObject(key, ((float) y * TileManager.tileSize), ((float) x * TileManager.tileSize));
+
+					float xPos = ((float) y * TileManager.tileSize);
+					float yPos = ((float) x * TileManager.tileSize);
+					world.addGameObject(key, xPos, yPos);
 				}
 			}
 		}

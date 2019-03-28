@@ -1,6 +1,5 @@
 package nl.han.ica.oopd.labyrint.tiles;
 
-import nl.han.ica.oopd.labyrint.ISchadelijk;
 import nl.han.ica.oopd.labyrint.Player;
 import nl.han.ica.oopg.objects.Sprite;
 

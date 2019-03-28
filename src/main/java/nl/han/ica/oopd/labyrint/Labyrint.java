@@ -2,6 +2,7 @@ package nl.han.ica.oopd.labyrint;
 
 import nl.han.ica.oopd.labyrint.level.Level;
 import nl.han.ica.oopd.labyrint.level.LevelManager;
+import nl.han.ica.oopd.labyrint.utils.FolderLocationsUtils;
 import nl.han.ica.oopg.engine.GameEngine;
 import nl.han.ica.oopg.sound.Sound;
 import nl.han.ica.oopg.view.View;
@@ -12,7 +13,6 @@ public class Labyrint extends GameEngine {
 
 	private static final int WIDTH = 800;
 	private static final int HEIGHT = 800;
-	public static final String MEDIA_FOLDER = "src/main/java/nl/han/ica/oopd/labyrint/media/";
 
 	private Player player;
 	private LevelManager levelManager;
@@ -36,7 +36,7 @@ public class Labyrint extends GameEngine {
 
 	@Override
 	public void update() {
-
+		
 	}
 
 	private void createWindow(int width, int height) {
@@ -46,7 +46,7 @@ public class Labyrint extends GameEngine {
 	}
 
 	private void initializeBackgroundMusic() {
-		Sound backgroundSound = new Sound(this, MEDIA_FOLDER + "sounds/backgroundMusic.mp3");
+		Sound backgroundSound = new Sound(this, FolderLocationsUtils.SOUND_FOLDER + "backgroundMusic.mp3");
 		backgroundSound.loop(-1);
 		backgroundSound.play();
 	}

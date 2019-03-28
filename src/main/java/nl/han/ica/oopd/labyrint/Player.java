@@ -2,8 +2,10 @@ package nl.han.ica.oopd.labyrint;
 
 import java.util.List;
 
-import nl.han.ica.oopd.labyrint.tiles.DeurTile;
+import nl.han.ica.oopd.labyrint.tiles.IOpenAble;
+import nl.han.ica.oopd.labyrint.tiles.ISchadelijk;
 import nl.han.ica.oopd.labyrint.tiles.SolideTile;
+import nl.han.ica.oopd.labyrint.utils.FolderLocationsUtils;
 import nl.han.ica.oopg.collision.CollidedTile;
 import nl.han.ica.oopg.collision.CollisionSide;
 import nl.han.ica.oopg.collision.ICollidableWithTiles;
@@ -25,11 +27,8 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 	private final int spriteSize = 50;
 	private static int LIFES = 3;
 
-	@SuppressWarnings("unused")
-	private List<CollidedTile> collidedTiles;
-
 	public Player(Labyrint world) {
-		super(new Sprite(Labyrint.MEDIA_FOLDER + "player.png"), 4);
+		super(new Sprite(FolderLocationsUtils.MEDIA_ROOT + "player.png"), 4);
 
 		this.world = world;
 		inventory = new Inventory();
@@ -39,7 +38,6 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 
 	@Override
 	public void tileCollisionOccurred(List<CollidedTile> collidedTiles) {
-		this.collidedTiles = collidedTiles;
 		for (CollidedTile collidedTile : collidedTiles) {
 			if (collidedTile.getTile() instanceof SolideTile) {
 				checkSolidTileCollision(collidedTile, collidedTile.getCollisionSide());
@@ -47,8 +45,8 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 			if (collidedTile.getTile() instanceof ISchadelijk) {
 				((ISchadelijk) collidedTile.getTile()).handelSchade(this);
 			}
-			if (collidedTile.getTile() instanceof DeurTile) {
-				((DeurTile) collidedTile.getTile()).open(this, world, collidedTile);
+			if (collidedTile.getTile() instanceof IOpenAble) {
+				((IOpenAble) collidedTile.getTile()).open(this, world, collidedTile);
 			}
 		}
 	}
