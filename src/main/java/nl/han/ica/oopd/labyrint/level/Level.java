@@ -95,7 +95,7 @@ public class Level {
 				numberIds = new int[aantalTilesX];
 
 				int i = 0;
-				while (i < csvSingleLineIds.length) {
+				while (i < csvSingleLineIds.length && i < aantalTilesX) {
 					textIds[i] = csvSingleLineIds[i];
 					i++;
 				}

@@ -9,7 +9,7 @@ import processing.core.PApplet;
 @SuppressWarnings("serial")
 public class Labyrint extends GameEngine {
 
-	private static final int WIDTH = 1700;
+	private static final int WIDTH = 1200;
 	private static final int HEIGHT = 800;
 
 	private Player player;
@@ -62,7 +62,7 @@ public class Labyrint extends GameEngine {
 		LevelManager.addLevel(new Level(this, player, "level2.csv", "level2BackgroundMusic.mp3"));
 
 		// Start de eerste level
-		LevelManager.loadLevel(LevelManager.START_LEVEL);
+		LevelManager.loadLevel(1);
 	}
 
 }
