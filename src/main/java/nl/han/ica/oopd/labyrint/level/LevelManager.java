@@ -3,34 +3,19 @@ package nl.han.ica.oopd.labyrint.level;
 import java.util.ArrayList;
 import java.util.List;
 
-import nl.han.ica.oopd.labyrint.Labyrint;
-
 public class LevelManager {
 
-	public static final int START_LEVEL = 0;
+	public static final int START_LEVEL = 1;
+	private static List<Level> levels = new ArrayList<Level>();
 
-	private Labyrint world;
-
-	private List<Level> levels = new ArrayList<Level>();
-
-	public LevelManager(Labyrint world) {
-		this.world = world;
-	}
-
-	public void loadLevel(int levelIndex) throws Exception {
+	public static void loadLevel(int levelIndex) {
 		Level level = levels.get(levelIndex);
 
 		if (level != null)
-			world.setTileMap(level.generateTileMap());
-		else
-			throw new Exception("Level bestaat niet!");
+			level.load();
 	}
 
-	public List<Level> getLevels() {
-		return this.levels;
-	}
-
-	public void addLevel(Level level) {
+	public static void addLevel(Level level) {
 		levels.add(level);
 	}
 

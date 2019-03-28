@@ -2,9 +2,7 @@ package nl.han.ica.oopd.labyrint;
 
 import nl.han.ica.oopd.labyrint.level.Level;
 import nl.han.ica.oopd.labyrint.level.LevelManager;
-import nl.han.ica.oopd.labyrint.utils.FolderLocationsUtils;
 import nl.han.ica.oopg.engine.GameEngine;
-import nl.han.ica.oopg.sound.Sound;
 import nl.han.ica.oopg.view.View;
 import processing.core.PApplet;
 
@@ -15,7 +13,6 @@ public class Labyrint extends GameEngine {
 	private static final int HEIGHT = 800;
 
 	private Player player;
-	private LevelManager levelManager;
 
 	public static void main(String[] args) {
 		String[] processingArgs = { "nl.han.ica.oopd.labyrint.Labyrint" };
@@ -30,7 +27,7 @@ public class Labyrint extends GameEngine {
 		addGameObject(player, 0, 0);
 
 		createWindow(WIDTH, HEIGHT);
-		initializeBackgroundMusic();
+//		createViewWithViewport(WIDTH, HEIGHT, WIDTH, 1000, 1);
 		initializeLevel();
 	}
 
@@ -45,24 +42,13 @@ public class Labyrint extends GameEngine {
 		size(width, height);
 	}
 
-	private void initializeBackgroundMusic() {
-		Sound backgroundSound = new Sound(this, FolderLocationsUtils.SOUND_FOLDER + "backgroundMusic.mp3");
-		backgroundSound.loop(-1);
-		backgroundSound.play();
-	}
-
 	private void initializeLevel() {
-		levelManager = new LevelManager(this);
-
 		// Alle levels
-		levelManager.addLevel(new Level(this, player, "level1.csv"));
-		levelManager.addLevel(new Level(this, player, "level2.csv"));
+		LevelManager.addLevel(new Level(this, player, "level1.csv"));
+		LevelManager.addLevel(new Level(this, player, "level2.csv"));
 
-		try {
-			levelManager.loadLevel(LevelManager.START_LEVEL);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		// Start de eerste level
+		LevelManager.loadLevel(LevelManager.START_LEVEL);
 	}
 
 }
