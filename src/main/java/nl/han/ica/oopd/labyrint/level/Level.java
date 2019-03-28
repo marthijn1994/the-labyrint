@@ -2,7 +2,6 @@ package nl.han.ica.oopd.labyrint.level;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -18,10 +17,6 @@ import nl.han.ica.oopg.sound.Sound;
 import nl.han.ica.oopg.tile.TileMap;
 
 public class Level {
-
-	private static final int DIAMAND_TILE_ID = 50;
-	private static final int SLEUTEL_TILE_ID = 51;
-	private static final int PLAYER_SPWAN_POINT = 99;
 
 	private Labyrint world;
 	private Player player;
@@ -51,9 +46,9 @@ public class Level {
 	}
 
 	// Extra constructor zodat je per level ook backgroundmusic kan toevoegen
-	public Level(Labyrint world, Player player, String path, Sound soundClip) {
+	public Level(Labyrint world, Player player, String path, String soundClipPath) {
 		this(world, player, path);
-		sound = soundClip;
+		sound = new Sound(world, FolderLocationsUtils.SOUND_FOLDER + soundClipPath);
 	}
 
 	public void load() {
@@ -87,13 +82,10 @@ public class Level {
 					if (textIds[id] == null) {
 						textIds[id] = "0";
 					}
-					if (NumberUtils.isNumber(textIds[id])) {
-						numberIds[id] = Integer.parseInt(textIds[id]);
-					}
+					numberIds[id] = (NumberUtils.isNumber(textIds[id])) ? Integer.parseInt(textIds[id]) : 0;
 				}
 
 				tilesMap[row++] = numberIds;
-				System.out.println("Rij: " + row + " " + Arrays.toString(textIds));
 				if (row == aantalTilesY)
 					break;
 			}
@@ -106,7 +98,7 @@ public class Level {
 	private void loadObjectsIntoMap() {
 		for (int y = 0; y < aantalTilesY; y++) {
 			for (int x = 0; x < aantalTilesX; x++) {
-				if (tilesMap[y][x] == DIAMAND_TILE_ID) {
+				if (tilesMap[y][x] == TileManager.DIAMAND_TILE_ID) {
 					tilesMap[y][x] = 1;
 
 					int randomPuntenWaarden = random.nextInt(30);
@@ -117,7 +109,7 @@ public class Level {
 					float xPos = ((float) x * TileManager.tileSize);
 					float yPos = ((float) y * TileManager.tileSize);
 					world.addGameObject(diamand, xPos, yPos);
-				} else if (tilesMap[y][x] == SLEUTEL_TILE_ID) {
+				} else if (tilesMap[y][x] == TileManager.SLEUTEL_TILE_ID) {
 					tilesMap[y][x] = 1;
 
 					Sprite keySprite = new Sprite(FolderLocationsUtils.ITEMS_FOLDER + "key.png");
@@ -134,7 +126,7 @@ public class Level {
 	private void loadPlayerIntoMap() {
 		for (int y = 0; y < aantalTilesY; y++) {
 			for (int x = 0; x < aantalTilesX; x++) {
-				if (tilesMap[y][x] == PLAYER_SPWAN_POINT) {
+				if (tilesMap[y][x] == TileManager.PLAYER_SPWAN_POINT) {
 					tilesMap[y][x] = 1;
 
 					float spawnX = ((float) x * TileManager.tileSize);
@@ -148,7 +140,7 @@ public class Level {
 
 	private void loadLevelBackgroundMusic() {
 		if (sound == null)
-			sound = new Sound(world, FolderLocationsUtils.SOUND_FOLDER + "backgroundMusic.mp3"); // default achtergrond muziek
+			sound = new Sound(world, FolderLocationsUtils.SOUND_FOLDER + "defaultMusic.mp3");
 
 		sound.loop(-1);
 		sound.play();

@@ -23,9 +23,7 @@ public class Labyrint extends GameEngine {
 
 	@Override
 	public void setupGame() {
-		player = new Player(this);
-		addGameObject(player, 0, 0);
-
+		initializePlayer();
 		createWindow(WIDTH, HEIGHT);
 		initializeLevel();
 	}
@@ -33,6 +31,11 @@ public class Labyrint extends GameEngine {
 	@Override
 	public void update() {
 		
+	}
+	
+	private void initializePlayer() {
+		player = new Player(this);
+		addGameObject(player, 0, 0);
 	}
 
 	private void createWindow(int width, int height) {
@@ -44,7 +47,7 @@ public class Labyrint extends GameEngine {
 	private void initializeLevel() {
 		// Alle levels
 		LevelManager.addLevel(new Level(this, player, "level1.csv"));
-		LevelManager.addLevel(new Level(this, player, "level2.csv"));
+		LevelManager.addLevel(new Level(this, player, "level2.csv", "level2BackgroundMusic.mp3"));
 
 		// Start de eerste level
 		LevelManager.loadLevel(LevelManager.START_LEVEL);

@@ -8,6 +8,10 @@ public class TileManager {
 
 	// Tile size
 	public static int tileSize = 50;
+	
+	public static final int DIAMAND_TILE_ID = 50;
+	public static final int SLEUTEL_TILE_ID = 51;
+	public static final int PLAYER_SPWAN_POINT = 99;
 
 	// Muur Tile & Geheime Muur Tile
 	private static Sprite muurSprite = new Sprite(FolderLocationsUtils.TILES_FOLDER + "muur.png");
