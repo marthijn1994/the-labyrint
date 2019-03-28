@@ -2,6 +2,7 @@ package nl.han.ica.oopd.labyrint.level;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Random;
 import java.util.Scanner;
 
 import nl.han.ica.oopd.labyrint.Labyrint;
@@ -21,6 +22,7 @@ public class Level {
 
 	private Labyrint world;
 	private Player player;
+	private Random random;
 
 	private int width;
 	private int height;
@@ -34,6 +36,8 @@ public class Level {
 		this.world = world;
 		this.player = player;
 		this.path = path;
+
+		random = new Random();
 
 		width = world.getWidth();
 		height = world.getHeight();
@@ -79,8 +83,10 @@ public class Level {
 				if (tilesMap[x][y] == DIAMAND_TILE_ID) {
 					tilesMap[x][y] = 1;
 
+					int randomPuntenWaarden = random.nextInt(30);
+
 					Sprite diamandSprite = new Sprite(FolderLocationsUtils.ITEMS_FOLDER + "diamond.png");
-					Diamand diamand = new Diamand(diamandSprite, 10, world);
+					Diamand diamand = new Diamand(diamandSprite, randomPuntenWaarden, world);
 
 					float xPos = ((float) y * TileManager.tileSize);
 					float yPos = ((float) x * TileManager.tileSize);
