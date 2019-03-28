@@ -12,6 +12,14 @@ public class GeheimeMuur extends SolideTile implements IOpenAble {
 		super(sprite);
 	}
 
+	/**
+	 * Het openen van een geheime muur, de muurtile wordt vervangen door een
+	 * vloertile.
+	 * 
+	 * @param player
+	 * @param world
+	 * @param collidedTile
+	 */
 	@Override
 	public void open(Player player, Labyrint world, CollidedTile collidedTile) {
 		final PVector vector;

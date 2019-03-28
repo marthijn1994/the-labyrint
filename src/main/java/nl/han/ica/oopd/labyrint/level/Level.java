@@ -53,7 +53,7 @@ public class Level {
 	}
 
 	/**
-	 * Extra constructor zodat je per level ook achtergrondmuziek kan instellen
+	 * Extra constructor zodat je per level ook een achtergrondmuziekje kan instellen
 	 * 
 	 * @param world
 	 * @param player
@@ -72,7 +72,7 @@ public class Level {
 		loadLevelCsvFile();
 		loadObjectsIntoMap();
 		loadPlayerIntoMap();
-		loadLevelBackgroundMusic();
+		loadBackgroundMusic();
 		world.setTileMap(generateTileMap());
 	}
 
@@ -155,7 +155,7 @@ public class Level {
 	private void loadPlayerIntoMap() {
 		for (int y = 0; y < aantalTilesY; y++) {
 			for (int x = 0; x < aantalTilesX; x++) {
-				if (tilesMap[y][x] == TileManager.PLAYER_SPWAN_POINT) {
+				if (tilesMap[y][x] == TileManager.PLAYER_SPAWN_POINT) {
 					tilesMap[y][x] = 1;
 
 					float spawnX = ((float) x * TileManager.tileSize);
@@ -171,7 +171,7 @@ public class Level {
 	 * Laad en speel af de achtergrond muziek van de level, heeft een level geen
 	 * achtergrond muziek? Gebruik dan een standaard achtergrond muziekje...
 	 */
-	private void loadLevelBackgroundMusic() {
+	private void loadBackgroundMusic() {
 		if (sound == null) // Standaard achtergrond muziek
 			sound = new Sound(world, FolderLocationsUtils.SOUND_FOLDER + "defaultMusic.mp3");
 
