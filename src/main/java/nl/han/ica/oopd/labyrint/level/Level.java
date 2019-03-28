@@ -1,5 +1,10 @@
 package nl.han.ica.oopd.labyrint.level;
 
+/**
+ * @author Marthijn Kip
+ * @author Werner van Voorts
+ */
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Random;

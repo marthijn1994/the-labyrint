@@ -1,5 +1,10 @@
 package nl.han.ica.oopd.labyrint;
 
+/**
+ * @author Marthijn Kip
+ * @author Werner van Voorts
+ */
+
 import java.util.ArrayList;
 import java.util.List;
 

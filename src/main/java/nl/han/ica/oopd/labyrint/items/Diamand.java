@@ -1,5 +1,10 @@
 package nl.han.ica.oopd.labyrint.items;
 
+/**
+ * @author Marthijn Kip
+ * @author Werner van Voorts
+ */
+
 import nl.han.ica.oopd.labyrint.Labyrint;
 import nl.han.ica.oopd.labyrint.Player;
 import nl.han.ica.oopd.labyrint.utils.FolderLocationsUtils;

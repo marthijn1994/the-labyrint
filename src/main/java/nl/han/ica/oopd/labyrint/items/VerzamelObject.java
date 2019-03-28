@@ -1,5 +1,10 @@
 package nl.han.ica.oopd.labyrint.items;
 
+/**
+ * @author Marthijn Kip
+ * @author Werner van Voorts
+ */
+
 import java.util.List;
 
 import nl.han.ica.oopd.labyrint.Player;

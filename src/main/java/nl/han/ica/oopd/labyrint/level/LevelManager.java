@@ -1,5 +1,10 @@
 package nl.han.ica.oopd.labyrint.level;
 
+/**
+ * @author Marthijn Kip
+ * @author Werner van Voorts
+ */
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +24,7 @@ public class LevelManager {
 		if (level != null)
 			level.load();
 	}
-	
+
 	/**
 	 * Voeg een level to aan de level list
 	 * 

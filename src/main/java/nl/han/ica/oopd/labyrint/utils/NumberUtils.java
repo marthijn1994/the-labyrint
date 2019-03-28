@@ -1,5 +1,10 @@
 package nl.han.ica.oopd.labyrint.utils;
 
+/**
+ * @author Marthijn Kip
+ * @author Werner van Voorts
+ */
+
 public class NumberUtils {
 	
 	// Kijkt of de string die meegegeven is, alleen nummers bevatten.

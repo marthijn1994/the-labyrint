@@ -1,5 +1,10 @@
 package nl.han.ica.oopd.labyrint;
 
+/**
+ * @author Marthijn Kip
+ * @author Werner van Voorts
+ */
+
 import nl.han.ica.oopd.labyrint.level.Level;
 import nl.han.ica.oopd.labyrint.level.LevelManager;
 import nl.han.ica.oopg.engine.GameEngine;
@@ -62,7 +67,7 @@ public class Labyrint extends GameEngine {
 		LevelManager.addLevel(new Level(this, player, "level2.csv", "level2BackgroundMusic.mp3"));
 
 		// Start de eerste level
-		LevelManager.loadLevel(1);
+		LevelManager.loadLevel(LevelManager.START_LEVEL);
 	}
 
 }
