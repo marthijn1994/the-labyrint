@@ -53,7 +53,8 @@ public class Level {
 	}
 
 	/**
-	 * Extra constructor zodat je per level ook een achtergrondmuziekje kan instellen
+	 * Extra constructor zodat je per level ook een achtergrondmuziekje kan
+	 * instellen
 	 * 
 	 * @param world
 	 * @param player
@@ -172,7 +173,7 @@ public class Level {
 	 * achtergrond muziek? Gebruik dan een standaard achtergrond muziekje...
 	 */
 	private void loadBackgroundMusic() {
-		if (sound == null) // Standaard achtergrond muziek
+		if (sound == null)
 			sound = new Sound(world, FolderLocationsUtils.SOUND_FOLDER + "defaultMusic.mp3");
 
 		sound.loop(-1);
@@ -180,7 +181,7 @@ public class Level {
 	}
 
 	/**
-	 * genereer op basis van de tiletypes en tilesMap een map met tiles.
+	 * genereer op basis van de tileTypes en tilesMap een map met tiles.
 	 * 
 	 * @return TileMap
 	 */

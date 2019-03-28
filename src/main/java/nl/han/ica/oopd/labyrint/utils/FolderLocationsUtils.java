@@ -3,7 +3,7 @@ package nl.han.ica.oopd.labyrint.utils;
 public class FolderLocationsUtils {
 
 	/**
-	 * Alle media folder location
+	 * Alle media folder locations
 	 */
 
 	// root folder voor alle media elementen
