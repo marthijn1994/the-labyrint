@@ -50,6 +50,7 @@ public class Level {
 		tilesMap = new int[aantalTilesY][aantalTilesX];
 	}
 
+	// Extra constructor zodat je per level ook backgroundmusic kan toevoegen
 	public Level(Labyrint world, Player player, String path, Sound soundClip) {
 		this(world, player, path);
 		sound = soundClip;
@@ -68,25 +69,31 @@ public class Level {
 			File file = new File(FolderLocationsUtils.LEVEL_FOLDER + path);
 			Scanner scanner = new Scanner(file);
 
-			String[] tileTypeIdsInText;
-			int[] ids;
+			String[] csvSingleLineIds;
+			String[] textIds;
+			int[] numberIds;
 			int row = 0;
 			while (scanner.hasNextLine()) {
-				tileTypeIdsInText = scanner.next().split(",");
-				ids = new int[aantalTilesX];
+				csvSingleLineIds = scanner.next().split(",");
+				textIds = new String[aantalTilesX];
+				numberIds = new int[aantalTilesX];
 
 				int i = 0;
-				while (i < tileTypeIdsInText.length) {
-					if (NumberUtils.isNumber(tileTypeIdsInText[i])) {
-						ids[i] = Integer.parseInt(tileTypeIdsInText[i]);
-					} else {
-						ids[i] = 0;
-					}
+				while (i < csvSingleLineIds.length) {
+					textIds[i] = csvSingleLineIds[i];
 					i++;
 				}
+				for (int id = 0; id < textIds.length; id++) {
+					if (textIds[id] == null) {
+						textIds[id] = "0";
+					}
+					if (NumberUtils.isNumber(textIds[id])) {
+						numberIds[id] = Integer.parseInt(textIds[id]);
+					}
+				}
 
-				tilesMap[row++] = ids;
-				System.out.println("Rij: " + row + " " + Arrays.toString(ids));
+				tilesMap[row++] = numberIds;
+				System.out.println("Rij: " + row + " " + Arrays.toString(textIds));
 				if (row == aantalTilesY)
 					break;
 			}
@@ -141,7 +148,7 @@ public class Level {
 
 	private void loadLevelBackgroundMusic() {
 		if (sound == null)
-			sound = new Sound(world, FolderLocationsUtils.SOUND_FOLDER + "backgroundMusic.mp3");
+			sound = new Sound(world, FolderLocationsUtils.SOUND_FOLDER + "backgroundMusic.mp3"); // default achtergrond muziek
 
 		sound.loop(-1);
 		sound.play();

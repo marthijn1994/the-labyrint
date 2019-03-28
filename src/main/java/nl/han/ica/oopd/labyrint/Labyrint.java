@@ -9,7 +9,7 @@ import processing.core.PApplet;
 @SuppressWarnings("serial")
 public class Labyrint extends GameEngine {
 
-	private static final int WIDTH = 800;
+	private static final int WIDTH = 1700;
 	private static final int HEIGHT = 800;
 
 	private Player player;
@@ -27,7 +27,6 @@ public class Labyrint extends GameEngine {
 		addGameObject(player, 0, 0);
 
 		createWindow(WIDTH, HEIGHT);
-//		createViewWithViewport(WIDTH, HEIGHT, WIDTH, 1000, 1);
 		initializeLevel();
 	}
 

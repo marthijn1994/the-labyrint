@@ -5,7 +5,7 @@ import java.util.List;
 
 public class LevelManager {
 
-	public static final int START_LEVEL = 1;
+	public static final int START_LEVEL = 0;
 	private static List<Level> levels = new ArrayList<Level>();
 
 	public static void loadLevel(int levelIndex) {
