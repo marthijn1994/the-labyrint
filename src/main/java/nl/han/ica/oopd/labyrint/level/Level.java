@@ -51,7 +51,7 @@ public class Level {
 		random = new Random();
 
 		width = world.getWidth();
-		height = world.getHeight();
+		height = world.getHeight() - 100;
 		aantalTilesX = width / TileManager.tileSize;
 		aantalTilesY = height / TileManager.tileSize;
 		tilesMap = new int[aantalTilesY][aantalTilesX];

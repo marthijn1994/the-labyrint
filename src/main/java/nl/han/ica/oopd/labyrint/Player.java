@@ -101,33 +101,34 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 	 */
 	private void checkSolidTileCollision(CollidedTile collidedTile, CollisionSide collisionSide) {
 		final PVector vector;
-		int offset = (collidedTile.getTile().getSprite().getWidth() - getSpriteSize()) / 2;
+		int yOffset = ((collidedTile.getTile().getSprite().getWidth() - getSpriteSize()) / 2 + 5);
+		int xOffset = ((collidedTile.getTile().getSprite().getWidth() - getSpriteSize()) / 2 - 5);
 
 		if (CollisionSide.BOTTOM.equals(collisionSide)) {
 			try {
 				vector = world.getTileMap().getTilePixelLocation(collidedTile.getTile());
-				setY(vector.y + getSpriteSize() + offset + 5);
+				setY(vector.y + getSpriteSize() + yOffset);
 			} catch (TileNotFoundException e) {
 				e.printStackTrace();
 			}
 		} else if (CollisionSide.TOP.equals(collisionSide)) {
 			try {
 				vector = world.getTileMap().getTilePixelLocation(collidedTile.getTile());
-				setY(vector.y - getSpriteSize() - offset);
+				setY(vector.y - getSpriteSize() - xOffset);
 			} catch (TileNotFoundException e) {
 				e.printStackTrace();
 			}
 		} else if (CollisionSide.RIGHT.equals(collisionSide)) {
 			try {
 				vector = world.getTileMap().getTilePixelLocation(collidedTile.getTile());
-				setX(vector.x + getSpriteSize() + offset + 5);
+				setX(vector.x + getSpriteSize() + yOffset);
 			} catch (TileNotFoundException e) {
 				e.printStackTrace();
 			}
 		} else if (CollisionSide.LEFT.equals(collisionSide)) {
 			try {
 				vector = world.getTileMap().getTilePixelLocation(collidedTile.getTile());
-				setX(vector.x - getSpriteSize() - offset - 5);
+				setX(vector.x - getSpriteSize() - xOffset);
 			} catch (TileNotFoundException e) {
 				e.printStackTrace();
 			}

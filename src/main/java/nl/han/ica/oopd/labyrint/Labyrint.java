@@ -58,7 +58,7 @@ public class Labyrint extends GameEngine {
 		View view = new View(width, height);
 		view.setWorldSize(WIDTH, HEIGHT - USERINTERFACEHEIGHT);
 		setView(view);
-		size(width, height);
+		size(worldWidth, worldHeight);
 	}
 
 	/**
