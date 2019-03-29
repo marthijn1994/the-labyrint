@@ -12,6 +12,7 @@ import java.util.Scanner;
 
 import nl.han.ica.oopd.labyrint.Labyrint;
 import nl.han.ica.oopd.labyrint.Player;
+import nl.han.ica.oopd.labyrint.enemies.Wizard;
 import nl.han.ica.oopd.labyrint.items.Diamand;
 import nl.han.ica.oopd.labyrint.items.Key;
 import nl.han.ica.oopd.labyrint.tiles.TileManager;
@@ -77,8 +78,9 @@ public class Level {
 	public void load() {
 		loadLevelCsvFile();
 		loadObjectsIntoMap();
+		loadEnemiesIntoMap();
 		loadPlayerIntoMap();
-		loadBackgroundMusic();
+//		loadBackgroundMusic();
 		world.setTileMap(generateTileMap());
 	}
 
@@ -150,6 +152,25 @@ public class Level {
 					float xPos = ((float) x * TileManager.tileSize);
 					float yPos = ((float) y * TileManager.tileSize);
 					world.addGameObject(key, xPos, yPos);
+				}
+			}
+		}
+	}
+	
+	/**
+	 * Spawn alle enemies op de map
+	 */
+	private void loadEnemiesIntoMap() {
+		for (int y = 0; y < aantalTilesY; y++) {
+			for (int x = 0; x < aantalTilesX; x++) {
+				if (tilesMap[y][x] == TileManager.WIZARD_SPAWN_POINT) {
+					tilesMap[y][x] = 1;
+					
+					Wizard wizard = new Wizard(world);
+					
+					float xPos = ((float) x * TileManager.tileSize);
+					float yPos = ((float) y * TileManager.tileSize);
+					world.addGameObject(wizard, xPos, yPos);
 				}
 			}
 		}

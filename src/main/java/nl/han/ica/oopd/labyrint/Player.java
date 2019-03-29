@@ -21,10 +21,10 @@ import processing.core.PVector;
 
 public class Player extends AnimatedSpriteObject implements ICollidableWithTiles {
 
-	private static final int NORTH = 0;
-	private static final int EAST = 90;
-	private static final int SOUTH = 180;
-	private static final int WEST = 270;
+	public static final int NORTH = 0;
+	public static final int EAST = 90;
+	public static final int SOUTH = 180;
+	public static final int WEST = 270;
 
 	private Labyrint world;
 	private Inventory inventory;

@@ -23,6 +23,7 @@ public class TileManager {
 	public static final int DIAMAND_TILE_ID = 50;
 	public static final int SLEUTEL_TILE_ID = 51;
 	public static final int PLAYER_SPAWN_POINT = 99;
+	public static final int WIZARD_SPAWN_POINT = 100;
 
 	// Muur Tile & Geheime Muur Tile
 	private static Sprite muurSprite = new Sprite(FolderLocationsUtils.TILES_FOLDER + "muur.png");

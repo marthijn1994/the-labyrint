@@ -1,4 +1,4 @@
-package nl.han.ica.oopd.labyrint.enemies;
+package nl.han.ica.oopd.labyrint.enemies.spells;
 
 public interface ICastSpells {
 	
