@@ -16,7 +16,7 @@ public class Labyrint extends GameEngine {
 
 	public static final int WIDTH = 1200;
 	public static final int HEIGHT = 800;
-	public static final int USERINTERFACEHEIGHT = 50;
+	public static final int USER_INTERFACE_HEIGHT = 50;
 
 	private Player player;
 	private UserInterface userInterface;
@@ -35,6 +35,8 @@ public class Labyrint extends GameEngine {
 		createWindow(WIDTH, HEIGHT);
 		initializeLevel();
 		initializeUserInterface();
+		
+		setFPSCounter(true);
 	}
 
 	@Override
@@ -58,9 +60,16 @@ public class Labyrint extends GameEngine {
 	 */
 	private void createWindow(int width, int height) {
 		View view = new View(width, height);
-		view.setWorldSize(WIDTH, HEIGHT - USERINTERFACEHEIGHT);
+		view.setWorldSize(WIDTH, HEIGHT - USER_INTERFACE_HEIGHT);
 		setView(view);
-		size(worldWidth, worldHeight);
+		size(width, height);
+	}
+	
+	/**
+	 * Maak de userinterface aan
+	 */
+	private void initializeUserInterface() {
+		addDashboard(new UserInterface(player.getInventory()));
 	}
 
 	/**

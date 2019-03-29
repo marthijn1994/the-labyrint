@@ -24,10 +24,11 @@ public class UserInterface extends Dashboard {
 	public int getScore() {
 		return score;
 	}
-/**
- * 
- * @param score
- */
+
+	/**
+	 * 
+	 * @param score
+	 */
 	public void updateScore(int score) {
 		this.score += score;
 		drawScore.setText("" + getScore());
@@ -37,7 +38,7 @@ public class UserInterface extends Dashboard {
 		score = 0;
 		drawScore.setText("" + getScore());
 	}
-	
+
 	public int getAantalKey() {
 		return inventory.getKeys().size();
 	}

@@ -26,6 +26,9 @@ public class FolderLocationsUtils {
 	// speciefeke folder voor alle obstakels
 	public static final String OBSTAKELS_FOLDER = MEDIA_ROOT.concat("obstacles/");
 
+	// speciefeke folder voor alle obstakels
+	public static final String ENEMIES_FOLDER = MEDIA_ROOT.concat("enemies/");
+
 	// specieke folder voor alle level csv bestanden
 	public static final String LEVEL_FOLDER = MEDIA_ROOT.concat("levels/");
 

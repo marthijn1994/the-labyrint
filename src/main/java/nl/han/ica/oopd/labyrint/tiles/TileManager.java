@@ -44,6 +44,7 @@ public class TileManager {
 	//DIAMAND_TILE_ID    = 50
 	//SLEUTEL_TILE_ID    = 51
 	//PLAYER_SPWAN_POINT = 99
+	//WIZARD_SPAWN_POINT = 100
 	@SuppressWarnings("rawtypes")	//           0              1             2              3                 4
 	public static TileType[] tileTypes = { muurTileType, vloerTileType, deurTileType, cactusTileType, geheimeMuurTileType };
 
