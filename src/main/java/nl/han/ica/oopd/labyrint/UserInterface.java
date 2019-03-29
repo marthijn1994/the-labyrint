@@ -1,18 +1,19 @@
 package nl.han.ica.oopd.labyrint;
 
+import nl.han.ica.oopd.labyrint.utils.LabyrintTextObject;
 import nl.han.ica.oopg.dashboard.Dashboard;
-import nl.han.ica.oopg.objects.TextObject;
 
 public class UserInterface extends Dashboard {
 	private Inventory inventory;
 	private int score;
-	private TextObject drawScore = new TextObject("TEST"+ getScore(), 25);
+	private LabyrintTextObject drawScore;
 	
-	UserInterface(Inventory inventory){
-		super(0, Labyrint.HEIGHT - Labyrint.USERINTERFACEHEIGHT,Labyrint.WIDTH, Labyrint.USERINTERFACEHEIGHT);
+	public UserInterface(Inventory inventory){
+		//super(0, Labyrint.HEIGHT - Labyrint.USERINTERFACEHEIGHT,Labyrint.WIDTH, Labyrint.USERINTERFACEHEIGHT);
+		super(0,0, Labyrint.WIDTH, Labyrint.USERINTERFACEHEIGHT);
 		this.inventory = inventory;
+		drawScore =  new LabyrintTextObject("TEST"+ getScore(), Labyrint.USERINTERFACEHEIGHT);
 		resetScore();
-		drawScore.setForeColor(255, 255, 255, 255);
 		addGameObject(drawScore);
 	}
 
@@ -32,7 +33,7 @@ public class UserInterface extends Dashboard {
 		drawScore.setText("" + getScore());
 	}
 	
-	public void resetScore() {
+	public  void resetScore() {
 		score = 0;
 		drawScore.setText("" + getScore());
 	}

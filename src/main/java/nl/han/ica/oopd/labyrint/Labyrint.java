@@ -19,6 +19,8 @@ public class Labyrint extends GameEngine {
 	public static final int USERINTERFACEHEIGHT = 50;
 
 	private Player player;
+	private UserInterface userInterface;
+
 
 	public static void main(String[] args) {
 		String[] processingArgs = { "nl.han.ica.oopd.labyrint.Labyrint" };
@@ -73,6 +75,11 @@ public class Labyrint extends GameEngine {
 		LevelManager.loadLevel(LevelManager.START_LEVEL);
 	}
 	private void initializeUserInterface() {
-		addDashboard(new UserInterface(player.getInventory()));
+		userInterface = new UserInterface(player.getInventory());
+		addDashboard(userInterface);
+	}
+	
+	public UserInterface getUserInterface() {
+		return userInterface;
 	}
 }

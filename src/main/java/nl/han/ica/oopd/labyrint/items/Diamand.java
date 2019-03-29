@@ -26,7 +26,7 @@ public class Diamand extends VerzamelObject implements ICollidableWithGameObject
 	@Override
 	public void verzamelen(Player player) {
 		System.out.println("Je krijgt nu zoveel punten: " + puntenWaarde);
-
+		world.getUserInterface().updateScore(puntenWaarde);
 		player.getInventory().addDiamand(this);
 		world.deleteGameObject(this);
 	}
