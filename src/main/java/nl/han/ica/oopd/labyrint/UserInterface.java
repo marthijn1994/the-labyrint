@@ -10,7 +10,7 @@ public class UserInterface extends Dashboard {
 	
 	public UserInterface(Inventory inventory){
 		//super(0, Labyrint.HEIGHT - Labyrint.USERINTERFACEHEIGHT,Labyrint.WIDTH, Labyrint.USERINTERFACEHEIGHT);
-		super(0,0, Labyrint.WIDTH, Labyrint.USERINTERFACEHEIGHT);
+		super(0, 0, Labyrint.WIDTH, Labyrint.USERINTERFACEHEIGHT);
 		this.inventory = inventory;
 		drawScore =  new LabyrintTextObject("TEST"+ getScore(), Labyrint.USERINTERFACEHEIGHT);
 		resetScore();
