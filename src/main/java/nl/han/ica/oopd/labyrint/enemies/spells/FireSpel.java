@@ -41,6 +41,7 @@ public class FireSpel extends AnimatedSpriteObject implements ICollidableWithTil
 		for (GameObject gameObject : collidedGameObjects) {
 			if (gameObject instanceof Player) {
 				((Player) gameObject).neemSchade();
+				world.deleteGameObject(this);
 			}
 		}
 	}
