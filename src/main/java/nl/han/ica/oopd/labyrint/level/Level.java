@@ -156,7 +156,7 @@ public class Level {
 	}
 
 	/**
-	 * Spawn de player op de spawn tile
+	 * Spawn de player op de spawn positie
 	 */
 	private void loadPlayerIntoMap() {
 		for (int y = 0; y < aantalTilesY; y++) {
@@ -164,6 +164,7 @@ public class Level {
 				if (tilesMap[y][x] == TileManager.PLAYER_SPAWN_POINT) {
 					tilesMap[y][x] = 1;
 
+					// Spawn de player op de juiste positie in de map
 					float spawnX = ((float) x * TileManager.tileSize);
 					float spawnY = ((float) y * TileManager.tileSize);
 					player.setX(spawnX);

@@ -10,7 +10,14 @@ import java.util.List;
 
 public class LevelManager {
 
+	/**
+	 * De standaard start level index
+	 */
 	public static final int START_LEVEL = 0;
+	
+	/**
+	 * Een list om alle levels in op te slaan.
+	 */
 	private static List<Level> levels = new ArrayList<Level>();
 
 	/**
