@@ -80,7 +80,7 @@ public class Level {
 		loadObjectsIntoMap();
 		loadEnemiesIntoMap();
 		loadPlayerIntoMap();
-//		loadBackgroundMusic();
+		loadBackgroundMusic();
 		world.setTileMap(generateTileMap());
 	}
 
@@ -168,8 +168,8 @@ public class Level {
 					
 					Wizard wizard = new Wizard(world);
 					
-					float xPos = ((float) x * TileManager.tileSize);
-					float yPos = ((float) y * TileManager.tileSize);
+					float xPos = ((float) x * TileManager.tileSize) - ((wizard.getSpriteSize() - TileManager.tileSize) / 2.0f);
+					float yPos = ((float) y * TileManager.tileSize) - ((wizard.getSpriteSize() - TileManager.tileSize) / 2.0f);
 					world.addGameObject(wizard, xPos, yPos);
 				}
 			}
@@ -203,8 +203,8 @@ public class Level {
 		if (sound == null)
 			sound = new Sound(world, FolderLocationsUtils.SOUND_FOLDER + "defaultMusic.mp3");
 
-		sound.loop(-1);
-		sound.play();
+//		sound.loop(-1);
+//		sound.play();
 	}
 
 	/**
