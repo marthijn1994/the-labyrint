@@ -10,6 +10,7 @@ import java.util.List;
 import nl.han.ica.oopd.labyrint.tiles.IOpenAble;
 import nl.han.ica.oopd.labyrint.tiles.ISchadelijk;
 import nl.han.ica.oopd.labyrint.tiles.SolideTile;
+import nl.han.ica.oopd.labyrint.utils.Direction;
 import nl.han.ica.oopd.labyrint.utils.FolderLocationsUtils;
 import nl.han.ica.oopg.collision.CollidedTile;
 import nl.han.ica.oopg.collision.CollisionSide;
@@ -20,11 +21,6 @@ import nl.han.ica.oopg.objects.Sprite;
 import processing.core.PVector;
 
 public class Player extends AnimatedSpriteObject implements ICollidableWithTiles {
-
-	public static final int NORTH = 0;
-	public static final int EAST = 90;
-	public static final int SOUTH = 180;
-	public static final int WEST = 270;
 
 	private Labyrint world;
 	private Inventory inventory;
@@ -76,19 +72,19 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 	public void keyPressed(int keyCode, char key) {
 		final float speed = 3.75f;
 		if (keyCode == Labyrint.LEFT) {
-			setDirectionSpeed(WEST, speed);
+			setDirectionSpeed(Direction.WEST, speed);
 			setCurrentFrameIndex(1);
 		}
 		if (keyCode == Labyrint.UP) {
-			setDirectionSpeed(NORTH, speed);
+			setDirectionSpeed(Direction.NORTH, speed);
 			setCurrentFrameIndex(2);
 		}
 		if (keyCode == Labyrint.RIGHT) {
-			setDirectionSpeed(EAST, speed);
+			setDirectionSpeed(Direction.EAST, speed);
 			setCurrentFrameIndex(3);
 		}
 		if (keyCode == Labyrint.DOWN) {
-			setDirectionSpeed(SOUTH, speed);
+			setDirectionSpeed(Direction.SOUTH, speed);
 			setCurrentFrameIndex(0);
 		}
 	}

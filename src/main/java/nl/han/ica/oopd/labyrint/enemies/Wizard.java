@@ -1,34 +1,31 @@
 package nl.han.ica.oopd.labyrint.enemies;
 
 import nl.han.ica.oopd.labyrint.Labyrint;
-import nl.han.ica.oopd.labyrint.Player;
 import nl.han.ica.oopd.labyrint.enemies.attacks.FireSpel;
+import nl.han.ica.oopd.labyrint.utils.Direction;
 import nl.han.ica.oopd.labyrint.utils.FolderLocationsUtils;
 import nl.han.ica.oopg.objects.Sprite;
 
 public class Wizard extends BaseEnemy {
 
-	private Labyrint world;
-
-	public Wizard(Labyrint world) {
-		super(world, new Sprite(FolderLocationsUtils.ENEMIES_FOLDER + "wizard.png"), 2);
-		this.world = world;
+	public Wizard(Labyrint world, float direction) {
+		super(world, new Sprite(FolderLocationsUtils.ENEMIES_FOLDER + "wizard.png"), 2, direction);
 	}
 
 	@Override
 	public void attack() {
-		FireSpel fireSpel = new FireSpel(world, getDirection());
+		FireSpel fireSpel = new FireSpel(world, direction);
 		final int fireSpelSpriteSize = fireSpel.getSpriteSize();
 
 		float xPos = getX();
 		float yPos = getY();
-		if (getDirection() == Player.NORTH || getDirection() == Player.SOUTH) {
+		if (getDirection() == Direction.NORTH || getDirection() == Direction.SOUTH) {
 			xPos += (((spriteSize - fireSpelSpriteSize) / 2.0f));
-		} else if (getDirection() == Player.EAST || getDirection() == Player.WEST) {
+		} else if (getDirection() == Direction.EAST || getDirection() == Direction.WEST) {
 			yPos += ((spriteSize - fireSpelSpriteSize) / 2.0f);
 		}
 
-		world.addGameObject(fireSpel, xPos + 1, yPos);
+		world.addGameObject(fireSpel, xPos, yPos);
 	}
 
 }

@@ -9,15 +9,13 @@ public class FireSpel extends Projectile {
 	private int spriteSize = 35;
 
 	public FireSpel(Labyrint world, float direction) {
-		super(world, new Sprite(FolderLocationsUtils.ENEMIES_FOLDER + "fireball.png"), 1);
-
-		setDirection(direction);
+		super(world, new Sprite(FolderLocationsUtils.ENEMIES_FOLDER + "fireball.png"), 1, direction);
 	}
 	
 	@Override
 	public void fire() {
 		final float speed = 2.5f;
-		setDirectionSpeed(getDirection(), speed);
+		setDirectionSpeed(direction, speed);
 	}
 
 	public int getSpriteSize() {

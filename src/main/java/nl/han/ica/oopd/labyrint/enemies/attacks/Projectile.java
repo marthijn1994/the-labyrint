@@ -18,10 +18,13 @@ public abstract class Projectile extends AnimatedSpriteObject implements ICollid
 	
 	private int collisionDetectionDelay = 25;
 	private long previousCollisionDetection;
+	
+	public float direction;
 
-	public Projectile(Labyrint world, Sprite sprite, int totalFrames) {
+	public Projectile(Labyrint world, Sprite sprite, int totalFrames, float direction) {
 		super(sprite, totalFrames);
 		this.world = world;
+		this.direction = direction;
 		
 		previousCollisionDetection = System.currentTimeMillis();
 	}
