@@ -33,7 +33,7 @@ public abstract class BaseEnemy extends AnimatedSpriteObject implements ICollida
 
 	@Override
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
-
+		//
 	}
 
 	@Override

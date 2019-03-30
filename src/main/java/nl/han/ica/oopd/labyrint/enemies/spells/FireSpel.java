@@ -25,7 +25,7 @@ public class FireSpel extends Projectile implements ICollidableWithTiles, IColli
 		super(new Sprite(FolderLocationsUtils.ENEMIES_FOLDER + "fireball.png"), 1);
 		this.world = world;
 
-		setDirection(Player.WEST);
+		setDirection(direction);
 		previousCollisionDetection = System.currentTimeMillis();
 	}
 	

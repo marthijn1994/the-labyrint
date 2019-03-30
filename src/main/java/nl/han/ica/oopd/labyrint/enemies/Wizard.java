@@ -24,8 +24,6 @@ public class Wizard extends BaseEnemy {
 
 		castingDelay = (int) world.random(CAST_DELAY_MIN, CAST_DELAY_MAX);
 		previousCastTime = System.currentTimeMillis();
-		
-		setDirection(Player.WEST);
 	}
 	
 	@Override
@@ -34,11 +32,10 @@ public class Wizard extends BaseEnemy {
 			previousCastTime = System.currentTimeMillis();
 			
 			FireSpel fireSpel = new FireSpel(world, getDirection());
-			int fireSpelSpriteSize = fireSpel.getSpriteSize();
+			final int fireSpelSpriteSize = fireSpel.getSpriteSize();
 			
 			float xPos = getX();
 			float yPos = getY();
-			
 			if (getDirection() == Player.NORTH || getDirection() == Player.SOUTH) {
 				xPos += (((spriteSize - fireSpelSpriteSize) / 2.0f));
 			} else if (getDirection() == Player.EAST || getDirection() == Player.WEST) {
