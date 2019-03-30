@@ -16,7 +16,7 @@ import nl.han.ica.oopd.labyrint.enemies.Wizard;
 import nl.han.ica.oopd.labyrint.items.Diamond;
 import nl.han.ica.oopd.labyrint.items.Key;
 import nl.han.ica.oopd.labyrint.tiles.TileManager;
-import nl.han.ica.oopd.labyrint.utils.Direction;
+import nl.han.ica.oopd.labyrint.utils.DirectionUtils;
 import nl.han.ica.oopd.labyrint.utils.FolderLocationsUtils;
 import nl.han.ica.oopd.labyrint.utils.NumberUtils;
 import nl.han.ica.oopg.objects.Sprite;
@@ -165,7 +165,7 @@ public class Level {
 				if (tilesMap[y][x] == TileManager.WIZARD_SPAWN_POINT) {
 					tilesMap[y][x] = 1;
 					
-					float direction = Direction.calculateDirection(world, y, x);
+					float direction = DirectionUtils.calculateDirection(world, y, x);
 					Wizard wizard = new Wizard(world, direction);
 					
 					float xPos = ((float) x * TileManager.tileSize) - ((wizard.getSpriteSize() - TileManager.tileSize) / 2.0f);
@@ -174,7 +174,7 @@ public class Level {
 				} else if (tilesMap[y][x] == TileManager.RANGER_SPAWN_POINT) {
 					tilesMap[y][x] = 1;
 
-					float direction = Direction.calculateDirection(world, y, x);
+					float direction = DirectionUtils.calculateDirection(world, y, x);
 					Ranger ranger = new Ranger(world, direction);
 					
 					float xPos = ((float) x * TileManager.tileSize) - ((ranger.getSpriteSize() - TileManager.tileSize) / 2.0f);

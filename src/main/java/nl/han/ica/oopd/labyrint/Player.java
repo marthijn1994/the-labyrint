@@ -10,7 +10,7 @@ import java.util.List;
 import nl.han.ica.oopd.labyrint.tiles.IOpenAble;
 import nl.han.ica.oopd.labyrint.tiles.ISchadelijk;
 import nl.han.ica.oopd.labyrint.tiles.SolideTile;
-import nl.han.ica.oopd.labyrint.utils.Direction;
+import nl.han.ica.oopd.labyrint.utils.DirectionUtils;
 import nl.han.ica.oopd.labyrint.utils.FolderLocationsUtils;
 import nl.han.ica.oopg.collision.CollidedTile;
 import nl.han.ica.oopg.collision.CollisionSide;
@@ -72,19 +72,19 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 	public void keyPressed(int keyCode, char key) {
 		final float speed = 3.75f;
 		if (keyCode == Labyrint.LEFT) {
-			setDirectionSpeed(Direction.WEST, speed);
+			setDirectionSpeed(DirectionUtils.WEST, speed);
 			setCurrentFrameIndex(1);
 		}
 		if (keyCode == Labyrint.UP) {
-			setDirectionSpeed(Direction.NORTH, speed);
+			setDirectionSpeed(DirectionUtils.NORTH, speed);
 			setCurrentFrameIndex(2);
 		}
 		if (keyCode == Labyrint.RIGHT) {
-			setDirectionSpeed(Direction.EAST, speed);
+			setDirectionSpeed(DirectionUtils.EAST, speed);
 			setCurrentFrameIndex(3);
 		}
 		if (keyCode == Labyrint.DOWN) {
-			setDirectionSpeed(Direction.SOUTH, speed);
+			setDirectionSpeed(DirectionUtils.SOUTH, speed);
 			setCurrentFrameIndex(0);
 		}
 	}

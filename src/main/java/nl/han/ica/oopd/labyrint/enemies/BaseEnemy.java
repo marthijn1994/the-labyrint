@@ -1,7 +1,7 @@
 package nl.han.ica.oopd.labyrint.enemies;
 
 import nl.han.ica.oopd.labyrint.Labyrint;
-import nl.han.ica.oopd.labyrint.utils.Direction;
+import nl.han.ica.oopd.labyrint.utils.DirectionUtils;
 import nl.han.ica.oopg.objects.AnimatedSpriteObject;
 import nl.han.ica.oopg.objects.Sprite;
 
@@ -25,7 +25,7 @@ public abstract class BaseEnemy extends AnimatedSpriteObject {
 
 		castingDelay = (int) world.random(CAST_DELAY_MIN, CAST_DELAY_MAX);
 		previousCastTime = System.currentTimeMillis();
-		
+
 		setCurrentFrameIndex(getSpriteIndex(direction));
 	}
 
@@ -41,7 +41,6 @@ public abstract class BaseEnemy extends AnimatedSpriteObject {
 		super.setCurrentFrameIndex(currentFrameIndex);
 	}
 
-
 	private void executeAttack() {
 		final long currentTime = System.currentTimeMillis();
 		if (currentTime - previousCastTime >= castingDelay) {
@@ -53,19 +52,29 @@ public abstract class BaseEnemy extends AnimatedSpriteObject {
 	}
 
 	protected abstract void attack();
-	
+
 	private int getSpriteIndex(float direction) {
 		int spriteIndex = 0;
-		switch ((int) direction) {
-			case Direction.NORTH:
-			case Direction.EAST:
-			case Direction.SOUTH:
-				spriteIndex = 1;
+
+		switch (getTotalFrames()) {
+			case 4:
+				if (direction == DirectionUtils.NORTH)
+					spriteIndex = 2;
+				if (direction == DirectionUtils.EAST)
+					spriteIndex = 1;
+				if (direction == DirectionUtils.SOUTH)
+					spriteIndex = 3;
+				if (direction == DirectionUtils.WEST)
+					spriteIndex = 0;
 				break;
-			default:
-				spriteIndex = 0;
+			case 2:
+				if (direction == DirectionUtils.WEST)
+					spriteIndex = 0;
+				if (direction == DirectionUtils.EAST)
+					spriteIndex = 1;
 				break;
 		}
+
 		return spriteIndex;
 	}
 

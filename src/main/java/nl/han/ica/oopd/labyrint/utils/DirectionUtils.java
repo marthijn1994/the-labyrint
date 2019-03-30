@@ -5,7 +5,7 @@ import nl.han.ica.oopd.labyrint.tiles.SolideTile;
 import nl.han.ica.oopg.exceptions.TileNotFoundException;
 import nl.han.ica.oopg.tile.Tile;
 
-public class Direction {
+public class DirectionUtils {
 
 	public static final int NORTH = 0;
 	public static final int EAST = 90;
@@ -13,7 +13,7 @@ public class Direction {
 	public static final int WEST = 270;
 
 	/**
-	 * Bereken de correct direction voor de enemies
+	 * Bereken de correcte direction voor een object
 	 * 
 	 * @param world
 	 * @param tileY
