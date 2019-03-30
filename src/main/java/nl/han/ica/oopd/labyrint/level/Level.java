@@ -165,7 +165,7 @@ public class Level {
 				if (tilesMap[y][x] == TileManager.WIZARD_SPAWN_POINT) {
 					tilesMap[y][x] = 1;
 					
-					final float direction = Direction.calculateDirection(world, y, x);
+					float direction = Direction.calculateDirection(world, y, x);
 					Wizard wizard = new Wizard(world, direction);
 					
 					float xPos = ((float) x * TileManager.tileSize) - ((wizard.getSpriteSize() - TileManager.tileSize) / 2.0f);
@@ -174,7 +174,7 @@ public class Level {
 				} else if (tilesMap[y][x] == TileManager.RANGER_SPAWN_POINT) {
 					tilesMap[y][x] = 1;
 
-					final float direction = Direction.calculateDirection(world, y, x);
+					float direction = Direction.calculateDirection(world, y, x);
 					Ranger ranger = new Ranger(world, direction);
 					
 					float xPos = ((float) x * TileManager.tileSize) - ((ranger.getSpriteSize() - TileManager.tileSize) / 2.0f);

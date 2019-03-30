@@ -4,11 +4,11 @@ import nl.han.ica.oopd.labyrint.Labyrint;
 import nl.han.ica.oopd.labyrint.utils.FolderLocationsUtils;
 import nl.han.ica.oopg.objects.Sprite;
 
-public class FireSpel extends Projectile {
+public class FireBall extends Projectile {
 
 	private int spriteSize = 35;
 
-	public FireSpel(Labyrint world, float direction) {
+	public FireBall(Labyrint world, float direction) {
 		super(world, new Sprite(FolderLocationsUtils.ENEMIES_FOLDER + "fireball.png"), 1, direction);
 	}
 	

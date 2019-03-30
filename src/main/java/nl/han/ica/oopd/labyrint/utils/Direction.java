@@ -13,7 +13,7 @@ public class Direction {
 	public static final int WEST = 270;
 	
 	/**
-	 * Bereken de direction
+	 * Bereken de correct direction voor de enemies
 	 * 
 	 * @param world
 	 * @param tileY
