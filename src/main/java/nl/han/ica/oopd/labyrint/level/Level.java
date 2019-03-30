@@ -11,6 +11,7 @@ import java.util.Scanner;
 
 import nl.han.ica.oopd.labyrint.Labyrint;
 import nl.han.ica.oopd.labyrint.Player;
+import nl.han.ica.oopd.labyrint.enemies.Ranger;
 import nl.han.ica.oopd.labyrint.enemies.Wizard;
 import nl.han.ica.oopd.labyrint.items.Diamond;
 import nl.han.ica.oopd.labyrint.items.Key;
@@ -48,7 +49,7 @@ public class Level {
 		this.path = path;
 
 		width = world.getWidth();
-		height = world.getHeight() - 100;
+		height = world.getHeight();
 		numberOfTilesX = width / TileManager.tileSize;
 		numberOftilesY = height / TileManager.tileSize;
 		tilesMap = new int[numberOftilesY][numberOfTilesX];
@@ -167,6 +168,14 @@ public class Level {
 					float xPos = ((float) x * TileManager.tileSize) - ((wizard.getSpriteSize() - TileManager.tileSize) / 2.0f);
 					float yPos = ((float) y * TileManager.tileSize) - ((wizard.getSpriteSize() - TileManager.tileSize) / 2.0f);
 					world.addGameObject(wizard, xPos, yPos);
+				} else if (tilesMap[y][x] == TileManager.RANGER_SPAWN_POINT) {
+					tilesMap[y][x] = 1;
+					
+					Ranger ranger = new Ranger(world);
+					
+					float xPos = ((float) x * TileManager.tileSize) - ((ranger.getSpriteSize() - TileManager.tileSize) / 2.0f);
+					float yPos = ((float) y * TileManager.tileSize) - ((ranger.getSpriteSize() - TileManager.tileSize) / 2.0f);
+					world.addGameObject(ranger, xPos, yPos);
 				}
 			}
 		}

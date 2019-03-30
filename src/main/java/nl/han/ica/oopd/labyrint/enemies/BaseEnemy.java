@@ -7,34 +7,43 @@ import nl.han.ica.oopd.labyrint.Player;
 import nl.han.ica.oopd.labyrint.tiles.SolideTile;
 import nl.han.ica.oopg.collision.CollidedTile;
 import nl.han.ica.oopg.collision.CollisionSide;
-import nl.han.ica.oopg.collision.ICollidableWithGameObjects;
 import nl.han.ica.oopg.collision.ICollidableWithTiles;
 import nl.han.ica.oopg.objects.AnimatedSpriteObject;
-import nl.han.ica.oopg.objects.GameObject;
 import nl.han.ica.oopg.objects.Sprite;
 
-public abstract class BaseEnemy extends AnimatedSpriteObject implements ICollidableWithGameObjects, ICollidableWithTiles {
+public abstract class BaseEnemy extends AnimatedSpriteObject implements ICollidableWithTiles {
 
-	@SuppressWarnings("unused")
-	private Labyrint world;
+	private static final int CAST_DELAY_MIN = 2000;
+	private static final int CAST_DELAY_MAX = 3500;
+
+	private long previousCastTime;
+	private int castingDelay;
+
+	protected int spriteSize = 52;
+	protected Labyrint world;
 
 	public BaseEnemy(Labyrint world, Sprite sprite, int totalFrames) {
 		super(sprite, totalFrames);
-
 		this.world = world;
+
+		castingDelay = (int) world.random(CAST_DELAY_MIN, CAST_DELAY_MAX);
+		previousCastTime = System.currentTimeMillis();
 	}
 
 	@Override
 	public void update() {
-		attack();
+		executeAttack();
 	}
-	
-	protected abstract void attack();
 
-	@Override
-	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
-		//
+	private void executeAttack() {
+		final long currentTime = System.currentTimeMillis();
+		if (currentTime - previousCastTime >= castingDelay) {
+			previousCastTime = currentTime;
+			attack();
+		}
 	}
+
+	protected abstract void attack();
 
 	@Override
 	public void tileCollisionOccurred(List<CollidedTile> collidedTiles) {
@@ -45,18 +54,26 @@ public abstract class BaseEnemy extends AnimatedSpriteObject implements ICollida
 				boolean left = CollisionSide.LEFT.equals(collisionSide);
 				boolean right = CollisionSide.RIGHT.equals(collisionSide);
 				boolean bottom = CollisionSide.BOTTOM.equals(collisionSide);
-				
+
 				if (top) {
+					setCurrentFrameIndex(0);
 					setDirection(Player.NORTH);
 				} else if (bottom) {
+					setCurrentFrameIndex(0);
 					setDirection(Player.SOUTH);
 				} else if (left) {
+					setCurrentFrameIndex(0);
 					setDirection(Player.WEST);
 				} else if (right) {
+					setCurrentFrameIndex(1);
 					setDirection(Player.EAST);
 				}
 			}
 		}
+	}
+
+	public int getSpriteSize() {
+		return spriteSize;
 	}
 
 }
