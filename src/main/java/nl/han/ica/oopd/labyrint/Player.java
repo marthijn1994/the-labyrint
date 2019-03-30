@@ -147,8 +147,9 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 	 */
 	public void takeDamage() {
 		System.out.println("Ow!");
-		LIFES -= 1;
-		if (isDeath()) {
+		if (!isDeath()) {
+			LIFES--;
+		} else {
 			// GAME OVER MAN!
 		}
 	}

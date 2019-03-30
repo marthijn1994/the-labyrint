@@ -22,7 +22,7 @@ public class FireSpel extends Projectile implements ICollidableWithTiles, IColli
 	private long previousCollisionDetection;
 
 	public FireSpel(Labyrint world, float direction) {
-		super(new Sprite(FolderLocationsUtils.ENEMIES_FOLDER + "fireball.png"), 1);
+		super(world, new Sprite(FolderLocationsUtils.ENEMIES_FOLDER + "fireball.png"), 1);
 		this.world = world;
 
 		setDirection(direction);
