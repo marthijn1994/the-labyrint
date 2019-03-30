@@ -13,7 +13,7 @@ public class DirectionUtils {
 	public static final int WEST = 270;
 
 	/**
-	 * Bereken de correcte direction voor een object
+	 * Bereken de correcte direction voor een object / entity
 	 * 
 	 * @param world
 	 * @param tileY

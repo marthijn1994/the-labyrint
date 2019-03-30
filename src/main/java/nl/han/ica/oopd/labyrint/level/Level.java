@@ -22,6 +22,7 @@ import nl.han.ica.oopd.labyrint.utils.NumberUtils;
 import nl.han.ica.oopg.objects.Sprite;
 import nl.han.ica.oopg.sound.Sound;
 import nl.han.ica.oopg.tile.TileMap;
+import processing.core.PVector;
 
 public class Level {
 
@@ -137,9 +138,9 @@ public class Level {
 					Diamond diamond = new Diamond(diamondSprite, diamondPoints, world);
 
 					// Plaats een diamand op je juiste positie in de map
-					float xPos = ((float) x * TileManager.tileSize);
-					float yPos = ((float) y * TileManager.tileSize);
-					world.addGameObject(diamond, xPos, yPos);
+					PVector vector = calculatePixelPosition(x, y);
+					world.addGameObject(diamond, vector.x, vector.y);
+					
 				} else if (tilesMap[y][x] == TileManager.KEY_TILE_ID) {
 					tilesMap[y][x] = 1;
 
@@ -147,15 +148,14 @@ public class Level {
 					Key key = new Key(keySprite, world);
 
 					// Plaats een key op je juiste positie in de map
-					float xPos = ((float) x * TileManager.tileSize);
-					float yPos = ((float) y * TileManager.tileSize);
-					world.addGameObject(key, xPos, yPos);
+					PVector vector = calculatePixelPosition(x, y);
+					world.addGameObject(key, vector.x, vector.y);
 				}
 			}
 		}
 		refreshTileMap();
 	}
-	
+
 	/**
 	 * Spawn alle enemies op de map
 	 */
@@ -164,22 +164,21 @@ public class Level {
 			for (int x = 0; x < numberOfTilesX; x++) {
 				if (tilesMap[y][x] == TileManager.WIZARD_SPAWN_POINT) {
 					tilesMap[y][x] = 1;
-					
+
 					float direction = DirectionUtils.calculateDirection(world, y, x);
 					Wizard wizard = new Wizard(world, direction);
-					
-					float xPos = ((float) x * TileManager.tileSize) - ((wizard.getSpriteSize() - TileManager.tileSize) / 2.0f);
-					float yPos = ((float) y * TileManager.tileSize) - ((wizard.getSpriteSize() - TileManager.tileSize) / 2.0f);
-					world.addGameObject(wizard, xPos, yPos);
+
+					PVector vector = calculatePixelPosition(x, y);
+					world.addGameObject(wizard, vector.x, vector.y);
+
 				} else if (tilesMap[y][x] == TileManager.RANGER_SPAWN_POINT) {
 					tilesMap[y][x] = 1;
 
 					float direction = DirectionUtils.calculateDirection(world, y, x);
 					Ranger ranger = new Ranger(world, direction);
-					
-					float xPos = ((float) x * TileManager.tileSize) - ((ranger.getSpriteSize() - TileManager.tileSize) / 2.0f);
-					float yPos = ((float) y * TileManager.tileSize) - ((ranger.getSpriteSize() - TileManager.tileSize) / 2.0f);
-					world.addGameObject(ranger, xPos, yPos);
+
+					PVector vector = calculatePixelPosition(x, y);
+					world.addGameObject(ranger, vector.x, vector.y);
 				}
 			}
 		}
@@ -196,10 +195,9 @@ public class Level {
 					tilesMap[y][x] = 1;
 
 					// Spawn de player op de juiste positie in de map
-					float spawnX = ((float) x * TileManager.tileSize);
-					float spawnY = ((float) y * TileManager.tileSize);
-					player.setX(spawnX);
-					player.setY(spawnY);
+					PVector vector = calculatePixelPosition(x, y);
+					player.setX(vector.x);
+					player.setY(vector.y);
 				}
 			}
 		}
@@ -217,7 +215,10 @@ public class Level {
 		sound.loop(-1);
 		sound.play();
 	}
-	
+
+	/**
+	 * Refresh de TileMap na het wijzigen van de tilesMap[][] array
+	 */
 	private void refreshTileMap() {
 		world.setTileMap(generateTileMap());
 	}
@@ -229,6 +230,24 @@ public class Level {
 	 */
 	private TileMap generateTileMap() {
 		return new TileMap(TileManager.tileSize, TileManager.tileTypes, tilesMap);
+	}
+
+	/**
+	 * Bereken de pixel positie voor alle objecten / entities
+	 * 
+	 * @param x
+	 * @param y
+	 * @return vector
+	 */
+	private PVector calculatePixelPosition(int x, int y) {
+		PVector vector = new PVector();
+
+		float xPos = ((float) x * TileManager.tileSize);
+		float yPos = ((float) y * TileManager.tileSize);
+		vector.x = xPos;
+		vector.y = yPos;
+
+		return vector;
 	}
 
 }
