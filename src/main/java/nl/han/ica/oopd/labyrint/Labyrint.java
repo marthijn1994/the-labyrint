@@ -34,13 +34,11 @@ public class Labyrint extends GameEngine {
 		createWindow(WIDTH, HEIGHT);
 		initializeLevel();
 		initializeUserInterface();
-
-		setFPSCounter(true);
 	}
 
 	@Override
 	public void update() {
-
+		//
 	}
 
 	/**

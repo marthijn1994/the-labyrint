@@ -21,7 +21,7 @@ public class CactusTile extends SolideTile implements ISchadelijk {
 	@Override
 	public void handelSchade(Player p) {
 		if (magSchadeDoen()) {
-			p.neemSchade();
+			p.takeDamage();
 			laatsteKeerSchade = System.currentTimeMillis();
 		}
 	}

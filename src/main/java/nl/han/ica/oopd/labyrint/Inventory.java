@@ -8,29 +8,29 @@ package nl.han.ica.oopd.labyrint;
 import java.util.ArrayList;
 import java.util.List;
 
-import nl.han.ica.oopd.labyrint.items.Diamand;
+import nl.han.ica.oopd.labyrint.items.Diamond;
 import nl.han.ica.oopd.labyrint.items.Key;
 
 public class Inventory {
 
-	private List<Diamand> diamands;
+	private List<Diamond> diamonds;
 	private List<Key> keys;
 
 	public Inventory() {
-		diamands = new ArrayList<Diamand>();
+		diamonds = new ArrayList<Diamond>();
 		keys = new ArrayList<Key>();
 	}
 
-	public List<Diamand> getDiamands() {
-		return this.diamands;
+	public List<Diamond> getDiamonds() {
+		return this.diamonds;
 	}
 
 	public List<Key> getKeys() {
 		return this.keys;
 	}
 
-	public void addDiamand(Diamand diamand) {
-		diamands.add(diamand);
+	public void addDiamond(Diamond diamond) {
+		diamonds.add(diamond);
 	}
 
 	public void addKey(Key key) {
@@ -39,7 +39,7 @@ public class Inventory {
 
 	@Override
 	public String toString() {
-		return String.format("Aantal keys: %s, aantal diamands: %s", keys.size(), diamands.size());
+		return String.format("Aantal keys: %s, aantal diamands: %s", keys.size(), diamonds.size());
 	}
 
 }

@@ -145,7 +145,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 	/**
 	 * Neem een leven van de speler als hij schade oploopt door een obstakel
 	 */
-	public void neemSchade() {
+	public void takeDamage() {
 		System.out.println("Ow!");
 		LIFES -= 1;
 		if (isDeath()) {

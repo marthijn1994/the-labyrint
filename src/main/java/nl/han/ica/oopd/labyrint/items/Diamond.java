@@ -12,22 +12,22 @@ import nl.han.ica.oopg.collision.ICollidableWithGameObjects;
 import nl.han.ica.oopg.objects.Sprite;
 import nl.han.ica.oopg.sound.Sound;
 
-public class Diamand extends VerzamelObject implements ICollidableWithGameObjects {
+public class Diamond extends CollectableItem implements ICollidableWithGameObjects {
 
 	protected int puntenWaarde;
 	private Labyrint world;
 
-	public Diamand(Sprite sprite, int puntenWaarde, Labyrint world) {
+	public Diamond(Sprite sprite, int puntenWaarde, Labyrint world) {
 		super(sprite, new Sound(world, FolderLocationsUtils.SOUND_FOLDER + "collected.mp3"));
 		this.puntenWaarde = puntenWaarde;
 		this.world = world;
 	}
 
 	@Override
-	public void verzamelen(Player player) {
+	public void collect(Player player) {
 		System.out.println("Je krijgt nu zoveel punten: " + puntenWaarde);
 		world.getUserInterface().updateScore(puntenWaarde);
-		player.getInventory().addDiamand(this);
+		player.getInventory().addDiamond(this);
 		world.deleteGameObject(this);
 	}
 

@@ -13,20 +13,20 @@ import nl.han.ica.oopg.objects.Sprite;
 import nl.han.ica.oopg.objects.SpriteObject;
 import nl.han.ica.oopg.sound.Sound;
 
-public abstract class VerzamelObject extends SpriteObject {
+public abstract class CollectableItem extends SpriteObject {
 
 	private Sound sound;
 
-	public VerzamelObject(Sprite sprite) {
+	public CollectableItem(Sprite sprite) {
 		super(sprite);
 	}
 
-	public VerzamelObject(Sprite sprite, Sound sound) {
+	public CollectableItem(Sprite sprite, Sound sound) {
 		super(sprite);
 		this.sound = sound;
 	}
 
-	public abstract void verzamelen(Player player);
+	public abstract void collect(Player player);
 
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
 		for (GameObject g : collidedGameObjects) {
@@ -38,7 +38,7 @@ public abstract class VerzamelObject extends SpriteObject {
 					sound.play();
 				}
 
-				this.verzamelen(player);
+				this.collect(player);
 			}
 		}
 	}

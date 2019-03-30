@@ -11,9 +11,9 @@ import nl.han.ica.oopg.collision.CollidedTile;
 import nl.han.ica.oopg.objects.Sprite;
 import processing.core.PVector;
 
-public class DeurTile extends SolideTile implements IOpenAble {
+public class DoorTile extends SolideTile implements IOpenAble {
 
-	public DeurTile(Sprite sprite) {
+	public DoorTile(Sprite sprite) {
 		super(sprite);
 	}
 

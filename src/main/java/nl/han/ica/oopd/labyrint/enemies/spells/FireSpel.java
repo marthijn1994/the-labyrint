@@ -42,7 +42,7 @@ public class FireSpel extends Projectile implements ICollidableWithTiles, IColli
 			if (currentTime - previousCollisionDetection >= collisionDetectionDelay) {
 				previousCollisionDetection = currentTime;
 				if (gameObject instanceof Player) {
-					((Player) gameObject).neemSchade();
+					((Player) gameObject).takeDamage();
 					world.deleteGameObject(this);
 				}
 			}

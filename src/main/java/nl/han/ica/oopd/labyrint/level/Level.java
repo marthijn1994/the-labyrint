@@ -7,13 +7,12 @@ package nl.han.ica.oopd.labyrint.level;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Random;
 import java.util.Scanner;
 
 import nl.han.ica.oopd.labyrint.Labyrint;
 import nl.han.ica.oopd.labyrint.Player;
 import nl.han.ica.oopd.labyrint.enemies.Wizard;
-import nl.han.ica.oopd.labyrint.items.Diamand;
+import nl.han.ica.oopd.labyrint.items.Diamond;
 import nl.han.ica.oopd.labyrint.items.Key;
 import nl.han.ica.oopd.labyrint.tiles.TileManager;
 import nl.han.ica.oopd.labyrint.utils.FolderLocationsUtils;
@@ -27,12 +26,11 @@ public class Level {
 	private Labyrint world;
 	private Player player;
 	private Sound sound;
-	private Random random;
 
 	private int width;
 	private int height;
-	private int aantalTilesX;
-	private int aantalTilesY;
+	private int numberOfTilesX;
+	private int numberOftilesY;
 	private int[][] tilesMap;
 
 	private String path;
@@ -49,13 +47,11 @@ public class Level {
 		this.player = player;
 		this.path = path;
 
-		random = new Random();
-
 		width = world.getWidth();
 		height = world.getHeight() - 100;
-		aantalTilesX = width / TileManager.tileSize;
-		aantalTilesY = height / TileManager.tileSize;
-		tilesMap = new int[aantalTilesY][aantalTilesX];
+		numberOfTilesX = width / TileManager.tileSize;
+		numberOftilesY = height / TileManager.tileSize;
+		tilesMap = new int[numberOftilesY][numberOfTilesX];
 	}
 
 	/**
@@ -98,11 +94,11 @@ public class Level {
 			int row = 0;
 			while (scanner.hasNextLine()) {
 				csvSingleLineIds = scanner.next().split(",");
-				textIds = new String[aantalTilesX];
-				numberIds = new int[aantalTilesX];
+				textIds = new String[numberOfTilesX];
+				numberIds = new int[numberOfTilesX];
 
 				int i = 0;
-				while (i < csvSingleLineIds.length && i < aantalTilesX) {
+				while (i < csvSingleLineIds.length && i < numberOfTilesX) {
 					textIds[i] = csvSingleLineIds[i];
 					i++;
 				}
@@ -113,7 +109,7 @@ public class Level {
 				}
 
 				tilesMap[row++] = numberIds;
-				if (row == aantalTilesY)
+				if (row == numberOftilesY)
 					break;
 			}
 			scanner.close();
@@ -128,21 +124,21 @@ public class Level {
 	 * desbetreffende plek een diamand/sleutel.
 	 */
 	private void loadObjectsIntoMap() {
-		for (int y = 0; y < aantalTilesY; y++) {
-			for (int x = 0; x < aantalTilesX; x++) {
-				if (tilesMap[y][x] == TileManager.DIAMAND_TILE_ID) {
+		for (int y = 0; y < numberOftilesY; y++) {
+			for (int x = 0; x < numberOfTilesX; x++) {
+				if (tilesMap[y][x] == TileManager.DIAMOND_TILE_ID) {
 					tilesMap[y][x] = 1;
 
-					int randomPuntenWaarden = random.nextInt(30);
+					int diamondPoints = (int) world.random(1, 10);
 
-					Sprite diamandSprite = new Sprite(FolderLocationsUtils.ITEMS_FOLDER + "diamond.png");
-					Diamand diamand = new Diamand(diamandSprite, randomPuntenWaarden, world);
+					Sprite diamondSprite = new Sprite(FolderLocationsUtils.ITEMS_FOLDER + "diamond.png");
+					Diamond diamond = new Diamond(diamondSprite, diamondPoints, world);
 
 					// Plaats een diamand op je juiste positie in de map
 					float xPos = ((float) x * TileManager.tileSize);
 					float yPos = ((float) y * TileManager.tileSize);
-					world.addGameObject(diamand, xPos, yPos);
-				} else if (tilesMap[y][x] == TileManager.SLEUTEL_TILE_ID) {
+					world.addGameObject(diamond, xPos, yPos);
+				} else if (tilesMap[y][x] == TileManager.KEY_TILE_ID) {
 					tilesMap[y][x] = 1;
 
 					Sprite keySprite = new Sprite(FolderLocationsUtils.ITEMS_FOLDER + "key.png");
@@ -161,8 +157,8 @@ public class Level {
 	 * Spawn alle enemies op de map
 	 */
 	private void loadEnemiesIntoMap() {
-		for (int y = 0; y < aantalTilesY; y++) {
-			for (int x = 0; x < aantalTilesX; x++) {
+		for (int y = 0; y < numberOftilesY; y++) {
+			for (int x = 0; x < numberOfTilesX; x++) {
 				if (tilesMap[y][x] == TileManager.WIZARD_SPAWN_POINT) {
 					tilesMap[y][x] = 1;
 					
@@ -180,8 +176,8 @@ public class Level {
 	 * Spawn de player op de spawn positie
 	 */
 	private void loadPlayerIntoMap() {
-		for (int y = 0; y < aantalTilesY; y++) {
-			for (int x = 0; x < aantalTilesX; x++) {
+		for (int y = 0; y < numberOftilesY; y++) {
+			for (int x = 0; x < numberOfTilesX; x++) {
 				if (tilesMap[y][x] == TileManager.PLAYER_SPAWN_POINT) {
 					tilesMap[y][x] = 1;
 

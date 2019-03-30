@@ -11,9 +11,9 @@ import nl.han.ica.oopg.collision.CollidedTile;
 import nl.han.ica.oopg.objects.Sprite;
 import processing.core.PVector;
 
-public class GeheimeMuur extends SolideTile implements IOpenAble {
+public class SecretWall extends SolideTile implements IOpenAble {
 
-	public GeheimeMuur(Sprite sprite) {
+	public SecretWall(Sprite sprite) {
 		super(sprite);
 	}
 

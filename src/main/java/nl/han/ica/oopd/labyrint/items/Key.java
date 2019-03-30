@@ -5,7 +5,7 @@ import nl.han.ica.oopd.labyrint.Player;
 import nl.han.ica.oopg.collision.ICollidableWithGameObjects;
 import nl.han.ica.oopg.objects.Sprite;
 
-public class Key extends VerzamelObject implements ICollidableWithGameObjects {
+public class Key extends CollectableItem implements ICollidableWithGameObjects {
 
 	private Labyrint world;
 
@@ -15,7 +15,7 @@ public class Key extends VerzamelObject implements ICollidableWithGameObjects {
 	}
 
 	@Override
-	public void verzamelen(Player player) {
+	public void collect(Player player) {
 		player.getInventory().addKey(this);
 		world.deleteGameObject(this);
 	}

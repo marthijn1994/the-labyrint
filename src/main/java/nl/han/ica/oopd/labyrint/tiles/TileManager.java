@@ -20,23 +20,23 @@ public class TileManager {
 	public static int tileSize = 50;
 	
 	// Non-tiles, ids voor het plaatsen van objecten in de map
-	public static final int DIAMAND_TILE_ID = 50;
-	public static final int SLEUTEL_TILE_ID = 51;
+	public static final int DIAMOND_TILE_ID = 50;
+	public static final int KEY_TILE_ID = 51;
 	public static final int PLAYER_SPAWN_POINT = 99;
 	public static final int WIZARD_SPAWN_POINT = 100;
 
 	// Muur Tile & Geheime Muur Tile
-	private static Sprite muurSprite = new Sprite(FolderLocationsUtils.TILES_FOLDER + "muur.png");
-	private static TileType<MuurTile> muurTileType = new TileType<>(MuurTile.class, muurSprite);
-	private static TileType<GeheimeMuur> geheimeMuurTileType = new TileType<>(GeheimeMuur.class, muurSprite);
+	private static Sprite wallSprite = new Sprite(FolderLocationsUtils.TILES_FOLDER + "wall.png");
+	private static TileType<WallTile> wallTileType = new TileType<>(WallTile.class, wallSprite);
+	private static TileType<SecretWall> secretWallTileType = new TileType<>(SecretWall.class, wallSprite);
 
 	// Vloer Tile
-	private static Sprite vloerSprite = new Sprite(FolderLocationsUtils.TILES_FOLDER + "vloer.png");
-	private static TileType<VloerTile> vloerTileType = new TileType<>(VloerTile.class, vloerSprite);
+	private static Sprite floorSprite = new Sprite(FolderLocationsUtils.TILES_FOLDER + "floor.png");
+	private static TileType<VloerTile> floorTileType = new TileType<>(VloerTile.class, floorSprite);
 
 	// Deur Tile
-	private static Sprite deurSprite = new Sprite(FolderLocationsUtils.TILES_FOLDER + "deur.png");
-	private static TileType<DeurTile> deurTileType = new TileType<DeurTile>(DeurTile.class, deurSprite);
+	private static Sprite doorSprite = new Sprite(FolderLocationsUtils.TILES_FOLDER + "door.png");
+	private static TileType<DoorTile> doorTileType = new TileType<DoorTile>(DoorTile.class, doorSprite);
 
 	// Cactus Tile
 	private static Sprite CactusSprite = new Sprite(FolderLocationsUtils.OBSTAKELS_FOLDER + "cactus.png");
@@ -47,6 +47,6 @@ public class TileManager {
 	//PLAYER_SPWAN_POINT = 99
 	//WIZARD_SPAWN_POINT = 100
 	@SuppressWarnings("rawtypes")	//           0              1             2              3                 4
-	public static TileType[] tileTypes = { muurTileType, vloerTileType, deurTileType, cactusTileType, geheimeMuurTileType };
+	public static TileType[] tileTypes = { wallTileType, floorTileType, doorTileType, cactusTileType, secretWallTileType };
 
 }
