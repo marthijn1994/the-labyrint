@@ -56,20 +56,23 @@ public abstract class BaseEnemy extends AnimatedSpriteObject implements ICollida
 				boolean bottom = CollisionSide.BOTTOM.equals(collisionSide);
 
 				if (top) {
-					setCurrentFrameIndex(0);
 					setDirection(Player.NORTH);
 				} else if (bottom) {
-					setCurrentFrameIndex(0);
 					setDirection(Player.SOUTH);
 				} else if (left) {
-					setCurrentFrameIndex(0);
 					setDirection(Player.WEST);
 				} else if (right) {
-					setCurrentFrameIndex(1);
 					setDirection(Player.EAST);
 				}
 			}
 		}
+	}
+
+	@Override
+	public void setCurrentFrameIndex(int currentFrameIndex) {
+		if (currentFrameIndex > getTotalFrames() && currentFrameIndex < 0)
+			currentFrameIndex = 0;
+		super.setCurrentFrameIndex(currentFrameIndex);
 	}
 
 	public int getSpriteSize() {

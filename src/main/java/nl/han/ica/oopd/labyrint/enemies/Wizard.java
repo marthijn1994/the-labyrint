@@ -2,7 +2,7 @@ package nl.han.ica.oopd.labyrint.enemies;
 
 import nl.han.ica.oopd.labyrint.Labyrint;
 import nl.han.ica.oopd.labyrint.Player;
-import nl.han.ica.oopd.labyrint.enemies.spells.FireSpel;
+import nl.han.ica.oopd.labyrint.enemies.attacks.FireSpel;
 import nl.han.ica.oopd.labyrint.utils.FolderLocationsUtils;
 import nl.han.ica.oopg.objects.Sprite;
 

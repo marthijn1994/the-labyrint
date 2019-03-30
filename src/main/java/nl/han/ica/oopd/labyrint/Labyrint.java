@@ -68,6 +68,7 @@ public class Labyrint extends GameEngine {
 	private void initializeLevel() {
 		// Alle levels
 		LevelManager.addLevel(new Level(this, player, "test_map.csv"));
+		LevelManager.addLevel(new Level(this, player, "level_1.csv", "background_music.mp3"));
 
 		// Start de eerste level
 		LevelManager.loadLevel(LevelManager.START_LEVEL);

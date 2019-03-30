@@ -1,4 +1,4 @@
-package nl.han.ica.oopd.labyrint.enemies.spells;
+package nl.han.ica.oopd.labyrint.enemies.attacks;
 
 import java.util.List;
 

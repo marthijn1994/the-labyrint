@@ -26,7 +26,7 @@ public class LevelManager {
 	 * @param levelIndex
 	 */
 	public static void loadLevel(int levelIndex) {
-		if (levelIndex >= levels.size()) {
+		if (levelIndex >= levels.size() || levelIndex < 0) {
 			// Als de level niet bestaat, laad de eerste level
 			levels.get(START_LEVEL).load();
 		} else {

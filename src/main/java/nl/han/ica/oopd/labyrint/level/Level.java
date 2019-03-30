@@ -206,10 +206,10 @@ public class Level {
 	 */
 	private void loadBackgroundMusic() {
 		if (sound == null)
-			sound = new Sound(world, FolderLocationsUtils.SOUND_FOLDER + "defaultMusic.mp3");
+			sound = new Sound(world, FolderLocationsUtils.SOUND_FOLDER + "default_music.mp3");
 
-//		sound.loop(-1);
-//		sound.play();
+		sound.loop(-1);
+		sound.play();
 	}
 
 	/**

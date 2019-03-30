@@ -1,4 +1,4 @@
-package nl.han.ica.oopd.labyrint.enemies.spells;
+package nl.han.ica.oopd.labyrint.enemies.attacks;
 
 import nl.han.ica.oopd.labyrint.Labyrint;
 import nl.han.ica.oopd.labyrint.utils.FolderLocationsUtils;
