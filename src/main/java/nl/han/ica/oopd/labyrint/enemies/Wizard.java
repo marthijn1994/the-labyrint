@@ -1,12 +1,7 @@
 package nl.han.ica.oopd.labyrint.enemies;
 
 import nl.han.ica.oopd.labyrint.Labyrint;
-<<<<<<< Updated upstream
 import nl.han.ica.oopd.labyrint.enemies.attacks.FireBall;
-=======
-import nl.han.ica.oopd.labyrint.enemies.spells.FireSpel;
-import nl.han.ica.oopd.labyrint.enemies.spells.ICastSpells;
->>>>>>> Stashed changes
 import nl.han.ica.oopd.labyrint.utils.FolderLocationsUtils;
 import nl.han.ica.oopg.objects.Sprite;
 
