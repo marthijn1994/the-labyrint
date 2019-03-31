@@ -17,6 +17,7 @@ public class Key extends CollectableItem implements ICollidableWithGameObjects {
 	@Override
 	public void collect(Player player) {
 		player.getInventory().addKey(this);
+		world.getUserInterface().updateKeys();
 		world.deleteGameObject(this);
 	}
 

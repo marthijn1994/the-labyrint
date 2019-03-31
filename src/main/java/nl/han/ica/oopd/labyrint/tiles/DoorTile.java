@@ -33,7 +33,7 @@ public class DoorTile extends SolideTile implements IOpenAble {
 		if (world.key == ' ') {
 			if (player.getInventory().getKeys().size() > 0) {
 				player.getInventory().getKeys().remove(0);
-
+				world.getUserInterface().updateKeys();
 				vector = world.getTileMap().getTilePixelLocation(collidedTile.getTile());
 				int tileWidth = collidedTile.getTile().getSprite().getWidth();
 				int tileHeight = collidedTile.getTile().getSprite().getHeight();

@@ -14,4 +14,5 @@ public class LabyrintTextObject extends TextObject {
 		g.textSize(getFontSize());
 		g.text(getText(), getX(), getY());
 	}
+
 }
