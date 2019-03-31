@@ -33,7 +33,7 @@ public class Level {
 	private int width;
 	private int height;
 	private int numberOfTilesX;
-	private int numberOftilesY;
+	private int numberOfTilesY;
 	private int[][] tilesMap;
 
 	private String path;
@@ -53,8 +53,8 @@ public class Level {
 		width = world.getWidth();
 		height = world.getHeight();
 		numberOfTilesX = width / TileManager.tileSize;
-		numberOftilesY = height / TileManager.tileSize;
-		tilesMap = new int[numberOftilesY][numberOfTilesX];
+		numberOfTilesY = height / TileManager.tileSize;
+		tilesMap = new int[numberOfTilesY][numberOfTilesX];
 	}
 
 	/**
@@ -112,7 +112,7 @@ public class Level {
 				}
 
 				tilesMap[row++] = numberIds;
-				if (row == numberOftilesY)
+				if (row == numberOfTilesY)
 					break;
 			}
 			scanner.close();
@@ -127,7 +127,7 @@ public class Level {
 	 * desbetreffende plek een diamand/sleutel.
 	 */
 	private void loadObjectsIntoMap() {
-		for (int y = 0; y < numberOftilesY; y++) {
+		for (int y = 0; y < numberOfTilesY; y++) {
 			for (int x = 0; x < numberOfTilesX; x++) {
 				if (tilesMap[y][x] == TileManager.DIAMOND_TILE_ID) {
 					tilesMap[y][x] = 1;
@@ -160,7 +160,7 @@ public class Level {
 	 * Spawn alle enemies op de map
 	 */
 	private void loadEnemiesIntoMap() {
-		for (int y = 0; y < numberOftilesY; y++) {
+		for (int y = 0; y < numberOfTilesY; y++) {
 			for (int x = 0; x < numberOfTilesX; x++) {
 				if (tilesMap[y][x] == TileManager.WIZARD_SPAWN_POINT) {
 					tilesMap[y][x] = 1;
@@ -189,7 +189,7 @@ public class Level {
 	 * Spawn de player op de spawn positie
 	 */
 	private void loadPlayerIntoMap() {
-		for (int y = 0; y < numberOftilesY; y++) {
+		for (int y = 0; y < numberOfTilesY; y++) {
 			for (int x = 0; x < numberOfTilesX; x++) {
 				if (tilesMap[y][x] == TileManager.PLAYER_SPAWN_POINT) {
 					tilesMap[y][x] = 1;
