@@ -38,7 +38,7 @@ public class Labyrint extends GameEngine {
 
 	@Override
 	public void update() {
-		//
+
 	}
 
 	/**

@@ -7,6 +7,7 @@ package nl.han.ica.oopd.labyrint;
 
 import java.util.List;
 
+import nl.han.ica.oopd.labyrint.level.LevelManager;
 import nl.han.ica.oopd.labyrint.tiles.IOpenAble;
 import nl.han.ica.oopd.labyrint.tiles.ISchadelijk;
 import nl.han.ica.oopd.labyrint.tiles.SolideTile;
@@ -27,6 +28,8 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 
 	private int spriteSize = 40;
 	private static int LIFES = 3;
+	
+	public static int CURRENT_LEVEL = LevelManager.START_LEVEL;
 
 	public Player(Labyrint world) {
 		super(new Sprite(FolderLocationsUtils.MEDIA_ROOT + "player.png"), 4);
@@ -86,6 +89,10 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 		if (keyCode == Labyrint.DOWN) {
 			setDirectionSpeed(DirectionUtils.SOUTH, speed);
 			setCurrentFrameIndex(0);
+		}
+		
+		if (key == 'n') {
+			LevelManager.loadLevel(CURRENT_LEVEL++);
 		}
 	}
 

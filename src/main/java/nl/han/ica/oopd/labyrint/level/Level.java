@@ -7,12 +7,16 @@ package nl.han.ica.oopd.labyrint.level;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import nl.han.ica.oopd.labyrint.Labyrint;
 import nl.han.ica.oopd.labyrint.Player;
+import nl.han.ica.oopd.labyrint.enemies.BaseEnemy;
 import nl.han.ica.oopd.labyrint.enemies.Ranger;
 import nl.han.ica.oopd.labyrint.enemies.Wizard;
+import nl.han.ica.oopd.labyrint.items.CollectableItem;
 import nl.han.ica.oopd.labyrint.items.Diamond;
 import nl.han.ica.oopd.labyrint.items.Key;
 import nl.han.ica.oopd.labyrint.tiles.TileManager;
@@ -37,6 +41,9 @@ public class Level {
 	private int[][] tilesMap;
 
 	private String path;
+	
+	public static List<BaseEnemy> enemies = new ArrayList<BaseEnemy>();
+	private static List<CollectableItem> items = new ArrayList<CollectableItem>();
 
 	/**
 	 * Level Constructor
@@ -75,6 +82,7 @@ public class Level {
 	 * Laad de level
 	 */
 	public void load() {
+		clearLists();
 		loadLevelCsvFile();
 		loadObjectsIntoMap();
 		loadPlayerIntoMap();
@@ -136,6 +144,8 @@ public class Level {
 
 					Sprite diamondSprite = new Sprite(FolderLocationsUtils.ITEMS_FOLDER + "diamond.png");
 					Diamond diamond = new Diamond(diamondSprite, diamondPoints, world);
+					
+					items.add(diamond);
 
 					// Plaats een diamand op je juiste positie in de map
 					PVector vector = calculatePixelPosition(x, y);
@@ -146,6 +156,8 @@ public class Level {
 
 					Sprite keySprite = new Sprite(FolderLocationsUtils.ITEMS_FOLDER + "key.png");
 					Key key = new Key(keySprite, world);
+					
+					items.add(key);
 
 					// Plaats een key op je juiste positie in de map
 					PVector vector = calculatePixelPosition(x, y);
@@ -167,6 +179,8 @@ public class Level {
 
 					float direction = DirectionUtils.calculateFacingDirection(world, y, x);
 					Wizard wizard = new Wizard(world, direction);
+					
+					enemies.add(wizard);
 
 					PVector vector = calculatePixelPosition(x, y);
 					world.addGameObject(wizard, vector.x, vector.y);
@@ -176,6 +190,8 @@ public class Level {
 
 					float direction = DirectionUtils.calculateFacingDirection(world, y, x);
 					Ranger ranger = new Ranger(world, direction);
+					
+					enemies.add(ranger);
 
 					PVector vector = calculatePixelPosition(x, y);
 					world.addGameObject(ranger, vector.x, vector.y);
@@ -214,6 +230,17 @@ public class Level {
 
 		sound.loop(-1);
 		sound.play();
+	}
+	
+	private void clearLists() {
+		for (BaseEnemy enemy : enemies) {
+			world.deleteGameObject(enemy);
+		}
+		for (CollectableItem item : items) {
+			world.deleteGameObject(item);
+		}
+		enemies.clear();
+		items.clear();
 	}
 
 	/**
