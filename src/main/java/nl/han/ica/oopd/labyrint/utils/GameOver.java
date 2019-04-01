@@ -9,9 +9,10 @@ import processing.core.PGraphics;
 
 public class GameOver extends Dashboard {
 
-	private int LAYERABOVEOTHERITEMS = 99;
+	private int LAYER_ABOVE_OTHER_ITEMS = 99;
 	private Labyrint world;
 	private boolean gameOver;
+	private final int TEXTSIZE_FOR_GAME_OVER = 50;
 
 	public void setGameOver() {
 		this.gameOver = true;
@@ -28,7 +29,10 @@ public class GameOver extends Dashboard {
 	public void draw(PGraphics g) {
 		if (gameOver) {
 			super.draw(g);
-			g.text("Game over! Press 'r' to restart.", Labyrint.WIDTH / 2, Labyrint.HEIGHT / 2, LAYERABOVEOTHERITEMS);
+			g.textAlign(g.CENTER);
+			g.textSize(TEXTSIZE_FOR_GAME_OVER);
+			g.text("Game over! Press 'R' to restart.", Labyrint.WIDTH / 2, Labyrint.HEIGHT / 2,
+					LAYER_ABOVE_OTHER_ITEMS);
 		}
 	}
 
