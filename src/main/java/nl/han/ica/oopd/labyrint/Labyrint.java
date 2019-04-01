@@ -80,7 +80,7 @@ public class Labyrint extends GameEngine {
 		userInterface = new UserInterface(player.getInventory());
 		addDashboard(userInterface);
 		gameOver = new GameOver(this);
-		addGameObject(gameOver);
+		addDashboard(gameOver);
 	}
 
 	public UserInterface getUserInterface() {
