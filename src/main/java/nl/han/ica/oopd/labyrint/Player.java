@@ -27,9 +27,9 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 	private Inventory inventory;
 
 	private int spriteSize = 40;
-	private static int LIFES = 3;
 	
 	public static int CURRENT_LEVEL = LevelManager.START_LEVEL;
+	private static int LIVES = 3;
 
 	public Player(Labyrint world) {
 		super(new Sprite(FolderLocationsUtils.MEDIA_ROOT + "player.png"), 4);
@@ -142,7 +142,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 	 * Check om te kijken of de speler geen levens meer heeft
 	 */
 	public boolean isDeath() {
-		return LIFES == 0;
+		return LIVES == 0;
 	}
 
 	/**
@@ -150,11 +150,12 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 	 */
 	public void takeDamage() {
 		if (!isDeath()) {
-			LIFES--;
+			LIVES--;
+			world.getUserInterface().updateHealth();
 		} else {
 			// GAME OVER MAN!
 		}
-		System.out.println("Ow! lifes left: " + LIFES);
+		System.out.println("Ow! lifes left: " + LIVES);
 	}
 
 	/*
@@ -170,5 +171,9 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 
 	public Labyrint getWorld() {
 		return world;
+	}
+
+	public static int getLIVES() {
+		return LIVES;
 	}
 }
