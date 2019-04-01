@@ -13,7 +13,11 @@ public class Wizard extends BaseEnemy {
 
 	@Override
 	public void attack() {
-		world.addGameObject(new FireBall(world, direction), getX(), getY());
+		FireBall fireBall = new FireBall(world, direction);		
+		float xPos = getX() + ((getSpriteSize() - fireBall.getSpriteSize()) / 2.0f);
+		float yPos = getY() + ((getSpriteSize() - fireBall.getSpriteSize()) / 2.0f);
+		
+		world.addGameObject(fireBall, xPos, yPos);
 	}
 
 }

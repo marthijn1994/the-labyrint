@@ -20,7 +20,7 @@ public class DirectionUtils {
 	 * @param tileX
 	 * @return direction
 	 */
-	public static float calculateDirection(Labyrint world, int tileY, int tileX) {
+	public static float calculateFacingDirection(Labyrint world, int tileY, int tileX) {
 		float direction = SOUTH;
 
 		try {
