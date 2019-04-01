@@ -7,6 +7,7 @@ package nl.han.ica.oopd.labyrint;
 
 import nl.han.ica.oopd.labyrint.level.Level;
 import nl.han.ica.oopd.labyrint.level.LevelManager;
+import nl.han.ica.oopd.labyrint.ui.UserInterface;
 import nl.han.ica.oopg.engine.GameEngine;
 import nl.han.ica.oopg.view.View;
 import processing.core.PApplet;
@@ -16,7 +17,6 @@ public class Labyrint extends GameEngine {
 
 	public static final int WIDTH = 1200;
 	public static final int HEIGHT = 800;
-	public static final int USERINTERFACEHEIGHT = 50;
 
 	private Player player;
 	private UserInterface userInterface;
@@ -57,7 +57,7 @@ public class Labyrint extends GameEngine {
 	 */
 	private void createWindow(int width, int height) {
 		View view = new View(width, height);
-		view.setWorldSize(width, height - USERINTERFACEHEIGHT);
+		view.setWorldSize(width, height - UserInterface.USER_INTERFACE_HEIGHT);
 		setView(view);
 		size(width, height);
 	}
