@@ -8,12 +8,11 @@ package nl.han.ica.oopd.labyrint;
 import java.util.List;
 
 import nl.han.ica.oopd.labyrint.level.LevelManager;
-import nl.han.ica.oopd.labyrint.tiles.IOpenAble;
 import nl.han.ica.oopd.labyrint.tiles.IDamagable;
+import nl.han.ica.oopd.labyrint.tiles.IOpenAble;
 import nl.han.ica.oopd.labyrint.tiles.SolideTile;
 import nl.han.ica.oopd.labyrint.utils.DirectionUtils;
 import nl.han.ica.oopd.labyrint.utils.FolderLocationsUtils;
-import nl.han.ica.oopd.labyrint.utils.GameOver;
 import nl.han.ica.oopg.collision.CollidedTile;
 import nl.han.ica.oopg.collision.CollisionSide;
 import nl.han.ica.oopg.collision.ICollidableWithTiles;
@@ -26,11 +25,10 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 
 	private Labyrint world;
 	private Inventory inventory;
-	private GameOver gameOver;
 
 	private int spriteSize = 40;
 
-	public static final int MAX_LIVES = 3;
+	public static final int MAX_LIVES = 5;
 	private static int LIVES = MAX_LIVES;
 	
 	public static int CURRENT_LEVEL = LevelManager.START_LEVEL;
@@ -153,13 +151,12 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 	 * Neem een leven van de speler als hij schade oploopt door een obstakel
 	 */
 	public void takeDamage() {
-		LIVES--;
-		if (!isDeath()) {
-			world.getUserInterface().updateHealth();
-		} else {
+		if (isDeath()) {
 			world.getGameOver().setGameOver();
+		} else {
+			LIVES--;
+			world.getUserInterface().updateHealth();
 		}
-		System.out.println("Ow! lives left: " + LIVES);
 	}
 
 	/*
