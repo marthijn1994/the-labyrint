@@ -9,7 +9,7 @@ import java.util.List;
 
 import nl.han.ica.oopd.labyrint.level.LevelManager;
 import nl.han.ica.oopd.labyrint.tiles.IOpenAble;
-import nl.han.ica.oopd.labyrint.tiles.ISchadelijk;
+import nl.han.ica.oopd.labyrint.tiles.IDamagable;
 import nl.han.ica.oopd.labyrint.tiles.SolideTile;
 import nl.han.ica.oopd.labyrint.utils.DirectionUtils;
 import nl.han.ica.oopd.labyrint.utils.FolderLocationsUtils;
@@ -30,8 +30,10 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 
 	private int spriteSize = 40;
 
+	public static final int MAX_LIVES = 3;
+	private static int LIVES = MAX_LIVES;
+	
 	public static int CURRENT_LEVEL = LevelManager.START_LEVEL;
-	private static int LIVES = 3;
 
 	public Player(Labyrint world) {
 		super(new Sprite(FolderLocationsUtils.MEDIA_ROOT + "player.png"), 4);
@@ -48,8 +50,8 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 			if (collidedTile.getTile() instanceof SolideTile) {
 				checkSolidTileCollision(collidedTile, collidedTile.getCollisionSide());
 			}
-			if (collidedTile.getTile() instanceof ISchadelijk) {
-				((ISchadelijk) collidedTile.getTile()).handelSchade(this);
+			if (collidedTile.getTile() instanceof IDamagable) {
+				((IDamagable) collidedTile.getTile()).handelSchade(this);
 			}
 			if (collidedTile.getTile() instanceof IOpenAble) {
 				((IOpenAble) collidedTile.getTile()).open(this, world, collidedTile);
@@ -94,7 +96,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 		}
 
 		if (key == 'n') {
-			LevelManager.loadLevel(CURRENT_LEVEL++);
+			LevelManager.loadLevel(++CURRENT_LEVEL);
 		}
 	}
 
@@ -175,7 +177,11 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 		return world;
 	}
 
-	public static int getLIVES() {
+	public static int getLives() {
 		return LIVES;
+	}
+	
+	public void setLives(int lives) {
+		LIVES = lives;
 	}
 }

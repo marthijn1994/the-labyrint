@@ -33,9 +33,9 @@ public class Labyrint extends GameEngine {
 	@Override
 	public void setupGame() {
 		initializePlayer();
+		initializeUserInterface();
 		createWindow(WIDTH, HEIGHT);
 		initializeLevel();
-		initializeUserInterface();
 	}
 
 	@Override

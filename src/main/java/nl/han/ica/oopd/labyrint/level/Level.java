@@ -41,8 +41,8 @@ public class Level {
 	private int[][] tilesMap;
 
 	private String path;
-	
-	public static List<BaseEnemy> enemies = new ArrayList<BaseEnemy>();
+
+	private static List<BaseEnemy> enemies = new ArrayList<BaseEnemy>();
 	private static List<CollectableItem> items = new ArrayList<CollectableItem>();
 
 	/**
@@ -53,9 +53,9 @@ public class Level {
 	 * @param path
 	 */
 	public Level(Labyrint world, Player player, String path) {
-		this.world = world;
 		this.player = player;
 		this.path = path;
+		this.world = world;
 
 		width = world.getWidth();
 		height = world.getHeight();
@@ -83,6 +83,7 @@ public class Level {
 	 */
 	public void load() {
 		clearLists();
+		resetPlayer();
 		loadLevelCsvFile();
 		loadObjectsIntoMap();
 		loadPlayerIntoMap();
@@ -144,19 +145,19 @@ public class Level {
 
 					Sprite diamondSprite = new Sprite(FolderLocationsUtils.ITEMS_FOLDER + "diamond.png");
 					Diamond diamond = new Diamond(diamondSprite, diamondPoints, world);
-					
+
 					items.add(diamond);
 
 					// Plaats een diamand op je juiste positie in de map
 					PVector vector = calculatePixelPosition(x, y);
 					world.addGameObject(diamond, vector.x, vector.y);
-					
+
 				} else if (tilesMap[y][x] == TileManager.KEY_TILE_ID) {
 					tilesMap[y][x] = 1;
 
 					Sprite keySprite = new Sprite(FolderLocationsUtils.ITEMS_FOLDER + "key.png");
 					Key key = new Key(keySprite, world);
-					
+
 					items.add(key);
 
 					// Plaats een key op je juiste positie in de map
@@ -179,7 +180,7 @@ public class Level {
 
 					float direction = DirectionUtils.calculateFacingDirection(world, y, x);
 					Wizard wizard = new Wizard(world, direction);
-					
+
 					enemies.add(wizard);
 
 					PVector vector = calculatePixelPosition(x, y);
@@ -190,7 +191,7 @@ public class Level {
 
 					float direction = DirectionUtils.calculateFacingDirection(world, y, x);
 					Ranger ranger = new Ranger(world, direction);
-					
+
 					enemies.add(ranger);
 
 					PVector vector = calculatePixelPosition(x, y);
@@ -231,7 +232,10 @@ public class Level {
 		sound.loop(-1);
 		sound.play();
 	}
-	
+
+	/**
+	 * Verwijder elk enemy en item op de map en lists
+	 */
 	private void clearLists() {
 		for (BaseEnemy enemy : enemies) {
 			world.deleteGameObject(enemy);
@@ -241,6 +245,17 @@ public class Level {
 		}
 		enemies.clear();
 		items.clear();
+	}
+
+	/**
+	 * Reset de speler
+	 */
+	private void resetPlayer() {
+		player.getInventory().clearInventory();
+		player.setLives(Player.MAX_LIVES);
+		world.getUserInterface().resetScore();
+		world.getUserInterface().updateKeys();
+		world.getUserInterface().updateHealth();
 	}
 
 	/**

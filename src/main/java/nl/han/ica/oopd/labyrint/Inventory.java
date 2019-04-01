@@ -36,6 +36,11 @@ public class Inventory {
 	public void addKey(Key key) {
 		keys.add(key);
 	}
+	
+	public void clearInventory() {
+		diamonds.clear();
+		keys.clear();
+	}
 
 	@Override
 	public String toString() {

@@ -72,7 +72,7 @@ public class UserInterface extends Dashboard {
 	}
 	
 	public void updateHealth() {
-		drawHealth.setText("" + Player.getLIVES());
+		drawHealth.setText("" + Player.getLives());
 	}
 
 	protected void setDashboardSpritesAndObjects() {
@@ -107,7 +107,7 @@ public class UserInterface extends Dashboard {
 	}
 	
 	protected void setHealthCounter() {
-		drawHealth = new LabyrintTextObject("" + Player.getLIVES(), USER_INTERFACE_HEIGHT);
+		drawHealth = new LabyrintTextObject("" + Player.getLives(), USER_INTERFACE_HEIGHT);
 		drawHealth.setX(DISTANCE_BETWEEN_DASHBOARD_ITEMS * 5);
 		addGameObject(drawHealth, LAYER_ABOVE_BACKGROUND);
 	}

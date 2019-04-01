@@ -8,7 +8,7 @@ package nl.han.ica.oopd.labyrint.tiles;
 import nl.han.ica.oopd.labyrint.Player;
 import nl.han.ica.oopg.objects.Sprite;
 
-public class CactusTile extends SolideTile implements ISchadelijk {
+public class CactusTile extends SolideTile implements IDamagable {
 
 	protected final int lengteOnschadelijk = 500;
 	protected long laatsteKeerSchade;
