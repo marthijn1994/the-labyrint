@@ -8,6 +8,7 @@ package nl.han.ica.oopd.labyrint;
 import nl.han.ica.oopd.labyrint.level.Level;
 import nl.han.ica.oopd.labyrint.level.LevelManager;
 import nl.han.ica.oopd.labyrint.ui.UserInterface;
+import nl.han.ica.oopd.labyrint.utils.GameOver;
 import nl.han.ica.oopg.engine.GameEngine;
 import nl.han.ica.oopg.view.View;
 import processing.core.PApplet;
@@ -20,6 +21,7 @@ public class Labyrint extends GameEngine {
 
 	private Player player;
 	private UserInterface userInterface;
+	private GameOver gameOver;
 
 	public static void main(String[] args) {
 		String[] processingArgs = { "nl.han.ica.oopd.labyrint.Labyrint" };
@@ -77,9 +79,15 @@ public class Labyrint extends GameEngine {
 	private void initializeUserInterface() {
 		userInterface = new UserInterface(player.getInventory());
 		addDashboard(userInterface);
+		gameOver = new GameOver(this);
+		addGameObject(gameOver);
 	}
 
 	public UserInterface getUserInterface() {
 		return userInterface;
+	}
+	
+	public GameOver getGameOver() {
+		return gameOver;
 	}
 }
