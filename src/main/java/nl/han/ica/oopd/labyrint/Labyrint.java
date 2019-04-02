@@ -7,8 +7,8 @@ package nl.han.ica.oopd.labyrint;
 
 import nl.han.ica.oopd.labyrint.level.Level;
 import nl.han.ica.oopd.labyrint.level.LevelManager;
+import nl.han.ica.oopd.labyrint.ui.GameOver;
 import nl.han.ica.oopd.labyrint.ui.UserInterface;
-import nl.han.ica.oopd.labyrint.utils.GameOver;
 import nl.han.ica.oopg.engine.GameEngine;
 import nl.han.ica.oopg.view.View;
 import processing.core.PApplet;
@@ -16,8 +16,8 @@ import processing.core.PApplet;
 @SuppressWarnings("serial")
 public class Labyrint extends GameEngine {
 
-	public static final int WIDTH = 1200;
-	public static final int HEIGHT = 800;
+	public static final int WIDTH = 1600;
+	public static final int HEIGHT = 1000;
 
 	private Player player;
 	private UserInterface userInterface;
@@ -69,8 +69,8 @@ public class Labyrint extends GameEngine {
 	 */
 	private void initializeLevel() {
 		// Alle levels
-		LevelManager.addLevel(new Level(this, player, "test_map.csv"));
 		LevelManager.addLevel(new Level(this, player, "level_1.csv", "background_music.mp3"));
+		LevelManager.addLevel(new Level(this, player, "test_map.csv"));
 
 		// Start de eerste level
 		LevelManager.loadLevel(LevelManager.START_LEVEL);

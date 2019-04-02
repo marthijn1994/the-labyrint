@@ -1,10 +1,9 @@
-package nl.han.ica.oopd.labyrint.utils;
+package nl.han.ica.oopd.labyrint.ui;
 
 import nl.han.ica.oopd.labyrint.Labyrint;
 import nl.han.ica.oopd.labyrint.Player;
 import nl.han.ica.oopd.labyrint.level.LevelManager;
 import nl.han.ica.oopg.dashboard.Dashboard;
-import nl.han.ica.oopg.objects.GameObject;
 import processing.core.PGraphics;
 
 public class GameOver extends Dashboard {
