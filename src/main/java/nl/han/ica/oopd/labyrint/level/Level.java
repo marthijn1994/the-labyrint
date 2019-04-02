@@ -185,7 +185,6 @@ public class Level {
 
 					PVector vector = calculatePixelPosition(x, y);
 					world.addGameObject(wizard, vector.x, vector.y);
-
 				} else if (tilesMap[y][x] == TileManager.RANGER_SPAWN_POINT) {
 					tilesMap[y][x] = 1;
 
