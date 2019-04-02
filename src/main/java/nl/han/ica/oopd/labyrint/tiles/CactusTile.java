@@ -10,8 +10,8 @@ import nl.han.ica.oopg.objects.Sprite;
 
 public class CactusTile extends SolideTile implements IDamagable {
 
-	protected final int lengteOnschadelijk = 500;
-	protected long laatsteKeerSchade;
+	private final int lengteOnschadelijk = 500;
+	private long laatsteKeerSchade;
 
 	public CactusTile(Sprite sprite) {
 		super(sprite);

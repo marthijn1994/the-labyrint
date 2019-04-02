@@ -20,6 +20,9 @@ public abstract class BaseEnemy extends AnimatedSpriteObject implements IDamagab
 
 	public float direction;
 
+	private final int lengteOnschadelijk = 500;
+	private long laatsteKeerSchade;
+
 	public BaseEnemy(Labyrint world, Sprite sprite, int totalFrames, float direction) {
 		super(sprite, totalFrames);
 		this.world = world;
@@ -37,9 +40,10 @@ public abstract class BaseEnemy extends AnimatedSpriteObject implements IDamagab
 	}
 	
 	public void handleDamage(Player player) {
-		player.setX(getX() - 5);
-		player.setY(getY() - 5); 
-		player.takeDamage();
+		if (magSchadeDoen()) {
+			player.takeDamage();
+			laatsteKeerSchade = System.currentTimeMillis();
+		}
 	}
 
 	@Override
@@ -88,6 +92,13 @@ public abstract class BaseEnemy extends AnimatedSpriteObject implements IDamagab
 
 	public int getSpriteSize() {
 		return spriteSize;
+	}
+
+	protected boolean magSchadeDoen() {
+		boolean magSchadeDoen = true;
+		if (System.currentTimeMillis() < laatsteKeerSchade + lengteOnschadelijk)
+			magSchadeDoen = false;
+		return magSchadeDoen;
 	}
 
 }

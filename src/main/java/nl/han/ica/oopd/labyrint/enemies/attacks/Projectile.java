@@ -8,10 +8,8 @@ import nl.han.ica.oopd.labyrint.tiles.IDamagable;
 import nl.han.ica.oopd.labyrint.tiles.SolideTile;
 import nl.han.ica.oopg.collision.CollidedTile;
 import nl.han.ica.oopg.collision.CollisionSide;
-import nl.han.ica.oopg.collision.ICollidableWithGameObjects;
 import nl.han.ica.oopg.collision.ICollidableWithTiles;
 import nl.han.ica.oopg.objects.AnimatedSpriteObject;
-import nl.han.ica.oopg.objects.GameObject;
 import nl.han.ica.oopg.objects.Sprite;
 
 public abstract class Projectile extends AnimatedSpriteObject implements ICollidableWithTiles, IDamagable {
