@@ -10,27 +10,27 @@ import nl.han.ica.oopg.objects.Sprite;
 
 public class CactusTile extends SolideTile implements IDamagable {
 
-	private final int lengteOnschadelijk = 500;
-	private long laatsteKeerSchade;
+	private final int hitDelay = 500;
+	private long lastTimeTakenDamage;
 
 	public CactusTile(Sprite sprite) {
 		super(sprite);
-		laatsteKeerSchade = 0;
+		lastTimeTakenDamage = 0;
 	}
 
 	@Override
 	public void handleDamage(Player p) {
-		if (magSchadeDoen()) {
+		if (allowedToDoDamage()) {
 			p.takeDamage();
-			laatsteKeerSchade = System.currentTimeMillis();
+			lastTimeTakenDamage = System.currentTimeMillis();
 		}
 	}
 
-	protected boolean magSchadeDoen() {
-		boolean magSchadeDoen = true;
-		if (System.currentTimeMillis() < laatsteKeerSchade + lengteOnschadelijk)
-			magSchadeDoen = false;
-		return magSchadeDoen;
+	protected boolean allowedToDoDamage() {
+		boolean canDoDamage = true;
+		if (System.currentTimeMillis() < lastTimeTakenDamage + hitDelay)
+			canDoDamage = false;
+		return canDoDamage;
 	}
 
 }
