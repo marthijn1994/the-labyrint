@@ -33,7 +33,7 @@ public class TileManager {
 
 	// Vloer Tile
 	private static Sprite floorSprite = new Sprite(FolderLocationsUtils.TILES_FOLDER + "floor.png");
-	private static TileType<VloerTile> floorTileType = new TileType<>(VloerTile.class, floorSprite);
+	private static TileType<FloorTile> floorTileType = new TileType<>(FloorTile.class, floorSprite);
 
 	// Deur Tile
 	private static Sprite doorSprite = new Sprite(FolderLocationsUtils.TILES_FOLDER + "door.png");

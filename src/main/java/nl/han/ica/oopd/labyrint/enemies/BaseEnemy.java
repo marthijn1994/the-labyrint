@@ -1,11 +1,13 @@
 package nl.han.ica.oopd.labyrint.enemies;
 
 import nl.han.ica.oopd.labyrint.Labyrint;
+import nl.han.ica.oopd.labyrint.Player;
+import nl.han.ica.oopd.labyrint.tiles.IDamagable;
 import nl.han.ica.oopd.labyrint.utils.DirectionUtils;
 import nl.han.ica.oopg.objects.AnimatedSpriteObject;
 import nl.han.ica.oopg.objects.Sprite;
 
-public abstract class BaseEnemy extends AnimatedSpriteObject {
+public abstract class BaseEnemy extends AnimatedSpriteObject implements IDamagable {
 
 	private static final int CAST_DELAY_MIN = 2000;
 	private static final int CAST_DELAY_MAX = 3000;
@@ -32,6 +34,12 @@ public abstract class BaseEnemy extends AnimatedSpriteObject {
 	@Override
 	public void update() {
 		executeAttack();
+	}
+	
+	public void handleDamage(Player player) {
+		player.setX(getX() - 5);
+		player.setY(getY() - 5); 
+		player.takeDamage();
 	}
 
 	@Override

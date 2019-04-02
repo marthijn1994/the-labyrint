@@ -9,5 +9,5 @@ import nl.han.ica.oopd.labyrint.Player;
 
 public interface IDamagable {
 
-	public void handelSchade(Player player);
+	public void handleDamage(Player player);
 }

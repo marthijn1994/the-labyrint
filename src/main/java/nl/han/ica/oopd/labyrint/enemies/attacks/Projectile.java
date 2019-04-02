@@ -4,6 +4,7 @@ import java.util.List;
 
 import nl.han.ica.oopd.labyrint.Labyrint;
 import nl.han.ica.oopd.labyrint.Player;
+import nl.han.ica.oopd.labyrint.tiles.IDamagable;
 import nl.han.ica.oopd.labyrint.tiles.SolideTile;
 import nl.han.ica.oopg.collision.CollidedTile;
 import nl.han.ica.oopg.collision.CollisionSide;
@@ -13,8 +14,7 @@ import nl.han.ica.oopg.objects.AnimatedSpriteObject;
 import nl.han.ica.oopg.objects.GameObject;
 import nl.han.ica.oopg.objects.Sprite;
 
-public abstract class Projectile extends AnimatedSpriteObject
-		implements ICollidableWithTiles, ICollidableWithGameObjects {
+public abstract class Projectile extends AnimatedSpriteObject implements ICollidableWithTiles, IDamagable {
 
 	private Labyrint world;
 
@@ -48,13 +48,9 @@ public abstract class Projectile extends AnimatedSpriteObject
 	 * Raakt de projectile de player? richt schade aan de player.
 	 */
 	@Override
-	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
-		for (GameObject gameObject : collidedGameObjects) {
-			if (gameObject instanceof Player) {
-				((Player) gameObject).takeDamage();
-				world.deleteGameObject(this);
-			}
-		}
+	public void handleDamage(Player player) {
+		player.takeDamage();	
+		world.deleteGameObject(this);	
 	}
 
 	/**

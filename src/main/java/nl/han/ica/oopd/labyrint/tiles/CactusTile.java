@@ -19,7 +19,7 @@ public class CactusTile extends SolideTile implements IDamagable {
 	}
 
 	@Override
-	public void handelSchade(Player p) {
+	public void handleDamage(Player p) {
 		if (magSchadeDoen()) {
 			p.takeDamage();
 			laatsteKeerSchade = System.currentTimeMillis();

@@ -15,13 +15,15 @@ import nl.han.ica.oopd.labyrint.utils.DirectionUtils;
 import nl.han.ica.oopd.labyrint.utils.FolderLocationsUtils;
 import nl.han.ica.oopg.collision.CollidedTile;
 import nl.han.ica.oopg.collision.CollisionSide;
+import nl.han.ica.oopg.collision.ICollidableWithGameObjects;
 import nl.han.ica.oopg.collision.ICollidableWithTiles;
 import nl.han.ica.oopg.exceptions.TileNotFoundException;
 import nl.han.ica.oopg.objects.AnimatedSpriteObject;
+import nl.han.ica.oopg.objects.GameObject;
 import nl.han.ica.oopg.objects.Sprite;
 import processing.core.PVector;
 
-public class Player extends AnimatedSpriteObject implements ICollidableWithTiles {
+public class Player extends AnimatedSpriteObject implements ICollidableWithTiles, ICollidableWithGameObjects {
 
 	private Labyrint world;
 	private Inventory inventory;
@@ -49,10 +51,19 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 				checkSolidTileCollision(collidedTile, collidedTile.getCollisionSide());
 			}
 			if (collidedTile.getTile() instanceof IDamagable) {
-				((IDamagable) collidedTile.getTile()).handelSchade(this);
+				((IDamagable) collidedTile.getTile()).handleDamage(this);
 			}
 			if (collidedTile.getTile() instanceof IOpenAble) {
 				((IOpenAble) collidedTile.getTile()).open(this, world, collidedTile);
+			}
+		}
+	}
+
+	@Override
+	public void gameObjectCollisionOccurred(List<GameObject> collidedGameobjects) {
+		for (GameObject gameObject : collidedGameobjects) {
+			if (gameObject instanceof IDamagable) {
+				((IDamagable) gameObject).handleDamage(this);
 			}
 		}
 	}
@@ -180,4 +191,5 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 	public void setLives(int lives) {
 		LIVES = lives;
 	}
+	
 }
