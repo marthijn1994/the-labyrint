@@ -8,14 +8,15 @@ package nl.han.ica.oopd.labyrint.items;
 import java.util.List;
 
 import nl.han.ica.oopd.labyrint.Player;
+import nl.han.ica.oopg.collision.ICollidableWithGameObjects;
 import nl.han.ica.oopg.objects.GameObject;
 import nl.han.ica.oopg.objects.Sprite;
 import nl.han.ica.oopg.objects.SpriteObject;
 import nl.han.ica.oopg.sound.Sound;
 
-public abstract class CollectableItem extends SpriteObject {
+public abstract class CollectableItem extends SpriteObject implements ICollidableWithGameObjects {
 
-	private Sound sound;
+	protected Sound sound;
 
 	public CollectableItem(Sprite sprite) {
 		super(sprite);
@@ -26,8 +27,12 @@ public abstract class CollectableItem extends SpriteObject {
 		this.sound = sound;
 	}
 
-	public abstract void collect(Player player);
+	protected abstract void collect(Player player);
 
+	/**
+	 * Bij botsing met een item, voeg de item toe aan de inventory van de speler
+	 */
+	@Override
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
 		for (GameObject g : collidedGameObjects) {
 			if (g instanceof Player) {
@@ -38,7 +43,7 @@ public abstract class CollectableItem extends SpriteObject {
 					sound.play();
 				}
 
-				this.collect(player);
+				collect(player);
 			}
 		}
 	}

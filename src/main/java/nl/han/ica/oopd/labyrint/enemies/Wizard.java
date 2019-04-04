@@ -11,6 +11,9 @@ public class Wizard extends BaseEnemy {
 		super(world, new Sprite(FolderLocationsUtils.ENEMIES_FOLDER + "wizard.png"), 2, direction);
 	}
 
+	/**
+	 * Vuur een vuurbal af
+	 */
 	@Override
 	public void attack() {
 		FireBall fireBall = new FireBall(world, direction);		

@@ -32,7 +32,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 
 	public static final int MAX_LIVES = 5;
 	private static int LIVES = MAX_LIVES;
-	
+
 	public static int CURRENT_LEVEL = LevelManager.START_LEVEL;
 
 	public Player(Labyrint world) {
@@ -44,6 +44,9 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 		setFriction(0.19f);
 	}
 
+	/**
+	 * controleert collision met collidedTiles
+	 */
 	@Override
 	public void tileCollisionOccurred(List<CollidedTile> collidedTiles) {
 		for (CollidedTile collidedTile : collidedTiles) {
@@ -59,6 +62,9 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 		}
 	}
 
+	/**
+	 * controleert collision met gameobjects
+	 */
 	@Override
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameobjects) {
 		for (GameObject gameObject : collidedGameobjects) {
@@ -68,6 +74,9 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 		}
 	}
 
+	/**
+	 * basic window collision
+	 */
 	@Override
 	public void update() {
 		if (getX() <= 0) {
@@ -84,6 +93,9 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 		}
 	}
 
+	/**
+	 * Luister naar nieuwe key input events
+	 */
 	@Override
 	public void keyPressed(int keyCode, char key) {
 		final float speed = 3.75f;
@@ -187,9 +199,9 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 	public static int getLives() {
 		return LIVES;
 	}
-	
+
 	public void setLives(int lives) {
 		LIVES = lives;
 	}
-	
+
 }

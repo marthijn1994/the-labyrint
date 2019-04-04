@@ -12,10 +12,13 @@ public class Arrow extends Projectile {
 		super(world, new Sprite(FolderLocationsUtils.ENEMIES_FOLDER + "arrow.png"), 2, direction);
 	}
 
+	/**
+	 * Beweeg de pijl de juiste richting op
+	 */
 	@Override
 	protected void fire() {
 		final float speed = 2.5f;
-		setDirectionSpeed(direction, speed);		
+		setDirectionSpeed(direction, speed);
 	}
 
 	public int getSpriteSize() {

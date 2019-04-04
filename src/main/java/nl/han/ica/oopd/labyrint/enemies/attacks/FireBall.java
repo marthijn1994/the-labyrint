@@ -12,6 +12,9 @@ public class FireBall extends Projectile {
 		super(world, new Sprite(FolderLocationsUtils.ENEMIES_FOLDER + "fireball.png"), 1, direction);
 	}
 	
+	/**
+	 * Beweeg de vuurbal de juiste richting op
+	 */
 	@Override
 	public void fire() {
 		final float speed = 2.5f;

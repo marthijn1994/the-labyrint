@@ -276,9 +276,9 @@ public class Level {
 	/**
 	 * Bereken de pixel positie voor alle objecten / entities
 	 * 
-	 * @param x
-	 * @param y
-	 * @return vector
+	 * @param x de horizontale index positie in de tileMap[][]
+	 * @param y de vertical index positie in de tileMap[][]
+	 * @return vector wordt de pixel positie in opgeslagen
 	 */
 	private PVector calculatePixelPosition(int x, int y) {
 		PVector vector = new PVector();

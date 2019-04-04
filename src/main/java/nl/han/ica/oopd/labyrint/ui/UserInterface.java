@@ -63,6 +63,7 @@ public class UserInterface extends Dashboard {
 	public void updateKeys() {
 		drawKeys.setText("" + getAmountOfKeys());
 	}
+
 	/**
 	 * 
 	 * @return aantal keys
@@ -70,7 +71,7 @@ public class UserInterface extends Dashboard {
 	public int getAmountOfKeys() {
 		return inventory.getKeys().size();
 	}
-	
+
 	public void updateHealth() {
 		drawHealth.setText("" + Player.getLives());
 	}
@@ -80,16 +81,17 @@ public class UserInterface extends Dashboard {
 		dashboardScoreSprite = new LabyrintSpriteForDashboard(scoreSprite);
 		keySprite = new Sprite(FolderLocationsUtils.ITEMS_FOLDER + "key.png");
 		dashboardKeySprite = new LabyrintSpriteForDashboard(keySprite);
-		healthSprite = new Sprite (FolderLocationsUtils.ITEMS_FOLDER + "health.png");
+		healthSprite = new Sprite(FolderLocationsUtils.ITEMS_FOLDER + "health.png");
 		dashboardHealthSprite = new LabyrintSpriteForDashboard(healthSprite);
-		
+
 		addGameObject(dashboardScoreSprite, LAYER_ABOVE_BACKGROUND);
-		dashboardScoreSprite.setX(DISTANCE_BETWEEN_DASHBOARD_ITEMS * 0); // Note: this line is a formality (X is already 0),
-																	// but it makes it easier to change later.
+		dashboardScoreSprite.setX(DISTANCE_BETWEEN_DASHBOARD_ITEMS * 0); // Note: this line is a formality (X is already
+																			// 0),
+		// but it makes it easier to change later.
 		addGameObject(dashboardKeySprite, LAYER_ABOVE_BACKGROUND);
 		dashboardKeySprite.setX(DISTANCE_BETWEEN_DASHBOARD_ITEMS * 2);
-		
-		addGameObject (dashboardHealthSprite, LAYER_ABOVE_BACKGROUND);
+
+		addGameObject(dashboardHealthSprite, LAYER_ABOVE_BACKGROUND);
 		dashboardHealthSprite.setX(DISTANCE_BETWEEN_DASHBOARD_ITEMS * 4);
 	}
 
@@ -105,12 +107,11 @@ public class UserInterface extends Dashboard {
 		drawKeys.setX(DISTANCE_BETWEEN_DASHBOARD_ITEMS * 3);
 		addGameObject(drawKeys, LAYER_ABOVE_BACKGROUND);
 	}
-	
+
 	protected void setHealthCounter() {
 		drawHealth = new LabyrintTextObject("" + Player.getLives(), USER_INTERFACE_HEIGHT);
 		drawHealth.setX(DISTANCE_BETWEEN_DASHBOARD_ITEMS * 5);
 		addGameObject(drawHealth, LAYER_ABOVE_BACKGROUND);
 	}
-	
-	
+
 }

@@ -86,7 +86,7 @@ public class Labyrint extends GameEngine {
 	public UserInterface getUserInterface() {
 		return userInterface;
 	}
-	
+
 	public GameOver getGameOver() {
 		return gameOver;
 	}

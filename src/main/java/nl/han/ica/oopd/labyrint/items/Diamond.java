@@ -8,11 +8,10 @@ package nl.han.ica.oopd.labyrint.items;
 import nl.han.ica.oopd.labyrint.Labyrint;
 import nl.han.ica.oopd.labyrint.Player;
 import nl.han.ica.oopd.labyrint.utils.FolderLocationsUtils;
-import nl.han.ica.oopg.collision.ICollidableWithGameObjects;
 import nl.han.ica.oopg.objects.Sprite;
 import nl.han.ica.oopg.sound.Sound;
 
-public class Diamond extends CollectableItem implements ICollidableWithGameObjects {
+public class Diamond extends CollectableItem {
 
 	protected int puntenWaarde;
 	private Labyrint world;

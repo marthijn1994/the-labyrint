@@ -53,7 +53,7 @@ public abstract class Projectile extends AnimatedSpriteObject implements ICollid
 
 	/**
 	 * Dirty hack: projectile wordt bij het aanmaken direct weer verwijderd, zelfs
-	 * als de direction ie opgaat geen solideTile tegenkomt
+	 * als de projectile, de directie opgaat dat geen solideTile is.
 	 */
 	@Override
 	public void tileCollisionOccurred(List<CollidedTile> collidedTiles) {

@@ -11,6 +11,9 @@ public class Ranger extends BaseEnemy {
 		super(world, new Sprite(FolderLocationsUtils.ENEMIES_FOLDER + "ranger.png"), 1, direction);
 	}
 
+	/**
+	 * Vuur een pijl af
+	 */
 	@Override
 	protected void attack() {
 		world.addGameObject(new Arrow(world, direction), getX(), getY());
