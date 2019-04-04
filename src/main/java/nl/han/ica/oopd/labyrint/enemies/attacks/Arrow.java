@@ -9,7 +9,7 @@ public class Arrow extends Projectile {
 	private int spriteSize = 35;
 
 	public Arrow(Labyrint world, float direction) {
-		super(world, new Sprite(FolderLocationsUtils.ENEMIES_FOLDER + "arrow.png"), 2, direction);
+		super(world, new Sprite(FolderLocationsUtils.ENEMIES_FOLDER + "arrow.png"), 4, direction);
 	}
 
 	/**
