@@ -28,7 +28,7 @@ public class GameOver extends Dashboard {
 	public void draw(PGraphics g) {
 		if (gameOver) {
 			super.draw(g);
-			g.textAlign(g.CENTER);
+			g.textAlign(PGraphics.CENTER);
 			g.textSize(TEXTSIZE_FOR_GAME_OVER);
 			g.text("Game over! Press 'R' to restart.", Labyrint.WIDTH / 2, Labyrint.HEIGHT / 2,
 					LAYER_ABOVE_OTHER_ITEMS);

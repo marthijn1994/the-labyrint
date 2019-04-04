@@ -1,0 +1,20 @@
+Alle gebruikte sprites en geluidbestanden met bron
+
+
+-------- SPRITES --------
+player.png				-> https://opengameart.org/content/alternate-lpc-character-sprites-george
+fireball.png			-> Zelfgemaakt
+wizard.png				-> https://orna.guide/classes?show=6			
+diamond.png				-> https://kenney.nl/assets/simplified-platformer-pack			
+health.png				-> https://kenney.nl/assets/simplified-platformer-pack
+key.png					-> https://kenney.nl/assets/simplified-platformer-pack
+cactus.png				-> https://kenney.nl/assets/simplified-platformer-pack
+door.png				-> Zelfgemaakt
+floor.png				-> https://kenney.nl/assets/simplified-platformer-pack
+wall.png				-> https://kenney.nl/assets/simplified-platformer-pack
+
+
+-------- SOUND ----------
+background_music.mp3	-> Music by Eric Matyas, www.soundimage.org
+collected.mp3			-> Music by Eric Matyas, www.soundimage.org
+default_music.mp3		-> Music by Eric Matyas, www.soundimage.org
