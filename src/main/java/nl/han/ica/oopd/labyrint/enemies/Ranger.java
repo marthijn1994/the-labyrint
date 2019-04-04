@@ -8,7 +8,7 @@ import nl.han.ica.oopg.objects.Sprite;
 public class Ranger extends BaseEnemy {
 
 	public Ranger(Labyrint world, float direction) {
-		super(world, new Sprite(FolderLocationsUtils.ENEMIES_FOLDER + "ranger.png"), 1, direction);
+		super(world, new Sprite(FolderLocationsUtils.ENEMIES_FOLDER + "ranger.png"), 2, direction);
 	}
 
 	/**
