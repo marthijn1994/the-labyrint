@@ -6,6 +6,7 @@ import nl.han.ica.oopd.labyrint.Labyrint;
 import nl.han.ica.oopd.labyrint.Player;
 import nl.han.ica.oopd.labyrint.tiles.IDamagable;
 import nl.han.ica.oopd.labyrint.tiles.SolideTile;
+import nl.han.ica.oopd.labyrint.utils.DirectionUtils;
 import nl.han.ica.oopg.collision.CollidedTile;
 import nl.han.ica.oopg.collision.CollisionSide;
 import nl.han.ica.oopg.collision.ICollidableWithTiles;
@@ -27,6 +28,7 @@ public abstract class Projectile extends AnimatedSpriteObject implements ICollid
 		this.direction = direction;
 
 		previousCollisionDetection = System.currentTimeMillis();
+		setCurrentFrameIndex(getSpriteIndex(direction));
 	}
 
 	/**
@@ -49,6 +51,47 @@ public abstract class Projectile extends AnimatedSpriteObject implements ICollid
 	public void handleDamage(Player player) {
 		player.takeDamage();	
 		world.deleteGameObject(this);	
+	}
+
+	/**
+	 * Bepaal welke sprite dit object moet krijgen op basis van de direction
+	 */
+	@Override
+	public void setCurrentFrameIndex(int currentFrameIndex) {
+		if (currentFrameIndex > getTotalFrames() && currentFrameIndex < 0)
+			currentFrameIndex = 0;
+		super.setCurrentFrameIndex(currentFrameIndex);
+	}
+
+	/**
+	 * Pak de juiste sprite uit een png bestand
+	 * 
+	 * @param direction
+	 * @return spriteIndex
+	 */
+	private int getSpriteIndex(float direction) {
+		int spriteIndex = 0;
+
+		switch (getTotalFrames()) {
+		case 4:
+			if (direction == DirectionUtils.NORTH)
+				spriteIndex = 2;
+			if (direction == DirectionUtils.EAST)
+				spriteIndex = 1;
+			if (direction == DirectionUtils.SOUTH)
+				spriteIndex = 3;
+			if (direction == DirectionUtils.WEST)
+				spriteIndex = 0;
+			break;
+		case 2:
+			if (direction == DirectionUtils.WEST)
+				spriteIndex = 0;
+			if (direction == DirectionUtils.EAST)
+				spriteIndex = 1;
+			break;
+		}
+
+		return spriteIndex;
 	}
 
 	/**
