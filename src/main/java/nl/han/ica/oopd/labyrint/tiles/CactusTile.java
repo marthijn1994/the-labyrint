@@ -18,6 +18,9 @@ public class CactusTile extends SolideTile implements IDamagable {
 		lastTimeTakenDamage = 0;
 	}
 
+	/**
+	 * Handel de schade af
+	 */
 	@Override
 	public void handleDamage(Player p) {
 		if (allowedToDoDamage()) {
@@ -26,6 +29,11 @@ public class CactusTile extends SolideTile implements IDamagable {
 		}
 	}
 
+	/**
+	 * Kijk of de tile al damage mag doen
+	 * 
+	 * @return true/false
+	 */
 	protected boolean allowedToDoDamage() {
 		boolean canDoDamage = true;
 		if (System.currentTimeMillis() < lastTimeTakenDamage + hitDelay)
